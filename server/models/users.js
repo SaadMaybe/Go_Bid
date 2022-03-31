@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UsersSchema = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
   userID : {
     type: Number,
     required: true,
@@ -23,11 +23,12 @@ const UsersSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
+    unique: true,
   },
-  completedAuctions:{
-    type: [Number],
-    required: true,
-  },
+  completedAuctions:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AuctionsModel'
+  }],
   completedBids:{
     type:Number,
     required: true,
@@ -47,7 +48,7 @@ const UsersSchema = new mongoose.Schema({
 
 });
 
-const ItemsSchema = new mongoose.Schema({
+const itemsSchema = new mongoose.Schema({
   itemID : {
     type: Number,
     required: true,
@@ -71,14 +72,111 @@ const ItemsSchema = new mongoose.Schema({
     type: [String],
   },
   associatedAuctionID: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AuctionsModel',
     required: true,
-    min: 0,
   },
 
 });
 
+const messagesSchema = new mongoose.Schema({
+  messageID: {
+    type: Number,
+    required: true,
+    unique: true,
+    min: 0, 
+  },
+  contents: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 1,
+  },
+  to: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UsersModel',
+    required: true,
+    min: 0,
+  },
+  timeStamp: {
+    type: Date,
+    default: Date.now,
+  },
+  isRead: {
+    type: Boolean,
+    default: false,
+  },
+  
 
-const UsersModel = mongoose.model('Users', UsersSchema);
+});
+
+const auctionsSchema = new mongoose.Schema({
+  auctionID: {
+    type: Number,
+    required: true,
+    unique: true,
+    min: 0,
+  },
+  //on hold
+  auctioner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UsersModel',
+    required: true,
+
+  },
+  itemBeingAuctioned: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ItemsModel',
+    required: true,
+    min: 0,
+  },
+  startingTime: {
+      type: Date,
+      required: true,
+  },
+  endingTime: {
+    type: Date,
+    required: true,
+  },
+  auctionStatus: {
+    type: String,
+    required: true,
+  },
+  listOfBids: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'BidsModel',
+  }]
+
+});
+
+
+const bidsSchema = new mongoose.Schema({
+  bidID: {
+    type: Number, 
+    unique: true,
+    required: true,
+  },
+  bidder: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UsersModel',
+    required: true,
+  },
+  amountBidded: {
+    type: Number,
+    required: true,
+  },
+  //could be an enum
+  bidStatus: {
+    type: String,
+    required: true,
+  },
+});
+
+
+const MessagesModel = mongoose.model('Messages', messagesSchema);
+const ItemsModel = mongoose.model('Items', itemsSchema);
+const BidsModel = mongoose.model('Bids', bidsSchema);
+const AuctionsModel = mongoose.model('Auctions', auctionsSchema);
+const UsersModel = mongoose.model('Users', usersSchema);
 
 module.exports = UsersModel;
