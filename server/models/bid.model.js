@@ -32,7 +32,7 @@ let usermodel = require('./user.model.js');
   
   
   
-  const bidmodel = mongoose.model('Bids', bidschema);
+  const bidmodel = mongoose.model('bids', bidschema);
 
 
 module.exports = bidmodel;

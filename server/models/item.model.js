@@ -33,7 +33,7 @@ const itemschema = new mongoose.Schema({
   
   });
   
-  const itemmodel = mongoose.model('Items', itemschema);
+  const itemmodel = mongoose.model('items', itemschema);
 
   module.exports = itemmodel;
   

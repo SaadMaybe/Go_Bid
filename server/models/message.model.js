@@ -32,7 +32,7 @@ let usermodel = require('./user.model.js');
   
   });
   
-const messagemodel = mongoose.model('Messages', messageschema);
+const messagemodel = mongoose.model('messages', messageschema);
 
   
 module.exports = messagemodel;
