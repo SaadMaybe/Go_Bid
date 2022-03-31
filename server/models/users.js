@@ -170,6 +170,11 @@ const bidsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  associatedAuction: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AuctionsModel',
+    required: true,
+  }
 });
 
 
