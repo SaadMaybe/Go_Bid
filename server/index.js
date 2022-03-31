@@ -15,6 +15,7 @@ const port  = process.env.PORT || 3001;
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 
+
 app.use(cors());
 app.use(express.json());
 app.use('/signup', signupRouter);
@@ -40,6 +41,11 @@ app.get("/signin", async (req,res) => {
     res.send("Signed up successfully!!")
 })
 
+app.get("/", async (req, res) => {
+    res.send("Hello World!");
+})
+
 app.listen(port,()=>{
     console.log("Server is listening on port: " + process.env.PORT);
 })
+
