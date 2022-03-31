@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-
-
-
 const UsersSchema = new mongoose.Schema({
   userID : {
     type: Number,
@@ -50,6 +47,36 @@ const UsersSchema = new mongoose.Schema({
 
 });
 
+const ItemsSchema = new mongoose.Schema({
+  itemID : {
+    type: Number,
+    required: true,
+    unique: true,
+    min: 0,
+  },
+  description: {
+    type: String,
+  },
+  category: {
+    type: String,
+    
+    //Have to discuss this with the team:
+    enum: ["electronics", "clothing", "books", "sports", "other"],
+    required: true,
+  },
+  pictures: {
+    type: [String],
+  },
+  tags: {
+    type: [String],
+  },
+  associatedAuctionID: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+
+});
 
 
 const UsersModel = mongoose.model('Users', UsersSchema);
