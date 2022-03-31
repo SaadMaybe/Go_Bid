@@ -4,7 +4,7 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken')
 const sha = require('sha256')
 
-const UsersModel = require('./models/users.model')
+const UsersModel = require('./models/user.model')
 
 require('dotenv').config();
 

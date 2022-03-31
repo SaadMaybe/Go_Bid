@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 let itemmodel = require('./item.model.js');
 let bidmodel = require('./bid.model.js');
-let usermodel = require('./users.model.js');
+let usermodel = require('./user.model.js');
 
 
 const auctionschema = new mongoose.Schema({
