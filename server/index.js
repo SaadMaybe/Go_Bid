@@ -14,13 +14,13 @@ const port  = process.env.PORT || 3001;
 //Defining routers.
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
-const loginRouter = require("./routes/login.js");
+const signinRouter = require("./routes/signin.js");
 
 
 
 app.use(cors());
 app.use(express.json());
-app.use('/', loginRouter);
+app.use('/', signinRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
 
