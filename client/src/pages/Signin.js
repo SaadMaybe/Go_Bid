@@ -28,7 +28,7 @@ export default function Signin() {
   return (
     <div className="App">
       <div className="login">
-        <h1>Login</h1>
+        <h1>Login </h1>
         <input
           type="text"
           placeholder="Username..."
