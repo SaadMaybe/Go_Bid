@@ -171,7 +171,7 @@ export default class UserSignUp extends Component {
 
     console.log("User: ", user);
 
-    axios.post('http://localhost:9000/signup/', user)
+    axios.post('http://localhost:3000/signup/', user)
       .then(res => console.log(res.data));
 
     this.setState({
@@ -184,10 +184,11 @@ export default class UserSignUp extends Component {
 
   render() {
     return (
-            <div>
-            <h3>Sign Up</h3>
+            <div className="left">
+            {/* <h3>Sign Up</h3> */}
             <form onSubmit={this.onSubmit}>
-              <div className="form-group"> 
+              <div className="form-group">
+                <h3>Sign Up</h3> 
                 <label>Username: </label>
                 <input  type="text"
                     required
@@ -219,10 +220,12 @@ export default class UserSignUp extends Component {
                 value={this.state.Password}
                 onChange={this.getPassword}
                 />
-              </div>
-              <div className="form-group">
                 <input type="submit" value="Create User" className="btn btn-primary" />
+                <div className="right"></div>
               </div>
+              {/* <div className="form-group"> */}
+                {/* <input type="submit" value="Create User" className="btn btn-primary" /> */}
+              {/* </div> */}
             </form>
             </div>
     )
