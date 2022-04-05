@@ -68,28 +68,12 @@ export default class ContactUs extends Component {
 
   render() {
     return (
-            <div className="left">
+            <div className="left"> 
             {/* <h3>Sign Up</h3> */}
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <h3>Sign Up</h3> 
-                <label>Username: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.UserName}
-                    onChange={this.getUserName}
-                    />
-                <br></br>
-                <label>Number: </label>
-                <input  type="text"
-                    required
-                    className="form-control"
-                    value={this.state.Number}
-                    onChange={this.getNumber}
-                    />
-                <br></br>
-                <label>Email: </label>
+                <label>Your Email Address: </label>
                 <input  type="text"
                     required
                     className="form-control"
@@ -97,13 +81,22 @@ export default class ContactUs extends Component {
                     onChange={this.getEmail}
                     />
                 <br></br>
-                <label>Password: </label>
-                <input  type="password"
-                required
-                className="form-control"
-                value={this.state.Password}
-                onChange={this.getPassword}
-                />
+                <label>Subject: </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.Subject}
+                    onChange={this.getSubject}
+                    />
+                <br></br>
+                <label>How can we help you ? </label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    value={this.state.Msg}
+                    onChange={this.getMsg}
+                    />
+                <br></br>
                 <input type="submit" value="Create User" className="btn btn-primary" />
                 <div className="right"></div>
               </div>
