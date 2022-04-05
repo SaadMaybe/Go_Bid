@@ -47,19 +47,21 @@ connection.once('open',()=>{
     res.send("Signed up successfully!!")
 })
  */
-app.post("/signin", async (req,res) => {
-    const user = await UsersModel.findOne({phoneNumber: req.body.phoneNumber, password: req.body.password});
+// app.post("/signin", async (req,res) => {
+//     const user = await UsersModel.findOne({phoneNumber: req.body.Number, password: req.body.Password});
 
-    if(user)
-    {
-        res.json({status:'ok', user: true})
-    }
-    else
-    {
-        res.json({ status:'error', user: false});
-    }
+//     if(user)
+//     {
+//         res.json({status:'ok', user: true})
+//         console.log("OK")
+//     }
+//     else
+//     {
+//         console.log(user)
+//         res.json({ status:'error', user: false});
+//     }
     
-})
+// })
 // app.get("/", async (req, res) => {
 //     res.send("Hello World!");
 // })

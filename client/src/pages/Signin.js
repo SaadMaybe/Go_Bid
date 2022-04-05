@@ -38,14 +38,14 @@ export default class UserSignIn extends Component {
       Password: this.state.Password
     }
 
-    console.log(user);
+    console.log("User: k ",user);
 
-    axios.post('http://localhost:9000/users/add', user)
-      .then(res => console.log(res.data));
+    axios.post('http://localhost:9000/signin/', user)
+      .then(res => console.log("resData ",res.data));
 
     this.setState({
-      username: '',
-      password: ''
+      Number: '',
+      Password: ''
     })
   }
 
@@ -72,7 +72,7 @@ export default class UserSignIn extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="submit" value="Create User" className="btn btn-primary" />
+                <input type="submit" value="Sign In" className="btn btn-primary" />
               </div>
             </form>
             </div>
