@@ -8,12 +8,15 @@ const itemschema = new mongoose.Schema({
       required: true,
       unique: true,
       min: 0,
+      default: 0
     },
     description: {
       type: String,
+      default: "default description",
     },
     category: {
       type: String,
+      default: "electronics",
       
       //Have to discuss this with the team:
       enum: ["electronics", "clothing", "books", "sports", "other"],
@@ -21,14 +24,17 @@ const itemschema = new mongoose.Schema({
     },
     pictures: {
       type: [String],
+      default: [],
     },
     tags: {
       type: [String],
+      default: [],
     },
     associatedAuctionID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'auctionmodel',
       required: true,
+      default: 0
     },
   
   });

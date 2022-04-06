@@ -10,35 +10,42 @@ const auctionschema = new mongoose.Schema({
       required: true,
       unique: true,
       min: 0,
+      default: 0
+
     },
     //on hold
     auctioner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'usermodel',
       required: true,
-  
+      default: 0
     },
     itemBeingAuctioned: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'itemmodel',
       required: true,
       min: 0,
+      default: 0
     },
     startingTime: {
         type: Date,
         required: true,
+        default: Date.now,
     },
     endingTime: {
       type: Date,
       required: true,
+      default: Date.now,
     },
     auctionStatus: {
       type: String,
       required: true,
+      default: "pending",
     },
     listOfBids: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'bidmodel',
+      default: []
     }]
   
   });

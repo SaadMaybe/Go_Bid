@@ -9,11 +9,9 @@ router.route("/").post((req, res) =>
         if(user.length == 0)
             userID = 0;
         else 
-            userID = user[0].userID + 1;
-
-        console.log(userID);
+            userID = user[0].userID + 1;    
         const username = req.body.username;
-        console.log(username);
+        const email = req.body.email;
         const password = sha256(req.body.password);
         const phoneNumber = req.body.phoneNumber;
         const completedAuctions = [];
@@ -22,7 +20,7 @@ router.route("/").post((req, res) =>
         const cancelledBids = 0;
         const account_status = "user";
 
-        const newUsers = new Users({userID ,username, password, phoneNumber, completedAuctions, completedBids, cancelledAuctions, cancelledBids, account_status});
+        const newUsers = new Users({userID ,username, password, email, phoneNumber, completedAuctions, completedBids, cancelledAuctions, cancelledBids, account_status});
         await newUsers.save()
             .then(() => res.json('User added!'))
             .catch(err => res.status(400).json('Error ' + err));

@@ -7,18 +7,21 @@ let usermodel = require('./user.model.js');
       required: true,
       unique: true,
       min: 0, 
+      default: 0
     },
     contents: {
       type: String,
       required: true,
       trim: true,
       minlength: 1,
+      default: "default message"
     },
     to: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'usermodel',
       required: true,
       min: 0,
+      default: 0
     },
     timeStamp: {
       type: Date,
