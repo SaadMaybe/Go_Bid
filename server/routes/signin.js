@@ -11,28 +11,10 @@ router.route("/signin").post( async (req,res) => {
     }
     else
     {
-        console.log(user)
+        console.log("hre is a",user)
         res.json({ status:'error', user: false});
     }
     
 })
-
-
-    // router.route("/", async (req,res) => {
-    // console.log("Body,", req.body.phoneNumber)
-    // const user = await UsersModel.findOne({phoneNumber: req.body.phoneNumber, password: req.body.password});
-
-    // if(user)
-    // {
-    //     res.json({status:'ok', user: true})
-    //     console.log("OK")
-    // }
-    // else
-    // {
-    //     console.log(user)
-    //     res.json({ status:'error', user: false});
-    // }
-    
-// })
 
 module.exports = router;

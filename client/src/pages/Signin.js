@@ -1,13 +1,15 @@
 import React, { useState, Component } from "react";
 import axios from "axios";
 import "../App.css";
-import { useNavigate } from "react-router";
+import { Link } from 'react-router-dom';
+import Signup from "./Signup"
+import { useNavigate } from "react-router-dom";
 
 
 export default class UserSignIn extends Component {
   constructor(props) {
     super(props);
-
+    // this.navigate = this.navigate.bind(this)
     this.getNumber = this.getNumber.bind(this);
     this.getPassword = this.getPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -29,6 +31,12 @@ export default class UserSignIn extends Component {
       Password: e.target.value
     })
   }
+  
+  onClickSignUp(e)
+  {
+    console.log("Nav Function called")
+    // this.navigate("./Signup");
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -48,6 +56,9 @@ export default class UserSignIn extends Component {
       Password: ''
     })
   }
+
+    
+
 
   render() {
     return (
@@ -75,62 +86,9 @@ export default class UserSignIn extends Component {
                 <input type="submit" value="Sign In" className="btn btn-primary" />
               </div>
             </form>
+            <Link to= {"./signup"}> <button>Signup</button></Link>
+
             </div>
     )
   }
 }
-
-// export default function Signin() {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   Axios.defaults.withCredentials = true;
-//   let history = useNavigate();
-
-//   const login = () => {
-//     Axios.post(`/signin`, {
-//       username: username,
-//       password: password,
-//     }).then((response) => {
-//       if (response.data.message) {
-//         console.log(response.data.message);
-//       } else {
-//         history.push(`/Homepage`);
-//       }
-//     });
-//     // history(`/Homepage`);
-
-//   };
-//   return (
-//     <div className="App">
-//       <div className="login">
-//         <h1>Login </h1>
-//         <input
-//           type="text"
-//           placeholder="Username..."
-//           onChange={(e) => {
-//             setUsername(e.target.value);
-//           }}
-//         />
-//         <input
-//           type="password"
-//           placeholder="Password..."
-//           onChange={(e) => {
-//             setPassword(e.target.value);
-//           }}
-//         />
-//         <div>
-//           <button onClick={login}> Login </button>
-//           <button
-//             onClick={() => {
-//               history("/Signup");
-//             }}
-//           >
-//             {" "}
-//             Signup{" "}
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
