@@ -42,8 +42,8 @@ export default class UserSignIn extends Component {
     e.preventDefault();
 
     const user = {
-      Number: this.state.Number,
-      Password: this.state.Password
+      phoneNumber: this.state.Number,
+      password: this.state.Password
     }
 
     console.log("User: k ",user);

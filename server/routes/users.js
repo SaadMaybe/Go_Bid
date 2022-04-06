@@ -1,4 +1,7 @@
 const router = require('express').Router();
+const sha256 = require('sha256');
+const  Users = require("../models/user.model.js");
+
 
 router.route('/').get((req,res) => {
     Users.find()
@@ -9,7 +12,7 @@ router.route('/').get((req,res) => {
 router.route('/add').post((req,res) => {
     const userID = req.body.userID;
     const username = req.body.username;
-    const password = req.body.password;
+    const password = sha256(req.body.password);
     const phoneNumber = req.body.phoneNumber;
     const completedAuctions = req.body.completedAuctions;
     const completedBids = req.body.completedBids;
