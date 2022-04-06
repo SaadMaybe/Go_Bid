@@ -121,7 +121,7 @@ export const Signup = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [Email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -133,8 +133,8 @@ export const Signup = () => {
     setPhoneNumber(phoneNumber.target.value);
   }
 
-  const changeEmail = (Email) => {
-    setEmail(Email.target.value);
+  const changeEmail = (email) => {
+    setEmail(email.target.value);
   }
 
   const changePassword = (password) => {
@@ -147,7 +147,7 @@ export const Signup = () => {
     const user = {
       username: username,
       phoneNumber: phoneNumber,
-      Email: Email,
+      email: email,
       password: password
     }
   
