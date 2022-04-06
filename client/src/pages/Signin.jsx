@@ -6,23 +6,22 @@ import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
   
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState("");
   const [Password, setPassword] = useState("");
 
 
   const changePhoneNumber = (phoneNumber) => {
-    console.log("MAAR DO MUJHE: ",phoneNumber.target.value)
     setPhoneNumber(phoneNumber.target.value)
   }
 
-  const changePassword = (Password) => {
-    console.log("MAAR DO MUJHE pt 2: ",Password.target.value)
-    setPassword(Password.target.value)
+  const changePassword = (Val) => {
+    setPassword(Val.target.value)
   }
 
-  const onSubmit = async () => {
-    // preventDefault();
+  const onSubmit = async (ev) => {
+    ev.preventDefault();
+
     const user = {
       phoneNumber: phoneNumber,
       password: Password
@@ -30,14 +29,13 @@ export const SignIn = () => {
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
 
-    console.log("INSsadsadfIDE THE ONSUBMIT BUTTON")
 
-    navigation.navigate("/Signup");
 
     if (s.data.status !== "error")
     {
       console.log("INSIDE THE ONSUBMIT BUTTON")
-      // let navigate = useNavigate();
+      navigate("/Homepage");
+
     }
 
 
@@ -50,7 +48,7 @@ export const SignIn = () => {
   return (
       <div>
       <h3>Sign in</h3>
-      <form onSubmit={()=>onSubmit()}>
+      <form onSubmit={onSubmit}>
         <div className="form-group"> 
           <label>Number: </label>
           <input  type="text"

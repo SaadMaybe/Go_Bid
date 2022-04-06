@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
 
 import { SignIn } from './pages/Signin';
-import Homepage from './pages/Homepage';
+import { Homepage } from './pages/Homepage';
 import Signup from './pages/Signup';
 import { useNavigate } from "react-router-dom";
 
