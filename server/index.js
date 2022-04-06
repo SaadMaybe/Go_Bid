@@ -35,8 +35,6 @@ connection.once('open',()=>{
     console.log("DB connnected!!!")
 })
 
-<<<<<<< Updated upstream
-=======
 // app.use(cors());
 // app.use(express.json());
 // app.use('/', signupRouter);
@@ -44,11 +42,11 @@ connection.once('open',()=>{
 // app.use('/users', usersRouter);
 
 
-app.get("/signup", async (req,res) => {
-    const user = new UsersModel({username: req.username, password: sha256(req.password), phoneNumber: req.phoneNumber});
-    await user.save();
-    res.send("Signed up successfully!!")
-})
+// app.get("/signup", async (req,res) => {
+//     const user = new UsersModel({username: req.username, password: sha256(req.password), phoneNumber: req.phoneNumber});
+//     await user.save();
+//     res.send("Signed up successfully!!")
+// })
 
 // app.post("/signin", async (req,res) => {
 //     const user = await UsersModel.findOne({phoneNumber: req.body.Number, password: req.body.Password});
@@ -68,7 +66,6 @@ app.get("/signup", async (req,res) => {
 // app.get("/", async (req, res) => {
 //     res.send("Hello World!");
 // })
->>>>>>> Stashed changes
 
 app.listen(port,()=>{
     console.log("Server is listening on port: " + process.env.PORT);
