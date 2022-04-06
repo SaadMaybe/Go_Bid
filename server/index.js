@@ -15,6 +15,7 @@ const port  = process.env.PORT || 3001;
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
+const contactUsRouter = require("./routes/contactUs.js");
 
 
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use('/', signinRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
+app.use('/contactUs', contactUsRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
