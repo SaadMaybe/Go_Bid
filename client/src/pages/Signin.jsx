@@ -24,7 +24,7 @@ export const SignIn = () => {
 
     const user = {
       phoneNumber: phoneNumber,
-      password: Password
+      Password: Password
     }
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
@@ -79,4 +79,3 @@ export const SignIn = () => {
       </div>
     )
 }
-
