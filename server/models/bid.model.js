@@ -7,25 +7,31 @@ let usermodel = require('./user.model.js');
       type: Number, 
       unique: true,
       required: true,
+      default: 0
     },
     bidder: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'usermodel',
       required: true,
+      default: 0
     },
     amountBidded: {
       type: Number,
       required: true,
+      default: 0
     },
     //could be an enum
     bidStatus: {
       type: String,
       required: true,
+      default: "pending",
+      enum: ["pending", "accepted", "cancelled", "rejected"]
     },
     associatedAuction: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'auctionmodel',
       required: true,
+      default: 0
     }
   });
  

@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const sha256 = require('sha256');
-const  Users = require("../models/user.model.js");
-
 
 router.route('/').get((req,res) => {
     Users.find()
