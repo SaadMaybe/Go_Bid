@@ -4,6 +4,7 @@ import "../App.css";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
+
 export const SignIn = () => {
   
   const navigate = useNavigate();
@@ -11,13 +12,14 @@ export const SignIn = () => {
   const [Password, setPassword] = useState("");
 
 
-  const changePhoneNumber = (phoneNumber) => {
-    setPhoneNumber(phoneNumber.target.value)
+  const changePhoneNumber = (XVal) => {
+    setPhoneNumber(XVal.target.value)
   }
 
   const changePassword = (Val) => {
     setPassword(Val.target.value)
   }
+
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
@@ -29,23 +31,28 @@ export const SignIn = () => {
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
 
-
-
+    console.log("Status: ", s.data.status)
     if (s.data.status !== "error")
     {
-      console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage");
+      let str = s.data.userID.toString()
+      
+      console.log("routing to homepage ", str)
 
+      console.log("Homepage/" + str)
+      navigate("/Homepage/" + str);
+    }
+    else
+    {
+      console.log("In else statement")
     }
 
 
-    this.setState({
-      Number: '',
-      Password: ''
-    })
+    setPhoneNumber("")
+    setPassword("")
   }
 
   return (
+
       <div>
       <h3>Sign in</h3>
       <form onSubmit={onSubmit}>
@@ -75,7 +82,6 @@ export const SignIn = () => {
         </div>
       </form>
       <Link to= {"./signup"}> <button>Signup</button></Link>
-
       </div>
     )
 }

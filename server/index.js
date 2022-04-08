@@ -38,37 +38,6 @@ connection.once('open',()=>{
     console.log("DB connnected!!!")
 })
 
-// app.use(cors());
-// app.use(express.json());
-// app.use('/', signupRouter);
-// app.use('/signup', signupRouter);
-// app.use('/users', usersRouter);
-
-
-// app.get("/signup", async (req,res) => {
-//     const user = new UsersModel({username: req.username, password: sha256(req.password), phoneNumber: req.phoneNumber});
-//     await user.save();
-//     res.send("Signed up successfully!!")
-// })
-
-// app.post("/signin", async (req,res) => {
-//     const user = await UsersModel.findOne({phoneNumber: req.body.Number, password: req.body.Password});
-
-//     if(user)
-//     {
-//         res.json({status:'ok', user: true})
-//         console.log("OK")
-//     }
-//     else
-//     {
-//         console.log(user)
-//         res.json({ status:'error', user: false});
-//     }
-    
-// })
-// app.get("/", async (req, res) => {
-//     res.send("Hello World!");
-// })
 
 app.listen(port,()=>{
     console.log("Server is listening on port: " + process.env.PORT);

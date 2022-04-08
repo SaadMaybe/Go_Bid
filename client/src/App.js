@@ -5,6 +5,8 @@ import { SignIn } from './pages/Signin';
 import { Homepage } from './pages/Homepage';
 import { Signup } from './pages/Signup';
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router';
+
 // import contactUs from './pages/contactUs';
 
 
@@ -13,8 +15,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<SignIn/>} />
-          <Route path='/Homepage' element={<Homepage/>} />
+          <Route path='/' element={<SignIn/>}  />
+          <Route path='/Homepage/:UserID' element={<Homepage/>} />
           <Route path='/Signup' element={<Signup/>} />
           {/* <Route path='/contactUs' element={<contactUs/>} /> */}
         </Routes>
