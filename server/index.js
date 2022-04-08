@@ -17,6 +17,7 @@ const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
 const homePageRouter = require("./routes/homepage.js");
 const contactUsRouter = require("./routes/contactUs.js");
+const userProfileRouter = require("./routes/userProfile.js");
 
 
 
@@ -27,6 +28,7 @@ app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
 app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
+app.use('/userProfile', userProfileRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
