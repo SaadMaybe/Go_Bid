@@ -18,15 +18,15 @@ body {
   /* color: aqua;
   text-align: center;
    */
-   padding-left: 90px;
-   padding-top: 50px;
-   position:relative;
-   margin: 5% auto;
-   width: 1000px;
-   height: 500px;
-   background: #FFF;
-   border-radius: 2px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  padding-left: 90px;
+  padding-top: 50px;
+  position:relative;
+  margin: 5% auto;
+  width: 1000px;
+  height: 500px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 h3 {
   margin: 0 0 20px 0;

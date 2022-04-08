@@ -154,6 +154,11 @@ export const ContactUs = () => {
       navigate("/Homepage");
   
     }
+    else{
+      setEmail("");
+      setSubject("");
+      setMsg("");
+    }
   
   }
 //   return (
