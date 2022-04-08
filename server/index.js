@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const jwt = require('jsonwebtoken')
-const sha = require('sha256')
+const sha256 = require('sha256')
 
 const UsersModel = require('./models/user.model')
 
@@ -15,6 +15,7 @@ const port  = process.env.PORT || 3001;
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
+const homePageRouter = require("./routes/homepage.js");
 const contactUsRouter = require("./routes/contactUs.js");
 
 
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use('/', signinRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
+app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 
 const uri = process.env.GOBID_URI;
@@ -43,25 +45,27 @@ connection.once('open',()=>{
 // app.use('/users', usersRouter);
 
 
-/* app.get("/signup", async (req,res) => {
-    const user = new UsersModel({username: req.username, password: sha(req.password)});
-    await user.save();
-    res.send("Signed up successfully!!")
-})
- */
-app.post("/signin", async (req,res) => {
-    const user = await UsersModel.findOne({phoneNumber: req.body.phoneNumber, password: req.body.password});
+// app.get("/signup", async (req,res) => {
+//     const user = new UsersModel({username: req.username, password: sha256(req.password), phoneNumber: req.phoneNumber});
+//     await user.save();
+//     res.send("Signed up successfully!!")
+// })
 
-    if(user)
-    {
-        res.json({status:'ok', user: true})
-    }
-    else
-    {
-        res.json({ status:'error', user: false});
-    }
+// app.post("/signin", async (req,res) => {
+//     const user = await UsersModel.findOne({phoneNumber: req.body.Number, password: req.body.Password});
+
+//     if(user)
+//     {
+//         res.json({status:'ok', user: true})
+//         console.log("OK")
+//     }
+//     else
+//     {
+//         console.log(user)
+//         res.json({ status:'error', user: false});
+//     }
     
-})
+// })
 // app.get("/", async (req, res) => {
 //     res.send("Hello World!");
 // })
