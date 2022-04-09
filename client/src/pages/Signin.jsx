@@ -19,6 +19,7 @@ export const SignIn = () => {
     setPassword(Val.target.value)
   }
 
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
 
@@ -32,7 +33,7 @@ export const SignIn = () => {
     
     if (s.data.status !== "error")
     {
-      console.log("INSIDE THE ONSUBMIT BUTTON")
+      // console.log("INSIDE THE ONSUBMIT BUTTON")
       navigate("/Homepage", {state: {userID: s.data.userID}});
 
     }
@@ -77,7 +78,9 @@ export const SignIn = () => {
           <input type="submit" value="Sign In" className="btn btn-primary" />
         </div>
       </form>
-      <Link to= {"./signup"}> <button>Signup</button></Link>
+      {/* <Link to= {"./Signup"}> */}
+         <button onClick={() => navigate("/Signup")}>Signup</button>
+      {/* </Link> */}
       </div>
     )
 }
