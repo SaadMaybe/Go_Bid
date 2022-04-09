@@ -5,19 +5,20 @@ import { SignIn } from './pages/Signin';
 import { Homepage } from './pages/Homepage';
 import { Signup } from './pages/Signup';
 import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router';
-
-// import contactUs from './pages/contactUs';
-
+import { ContactUs } from './pages/ContactUs';
+import { UserProfile } from './pages/UserProfile';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<SignIn/>}  />
-          <Route path='/Homepage/:UserID' element={<Homepage/>} />
+          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/' element={<SignIn/>} />
+          <Route path='/Homepage' element={<Homepage/>} />
           <Route path='/Signup' element={<Signup/>} />
+          <Route path='/ContactUs' element={<ContactUs/>} />
+          <Route path='/UserProfile' element={<UserProfile/>} />
           {/* <Route path='/contactUs' element={<contactUs/>} /> */}
         </Routes>
       </Router>
