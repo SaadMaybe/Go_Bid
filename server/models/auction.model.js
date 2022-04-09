@@ -14,13 +14,13 @@ const auctionschema = new mongoose.Schema({
     //on hold
     auctioner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usermodel',
+      ref: 'user',
       required: true,
   
     },
     itemBeingAuctioned: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'itemmodel',
+      ref: 'item',
       required: true,
       min: 0,
     },
@@ -35,6 +35,8 @@ const auctionschema = new mongoose.Schema({
     auctionStatus: {
       type: String,
       required: true,
+      default: "active",
+      enum: ["cancelled", "active", "closed"],
     },
     listOfBids: [{
       type: mongoose.Schema.Types.ObjectId,

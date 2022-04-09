@@ -15,6 +15,11 @@ const port  = process.env.PORT || 3001;
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
+const homePageRouter = require("./routes/homepage.js");
+const contactUsRouter = require("./routes/contactUs.js");
+const userProfileRouter = require("./routes/userProfile.js");
+const postAnAuctionRouter = require("./routes/postanauction.js");
+const createanitemRouter = require("./routes/createanitem.js");
 
 
 
@@ -23,6 +28,11 @@ app.use(express.json());
 app.use('/', signinRouter);
 app.use('/signup', signupRouter);
 app.use('/users', usersRouter);
+app.use('/homepage', homePageRouter);
+app.use('/contactUs', contactUsRouter);
+app.use('/userProfile', userProfileRouter);
+app.use('/Postanauction', postAnAuctionRouter);
+app.use('/createanitem', createanitemRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {

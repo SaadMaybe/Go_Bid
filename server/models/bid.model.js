@@ -10,7 +10,7 @@ let usermodel = require('./user.model.js');
     },
     bidder: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usermodel',
+      ref: 'user',
       required: true,
     },
     amountBidded: {
