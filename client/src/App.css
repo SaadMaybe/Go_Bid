@@ -125,3 +125,20 @@ input[type="submit"]:active {
   left: 100px;
   background-image: url('https://thumbs.dreamstime.com/b/writing-note-showing-bid-business-photo-showcasing-to-offer-particular-amount-money-something-sale-concept-174820008.jpg');
 }
+
+
+.signup-link{
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  color: white;
+  background-color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  border: none;
+
+  
+}

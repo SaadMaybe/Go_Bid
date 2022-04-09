@@ -50,10 +50,11 @@ export const SignIn = () => {
   }
 
   return (
-      <div>
-      <h3>Sign in</h3>
+      <div className = "left">
+      {/* <h3>Sign in</h3> */}
       <form onSubmit={onSubmit}>
-        <div className="form-group"> 
+        <div className="form-group">
+          <h3>Sign in</h3> 
           <label>Number: </label>
           <input  type="text"
               required
@@ -73,10 +74,12 @@ export const SignIn = () => {
           // id = "inpPassword"
           onChange={changePassword}
           />
-        </div>
-        <div className="form-group">
           <input type="submit" value="Sign In" className="btn btn-primary" />
+          <div><Link to= {"./signup"}> <button className="signup-link">SIGNUP</button></Link></div>
+          
+          <div className="right"></div>
         </div>
+        
       </form>
       {/* <Link to= {"./Signup"}> */}
          <button onClick={() => navigate("/Signup")}>Signup</button>
