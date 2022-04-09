@@ -4,9 +4,9 @@ const Users = require('../models/user.model.js');
 router.route('/').post((req, res) => 
 {
     console.log(req.body)
-    const userPh = req.body.phoneNumber;
+    const userPh = req.body.userID;
     console.log("The phone number that i got was", userPh);
-    Users.find({phoneNumber: userPh})
+    Users.find({userID: userPh})
     .then(user => 
         {
             console.log("User is", user)

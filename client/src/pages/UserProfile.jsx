@@ -8,17 +8,18 @@ export const  UserProfile = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const [userID, setUserID] = useState(0);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     // let done = false;    
 
     useEffect(() => {
-        console.log("location.state.phoneNumber ", location.state.phoneNumber)
-        setPhoneNumber(location.state.phoneNumber);
+        
+        setUserID(location.state.userID);
         
         const huh = {
-            phoneNumber: location.state.phoneNumber,
+            userID: location.state.userID,
         }
         console.log("Huh is", huh)
         axios.post('http://localhost:9000/userProfile/', huh).then(res => {
@@ -26,11 +27,12 @@ export const  UserProfile = () => {
             console.log("The urge to die can be rather uncontrollable at times");
             console.log(res.data);
             setUsername(res.data.username);
-            setEmail(res.data.email);    
+            setEmail(res.data.email);   
+            setPhoneNumber(res.data.phoneNumber);
             console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
-    }, [location.state.phoneNumber])
+    }, [location.state.userID])
 
     // if(!done) return <div>Loading...</div>
 

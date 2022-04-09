@@ -29,20 +29,23 @@ export const SignIn = () => {
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
 
-
-
+    
     if (s.data.status !== "error")
     {
       console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage");
+      navigate("/Homepage", {state: {userID: s.data.userID}});
 
     }
+    else
+    {
+      alert("stupid")
+      setPhoneNumber("");
+      setPassword("");
+    }
+
+    
 
 
-    this.setState({
-      Number: '',
-      Password: ''
-    })
   }
 
   return (
