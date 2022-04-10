@@ -19,7 +19,7 @@ const homePageRouter = require("./routes/homepage.js");
 const contactUsRouter = require("./routes/contactUs.js");
 const userProfileRouter = require("./routes/userProfile.js");
 const inboxRouter = require("./routes/inbox.js");
-
+const viewMyAuctionsRouter = require("./routes/viewMyAuctions.js");
 
 app.use(cors());
 app.use(express.json());
@@ -30,6 +30,7 @@ app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
 app.use('/viewMyInbox', inboxRouter);
+app.use('/viewMyAuctions', viewMyAuctionsRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {

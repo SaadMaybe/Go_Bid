@@ -13,12 +13,13 @@ export const Homepage = () => {
     const [username, setUsername] = useState('');
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
+    const [bidList, setBidList] = useState([]);
 
     function myNav()
     {
         navigate("/UserProfile", {state: {userID: userID}});
     }
-
+   
     useEffect(async () => 
     {
         // if (location.state !== undefined &&)
@@ -36,6 +37,8 @@ export const Homepage = () => {
                     
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
+                    setBidList(res.data.bidList);
+                    
 
                 }).catch(err => {return <div>{err}</div>});
             // }
@@ -88,13 +91,17 @@ export const Homepage = () => {
             <div> 
             The list of auctions is:
             {
+            
             auctions.map(auction => 
-            <ul>
+            <ul key={auction.auctionID}>
                 <b>Title of the auction</b>:{auction.itemBeingAuctioned.itemTitle}. 
                 <br></br>
                 <b>Description of the item being auctioned</b>:{auction.itemBeingAuctioned.description}.
                 <br></br>
                 <b>Person who posted the auction</b>: {auction.auctioner.username}.
+                <br></br>
+                {/* <b>Current highest bid</b>: {maxVal(bidList)}. */}
+               
             </ul>)
             }
             </div>
