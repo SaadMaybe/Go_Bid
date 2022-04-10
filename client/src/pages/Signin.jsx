@@ -23,6 +23,10 @@ export const SignIn = () => {
   const onSubmit = async (ev) => {
     ev.preventDefault();
 
+    // console.log("Phone number is " + phoneNumber);
+
+    // console.log("Password is " + Password);
+
     const user = {
       phoneNumber: phoneNumber,
       Password: Password
@@ -34,7 +38,7 @@ export const SignIn = () => {
     if (s.data.status !== "error")
     {
       // console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage", {state: {userID: s.data.userID}});
+      navigate("/Homepage", { state: {userID: s.data.userID}});
 
     }
     else

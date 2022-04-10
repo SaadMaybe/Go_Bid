@@ -15,8 +15,7 @@ export const  UserProfile = () => {
     // let done = false;    
 
     useEffect(() => {
-        
-        setUserID(location.state.userID);
+        setUserID(location.state.userID); 
         
         const huh = {
             userID: location.state.userID,
@@ -40,9 +39,8 @@ export const  UserProfile = () => {
     return (
 
         <div>
-            Heyo<br></br>
+            User Profile for {username}:<br></br><br></br>
             phoneNumber: {phoneNumber}<br></br>
-            username: {username}<br></br>
             email: {email}<br></br>
         </div>
 

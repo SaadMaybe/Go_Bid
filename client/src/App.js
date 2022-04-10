@@ -7,6 +7,10 @@ import { Signup } from './pages/Signup';
 import { useNavigate } from "react-router-dom";
 import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
+import { PostAnAuction } from './pages/PostAnAuction';
+import { ViewMyAuctions } from './pages/ViewMyAuctions';
+import { ViewMyBids } from './pages/ViewMyBids';
+import { ViewMyInbox} from './pages/ViewMyInbox';
 
 function App() {
   return (
@@ -19,6 +23,9 @@ function App() {
           <Route path='/Signup' element={<Signup/>} />
           <Route path='/ContactUs' element={<ContactUs/>} />
           <Route path='/UserProfile' element={<UserProfile/>} />
+          <Route path='/PostAnAuction' element={<PostAnAuction/>} />
+          <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
+          <Route path='/ViewMyBids' element={<ViewMyBids/>} />
           {/* <Route path='/contactUs' element={<contactUs/>} /> */}
         </Routes>
       </Router>
