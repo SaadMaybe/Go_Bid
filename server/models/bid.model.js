@@ -11,7 +11,7 @@ let usermodel = require('./user.model.js');
     },
     bidder: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usermodel',
+      ref: 'users',
       required: true,
       default: 0
     },
@@ -29,7 +29,7 @@ let usermodel = require('./user.model.js');
     },
     associatedAuction: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'auctionmodel',
+      ref: 'auctions',
       required: true,
       default: 0
     }
