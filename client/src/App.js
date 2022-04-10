@@ -7,6 +7,7 @@ import { Signup } from './pages/Signup';
 import { useNavigate } from "react-router-dom";
 import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
+import { PostAnAuction } from './pages/PostAnAuction';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path='/Signup' element={<Signup/>} />
           <Route path='/ContactUs' element={<ContactUs/>} />
           <Route path='/UserProfile' element={<UserProfile/>} />
-          {/* <Route path='/contactUs' element={<contactUs/>} /> */}
+          <Route path='/PostAnAuction' element={<PostAnAuction/>} />
         </Routes>
       </Router>
     </div>

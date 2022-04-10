@@ -1,13 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import '../App.css';
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+
+
 
 export const Homepage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const userID = location.state.userID;
+    const [userID, setUserID] = useState(0);
+    const [username, setUsername] = useState("");
+    const [auctions, setAuctions] = useState("");
+    const [itemcategories, setItemCategories] = useState("");
+    
 
     function myNav()
     {
