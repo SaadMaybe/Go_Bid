@@ -40,8 +40,8 @@ export const SignIn = () => {
     else
     {
       alert("stupid")
-      setPhoneNumber("");
-      setPassword("");
+      await setPhoneNumber("");
+      await setPassword("");
     }
 
     

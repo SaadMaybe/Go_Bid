@@ -10,7 +10,7 @@ router.route("/signin").post( async (req,res) => {
     {
         s = user.userID
         res.json({status:'ok', user: true, userID: s})
-        console.log("OK");
+        // console.log("OK");
     }
     else
     {
