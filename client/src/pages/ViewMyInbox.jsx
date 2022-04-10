@@ -25,15 +25,46 @@ export const ViewMyInbox = () =>
         });
     }, [location.state.userID]);
 
-    
-      
+
     return (
-        <div>
-            <div>
+
+
+        <div classname='inbox-list'>
+            <div className='top-dash'>My Inbox</div>
+            <div> The messages for {username} are:</div>
+            <div class="unread">
+                {/* <span class="subject">The messages for {username} are:</span> */}
+                <input class="checkbox" type="checkbox" />
+                
+                <header>
+                    
+                <div class="sender-info">
+                    
+                    <span class="from">
+                        {messages.map(message => 
+                        <ul>
+                            <b>Timestamp</b>: {message.timeStamp}
+                            <br></br>
+                            <b>Message</b>: {message.contents}
+                        </ul>
+                        )}
+                    </span>
+                </div>
+                {/* <span class="time">2 days ago</span> */}
+                </header>
+            </div>
+        </div>
+    )
+}
+
+
+
+{/* <div className='inbox-container'>
+            <div className='msg'>
                 The messages for {username} are:
             </div>
                 
-            <div>
+            <div className='in-msg'>
                 {messages.map(message => 
                 <ul>
                     <b>Timestamp</b>: {message.timeStamp}
@@ -42,7 +73,11 @@ export const ViewMyInbox = () =>
                 </ul>
                 )}
             </div>
-            
-        </div>
-    )
-}
+                    
+        </div> */}
+
+
+
+
+
+        

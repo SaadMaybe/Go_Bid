@@ -218,4 +218,53 @@ margin: 1%;
 position: relative;
 }
 
+/* for myinbox */
 
+
+
+.inbox-list {
+  margin-top: 150px;
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+}
+
+.unread{
+  width: 50%;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+.unread {
+    background: lightblue ;
+    border-radius: 10px;
+}
+        
+
+  
+.checkbox {
+  position: absolute;
+  top: 1.2rem;
+}
+  
+  
+.sender-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+.from {
+  font-size: 0.8rem;
+}
+
+.top-dash{
+  background-color: black;
+  color: white;
+  margin-top: 0px;
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+  font-size:x-large;
+}
