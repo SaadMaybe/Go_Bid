@@ -18,7 +18,7 @@ router.route('/').post((req,res) =>
             auctionID = auction[0].auctionID + 1;
         }   
 
-        console.log(req.body);
+        //console.log(req.body);
 
         var auctioner = req.body.auctioner;
 
@@ -46,14 +46,14 @@ router.route('/').post((req,res) =>
         
             await newItem.save()
             .then(() => res.json('Item added!'))
-            .catch(err => res.status(400).json('Error: ' + err));
+            //.catch(err => res.status(400).json('Error: ' + err));
             
-        }).catch(err => res.status(400).json('Error: ' + err));
+        })//.catch(err => res.status(400).json('Error: ' + err));
 
-        console.log("b");
-        const itemBeingAuctioned = ItemModel.findOne({auctioner: auctioner})._id;
-
-        console.log(itemBeingAuctioned);
+        console.log("Item title:", itemTitle);
+        const itemBeingAuctioned = await ItemModel.findOne({itemTitle: itemTitle});
+        //console.log(ItemModel.findOne({itemTitle: itemTitle}));
+        console.log(itemBeingAuctioned._id);
 
         const startingTime = Date.now();
         const endingTime = (req.body.endingTime * 24 * 60 * 60 * 1000) + startingTime;
@@ -66,8 +66,6 @@ router.route('/').post((req,res) =>
         await newAuction.save()
         .then(() => res.json('Auction added!'))
         .catch(err => res.status(400).json('Error auction: ' + err));
-
-        console.log("a");
 
     }).catch(err => res.status(400).json('Error: ' + err));
 })
