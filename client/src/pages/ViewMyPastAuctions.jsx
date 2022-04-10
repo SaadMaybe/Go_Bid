@@ -34,7 +34,7 @@ export const ViewMyPastAuctions = () =>
             }
                             
         });
-    })
+    }, [location.state.userID])
 
     return (
         <div>
