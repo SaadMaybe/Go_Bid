@@ -23,10 +23,6 @@ export const SignIn = () => {
   const onSubmit = async (ev) => {
     ev.preventDefault();
 
-    // console.log("Phone number is " + phoneNumber);
-
-    // console.log("Password is " + Password);
-
     const user = {
       phoneNumber: phoneNumber,
       Password: Password
@@ -38,7 +34,7 @@ export const SignIn = () => {
     if (s.data.status !== "error")
     {
       // console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage", { state: {userID: s.data.userID}});
+      navigate("/Homepage", {state: {userID: s.data.userID}});
 
     }
     else
@@ -54,10 +50,11 @@ export const SignIn = () => {
   }
 
   return (
-      <div>
-      <h3>Sign in</h3>
+      <div className = "left">
+      {/* <h3>Sign in</h3> */}
       <form onSubmit={onSubmit}>
-        <div className="form-group"> 
+        <div className="form-group">
+          <h3>Sign in</h3> 
           <label>Number: </label>
           <input  type="text"
               required
@@ -77,13 +74,15 @@ export const SignIn = () => {
           // id = "inpPassword"
           onChange={changePassword}
           />
-        </div>
-        <div className="form-group">
           <input type="submit" value="Sign In" className="btn btn-primary" />
+          <div><button  onClick={() => navigate("/Signup")} className="signup-link">SIGNUP</button></div>
+          
+          <div className="right"></div>
         </div>
+        
       </form>
       {/* <Link to= {"./Signup"}> */}
-         <button onClick={() => navigate("/Signup")}>Signup</button>
+         {/* <button onClick={() => navigate("/Signup")}>Signup</button> */}
       {/* </Link> */}
       </div>
     )

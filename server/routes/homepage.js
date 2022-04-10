@@ -5,10 +5,13 @@ const usersModel = require('../models/user.model');
 const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 
+const messagesModel = require('../models/message.model');
+
 router.route("/").post(async (req,res) => 
 {
    
     /*  
+
     The things that we need for the homepage:
         A list of auctions
         A list of items for each auction

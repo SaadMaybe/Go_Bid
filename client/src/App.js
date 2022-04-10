@@ -26,6 +26,7 @@ function App() {
           <Route path='/PostAnAuction' element={<PostAnAuction/>} />
           <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
           <Route path='/ViewMyBids' element={<ViewMyBids/>} />
+          <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
           {/* <Route path='/contactUs' element={<contactUs/>} /> */}
         </Routes>
       </Router>

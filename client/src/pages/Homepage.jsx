@@ -19,7 +19,7 @@ export const Homepage = () => {
         navigate("/UserProfile", {state: {userID: userID}});
     }
 
-    useEffect(() => 
+    useEffect(async () => 
     {
         // if (location.state !== undefined &&)
         // {
@@ -29,14 +29,17 @@ export const Homepage = () => {
             console.log("User ID is " + userID);
             // if(userID !== 0)
             // {
-                axios.post('http://localhost:9000/homepage/', {userID: hmmm}).then(res => 
+                await axios.post('http://localhost:9000/homepage/', {userID: hmmm}).then(res => 
                 {
+                    console.log("res is " + res.data.auctionList);
                     setUsername(res.data.username);
-                    setAuctions(res.data.auctions);
+                    
+                    setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
 
                 }).catch(err => {return <div>{err}</div>});
             // }
+             
             
         // }
         // else
@@ -71,12 +74,29 @@ export const Homepage = () => {
                     My Bids
                 </button>
 
-                <button onClick={() => navigate('/Inbox', {state: {userID : userID}})}>
+                <button onClick={() => navigate('/ViewMyInbox', {state: {userID : userID}})}>
                     My inbox    
                 </button>
                 
 
                 
+            </div>
+
+            <br></br>
+            <br></br>
+
+            <div> 
+            The list of auctions is:
+            {
+            auctions.map(auction => 
+            <ul>
+                <b>Title of the auction</b>:{auction.itemBeingAuctioned.itemTitle}. 
+                <br></br>
+                <b>Description of the item being auctioned</b>:{auction.itemBeingAuctioned.description}.
+                <br></br>
+                <b>Person who posted the auction</b>: {auction.auctioner.username}.
+            </ul>)
+            }
             </div>
           
             
