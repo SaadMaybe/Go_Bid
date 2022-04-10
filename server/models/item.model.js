@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-let auctionmodel = require('./auction.model.js');
 
 
 const itemschema = new mongoose.Schema({
@@ -10,16 +9,21 @@ const itemschema = new mongoose.Schema({
       min: 0,
       default: 0
     },
+    itemTitle: {
+      type: String,
+      default: "Empty Title"
+    },
     description: {
       type: String,
       default: "default description",
     },
     category: {
       type: String,
-      default: "electronics",
+      default: "Other",
       
       //Have to discuss this with the team:
-      enum: ["electronics", "clothing", "books", "sports", "other"],
+      //if this gets changed, then homepage.js in the server folder needs to be changed as well
+      enum: ["Electronics", "Clothing", "Books", "Sports", "Other"],
       required: true,
     },
     pictures: {
@@ -30,13 +34,11 @@ const itemschema = new mongoose.Schema({
       type: [String],
       default: [],
     },
-    associatedAuctionID: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'auctionmodel',
-      required: true,
+    minimumBid: {
+      type: Number,
       default: 0
     },
-  
+      
   });
   
   const itemmodel = mongoose.model('items', itemschema);

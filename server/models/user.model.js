@@ -64,7 +64,7 @@ const userschema = new mongoose.Schema({
   },
   completedAuctions:[{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'auctionmodel',
+    ref: 'auctions',
     default: []
   }],
   completedBids:{

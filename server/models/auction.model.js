@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
-let itemmodel = require('./item.model.js');
-let bidmodel = require('./bid.model.js');
-let usermodel = require('./user.model.js');
-
+const usermodel = require('./user.model.js');
 
 const auctionschema = new mongoose.Schema({
     auctionID: {
@@ -16,13 +13,13 @@ const auctionschema = new mongoose.Schema({
     //on hold
     auctioner: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usermodel',
+      ref: 'users',
       required: true,
       default: 0
     },
     itemBeingAuctioned: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'itemmodel',
+      ref: 'items',
       required: true,
       min: 0,
       default: 0
@@ -40,11 +37,12 @@ const auctionschema = new mongoose.Schema({
     auctionStatus: {
       type: String,
       required: true,
-      default: "pending",
+      default: "active",
+      enum: ["cancelled", "active", "closed"],
     },
     listOfBids: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'bidmodel',
+      ref: 'bids',
       default: []
     }]
   

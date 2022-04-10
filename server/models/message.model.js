@@ -18,7 +18,7 @@ let usermodel = require('./user.model.js');
     },
     to: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'usermodel',
+      ref: 'users',
       required: true,
       min: 0,
       default: 0
