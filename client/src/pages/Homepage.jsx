@@ -50,55 +50,77 @@ export const Homepage = () => {
 
     return (
         <div>
-        
-            <div>
-                Homepage
-                
-                <br></br>
-                <button onClick={() => myNav()}> 
-                    Hello there  {username}!
-                </button>
-            
+            {/* <h3>Homepage</h3> */}
+            <div className='big-black'>
+                <div className='inner'>
+                    <ul>
 
-                <button onClick={() => navigate('/ContactUs')}>Contact us</button>                
-                
-                <button onClick={() => navigate('/PostAnAuction', {state: {userID : userID}})}> 
-                    Post an auction
-                </button>
+                        <li>
+                            <button className='boss' onClick={() => navigate('/PostAnAuction', {state: {userID : userID}})}> 
+                                Post an auction
+                            </button>
+                        </li>
 
-                <button onClick={() => navigate('/ViewMyAuctions', {state: {userID : userID}})}>
-                    My Auctions
-                </button>
+                        <li>
+                            <button className='boss' onClick={() => navigate('/ViewMyAuctions', {state: {userID : userID}})}>
+                                My Auctions
+                            </button>
+                        </li>
 
-                <button onClick={() => navigate('/ViewMyBids', {state: {userID : userID}})}>
-                    My Bids
-                </button>
+                        <li>
+                            <button className='boss' onClick={() => navigate('/ViewMyBids', {state: {userID : userID}})}>
+                                My Bids
+                            </button>
+                        </li>
 
-                <button onClick={() => navigate('/ViewMyInbox', {state: {userID : userID}})}>
-                    My inbox    
-                </button>
-                
+                        <li>
+                            <button className='boss' onClick={() => navigate('/ViewMyInbox', {state: {userID : userID}})}>
+                                My inbox    
+                            </button>
+                        </li>
 
-                
+                        <li>
+                            <button className='boss' onClick={() => navigate('/ContactUs')}>Contact us</button> 
+                        </li>
+                        
+                        
+                        <li>
+                            <button className='boss' onClick={() => myNav()}> 
+                                Hello there  {username}!
+                            </button>
+                        </li>
+
+                        
+                    
+                    </ul>
+
+                </div>
             </div>
-
             <br></br>
             <br></br>
 
-            <div> 
-            The list of auctions is:
+            <div className='down-one'> 
+            <div className='popular'>Popular Items</div>
             {
             auctions.map(auction => 
-            <ul>
-                <b>Title of the auction</b>:{auction.itemBeingAuctioned.itemTitle}. 
-                <br></br>
-                <b>Description of the item being auctioned</b>:{auction.itemBeingAuctioned.description}.
-                <br></br>
-                <b>Person who posted the auction</b>: {auction.auctioner.username}.
-            </ul>)
+            <div className='row'>
+                <div className='item'>
+                <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
+                        <div className='text-desc'>
+                            <h12><b>Title of the auction</b>:{auction.itemBeingAuctioned.itemTitle}.</h12> 
+                            <br></br>
+                            <h12><b>Description of the item being auctioned</b>:{auction.itemBeingAuctioned.description}.</h12>
+                            <br></br>
+                            <h12><b>Person who posted the auction</b>: {auction.auctioner.username}.</h12>
+                            <br></br>
+                            <h12><b>Highest Bid: Rs 50000</b></h12>
+                        </div>
+
+                </div>
+            </div>
+            )
             }
             </div>
-          
             
         </div>
 
