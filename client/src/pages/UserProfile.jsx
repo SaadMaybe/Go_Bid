@@ -14,8 +14,8 @@ export const  UserProfile = () => {
     const [email, setEmail] = useState('');
     // let done = false;    
 
-    useEffect(() => {
-        setUserID(location.state.userID); 
+    useEffect(async () => {
+        await setUserID(location.state.userID); 
         
         const huh = {
             userID: location.state.userID,
@@ -37,8 +37,10 @@ export const  UserProfile = () => {
 
 
     return (
-
+        
         <div>
+            <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button>
+            <br></br><br></br>
             User Profile for {username}:<br></br><br></br>
             phoneNumber: {phoneNumber}<br></br>
             email: {email}<br></br>

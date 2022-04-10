@@ -7,7 +7,7 @@ import axios from 'axios';
 export const ViewMyAuctions = () => 
 {
 
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const location = useLocation();
 
     const [auctionList, setAuctionList] = useState([]);
@@ -58,6 +58,8 @@ export const ViewMyAuctions = () =>
 
     return (
         <div>
+            <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button>
+            <br></br>
             List of auctions for user {username}:
             <ul>
                 { 

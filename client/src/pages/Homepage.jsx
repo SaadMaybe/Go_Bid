@@ -81,7 +81,9 @@ export const Homepage = () => {
                     My inbox    
                 </button>
                 
-
+                <button onClick={async () => {setUserID("");navigate('/SignIn')}}>
+                    Log Out    
+                </button>
                 
             </div>
 
