@@ -107,11 +107,11 @@ export const Homepage = () => {
                 <div className='item'>
                 <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
                         <div className='text-desc'>
-                            <h12><b>Title of the auction</b>:{auction.itemBeingAuctioned.itemTitle}.</h12> 
+                            <h12><b>Title</b>:{auction.itemBeingAuctioned.itemTitle}.</h12> 
                             <br></br>
-                            <h12><b>Description of the item being auctioned</b>:{auction.itemBeingAuctioned.description}.</h12>
+                            <h12><b>Description</b>:{auction.itemBeingAuctioned.description}.</h12>
                             <br></br>
-                            <h12><b>Person who posted the auction</b>: {auction.auctioner.username}.</h12>
+                            <h12><b>Posted by</b>: {auction.auctioner.username}.</h12>
                             <br></br>
                             <h12><b>Highest Bid: Rs 50000</b></h12>
                         </div>
