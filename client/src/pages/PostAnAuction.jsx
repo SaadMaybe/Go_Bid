@@ -66,6 +66,10 @@ export const PostAnAuction = () => {
             console.log("INSIDE THE ONSUBMIT BUTTON")
             navigate("/Homepage");
         }
+        else 
+        {
+            alert("Information entered is invalid")
+        }
       }
 
 
