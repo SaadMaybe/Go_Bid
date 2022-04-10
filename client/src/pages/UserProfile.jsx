@@ -20,15 +20,15 @@ export const  UserProfile = () => {
         const huh = {
             userID: location.state.userID,
         }
-        console.log("Huh is", huh)
+        // console.log("Huh is", huh)
         axios.post('http://localhost:9000/userProfile/', huh).then(res => {
             
-            console.log("The urge to die can be rather uncontrollable at times");
-            console.log(res.data);
+            // console.log("The urge to die can be rather uncontrollable at times");
+            // console.log(res.data);
             setUsername(res.data.username);
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
-            console.log("HMMM " + res.data)
+            // console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
     }, [location.state.userID])

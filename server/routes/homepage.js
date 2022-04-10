@@ -7,8 +7,7 @@ const itemsModel = require('../models/item.model');
 
 router.route("/").post(async (req,res) => 
 {
-    console.log("Am I not here")
-    
+   
     /*  
     The things that we need for the homepage:
         A list of auctions

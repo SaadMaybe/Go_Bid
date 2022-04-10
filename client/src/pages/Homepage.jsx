@@ -25,18 +25,18 @@ export const Homepage = () => {
         // {
             const hmmm = location.state.userID;
             console.log("hmmm is " + hmmm);
-            setUserID(hmmm);
+            setUserID(location.state.userID);
             console.log("User ID is " + userID);
-            if(userID !== 0)
-            {
-                axios.post('http://localhost:9000/homepage/', {userID: userID}).then(res => 
+            // if(userID !== 0)
+            // {
+                axios.post('http://localhost:9000/homepage/', {userID: hmmm}).then(res => 
                 {
                     setUsername(res.data.username);
                     setAuctions(res.data.auctions);
                     setItemCategories(res.data.itemCategories);
 
                 }).catch(err => {return <div>{err}</div>});
-            }
+            // }
             
         // }
         // else
