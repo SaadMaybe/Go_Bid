@@ -11,7 +11,8 @@ import { PostAnAuction } from './pages/PostAnAuction';
 import { ViewMyAuctions } from './pages/ViewMyAuctions';
 import { ViewMyBids } from './pages/ViewMyBids';
 import { ViewMyInbox} from './pages/ViewMyInbox';
-import { viewAnAuction } from './pages/ViewAnAuction';
+import { ViewAnAuction } from './pages/ViewAnAuction';
+import { ViewMyPastAuctions } from './pages/ViewMyPastAuctions';
 function App() {
   return (
     <div className="App">
@@ -27,8 +28,8 @@ function App() {
           <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
           <Route path='/ViewMyBids' element={<ViewMyBids/>} />
           <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
-          <Route path='/ViewAnAuction' element={<viewAnAuction/>} />
-
+          <Route path='/ViewAnAuction' element={<ViewAnAuction/>} />
+          <Route path='/ViewMyPastAuctions' element={<ViewMyPastAuctions/>} />
           
         </Routes>
       </Router>

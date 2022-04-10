@@ -12,6 +12,7 @@ export const ViewMyAuctions = () =>
 
     const [auctionList, setAuctionList] = useState([]);
     const [username, setUsername] = useState("");
+    const [bidList, setBidList] = useState([]);
 
 
     function sellAuction(e)
@@ -47,6 +48,7 @@ export const ViewMyAuctions = () =>
             {
                 setAuctionList(response.data.auctionList);
                 setUsername(response.data.username);
+                setBidList(response.data.bidList);
             }
             else
             {
@@ -58,21 +60,24 @@ export const ViewMyAuctions = () =>
 
     return (
         <div>
-            <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button>
+            <button onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>Go back</button>
             <br></br>
             List of auctions for user {username}:
             <ul>
                 { 
-                auctionList.map(auction =>
+                auctionList.map((auction, index) =>
                     <li key={auction.auctionID}>
                         Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                         <p>   </p>
-                        {/* Maximum Bid on the auction:  */}
+                        Maximum Bid on the auction: {bidList[index]};
                         <button onClick={() => sellAuction(auction.auctionID)}>Sell</button>
                         <button onClick={() => cancelAuction(auction.auctionID)}>Cancel</button>                                             
                     </li>
                 )}
             </ul>
+            <div>
+                <button onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
+            </div>
         </div>
     )
 }

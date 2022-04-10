@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
-const bidsModel = require('../models/bid.model');
 
 router.route("/").post(async (req, res) => 
 {
@@ -16,7 +15,7 @@ router.route("/").post(async (req, res) =>
         // console.log("I just love being ")
         const auctions = await auctionsModel.find(
             {
-                auctionStatus: "active",
+                auctionStatus: "closed",
                 auctionEndDate: {$gt: new Date()},
                 auctionStartDate: {$lt: new Date()},    
                 auctioner: user._id
@@ -30,7 +29,7 @@ router.route("/").post(async (req, res) =>
             var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
             if(bids.length > 0)
             {
-                bidList.push(bids[0]); 
+                bidList.push(bids[0]);
             }
             else
             {
