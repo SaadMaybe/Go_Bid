@@ -34,7 +34,8 @@ router.route("/").post(async (req, res) =>
             }
             else
             {
-                bidList.push(0);
+
+                bidList.push(auction.itemBeingAuctioned.minimumBid);
             }
         }
         if(auctions)

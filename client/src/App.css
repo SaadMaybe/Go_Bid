@@ -142,3 +142,80 @@ input[type="submit"]:active {
 
   
 }
+
+
+
+
+
+
+.inner ul {
+  list-style-type: none;
+  margin-top: 0px;
+  padding: 1px;
+  overflow: hidden;
+  border: 2px solid black;
+  background-color: black;
+  position:absolute;
+  top: 0;
+  width: 110%;
+  height: auto;
+  display: block;
+}
+.inner li {
+  width:auto;
+  height: auto;
+  float:left;
+  color: black;
+  background-color: black;
+  margin-left: 120px;
+}
+.inner ul li .boss { 
+  border-right: none;
+  background-color: black;
+}
+
+li .boss{
+  display: block;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  text-decoration: none;
+}
+.big-black{
+  background-color: #3b3b38;
+  width: 100%;
+  height: 200px;
+}
+.down-one{
+  margin-top: 0px;
+} 
+.popular{
+  text-align: center;
+  font-weight: 900;
+  font-size:x-large;
+}
+
+
+.row {
+  display:inline-flex;
+  width: 25%; 
+  height: 2%;
+}
+.item {
+float: left;
+padding: 0 10px;
+}
+
+.item:hover {
+box-shadow: 12px 12px 8px 0px #b7b7b7;
+cursor: pointer;
+margin: 1% .5% 0 .5%;
+}
+.item img {
+width: 98%;
+height: 60%;
+margin: 1%;
+position: relative;
+}
+
+/* for myinbox */
