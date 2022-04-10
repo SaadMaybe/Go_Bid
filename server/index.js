@@ -18,6 +18,8 @@ const signinRouter = require("./routes/signin.js");
 const homePageRouter = require("./routes/homepage.js");
 const contactUsRouter = require("./routes/contactUs.js");
 const userProfileRouter = require("./routes/userProfile.js");
+const createAnItemRouter = require("./routes/createanitem.js");
+const PostAnAuctionRouter = require("./routes/postanauction.js");
 
 
 
@@ -29,6 +31,8 @@ app.use('/users', usersRouter);
 app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
+app.use('/postanauction', PostAnAuctionRouter);
+app.use('createanitem', createAnItemRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
