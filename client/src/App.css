@@ -167,11 +167,12 @@ input[type="submit"]:active {
   float:left;
   color: black;
   background-color: black;
-  margin-left: 120px;
+  margin-left: 115px;
 }
 .inner ul li .boss { 
   border-right: none;
   background-color: black;
+  border-radius: 10px;
 }
 
 li .boss{
