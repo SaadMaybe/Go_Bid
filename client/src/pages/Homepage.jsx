@@ -21,23 +21,28 @@ export const Homepage = () => {
 
     useEffect(() => 
     {
-        if (location.state !== undefined)
-        {
+        // if (location.state !== undefined &&)
+        // {
             const hmmm = location.state.userID;
+            console.log("hmmm is " + hmmm);
             setUserID(hmmm);
             console.log("User ID is " + userID);
-            axios.post('http://localhost:9000/homepage/', {userID: userID}).then(res => 
+            if(userID !== 0)
             {
-                setUsername(res.data.username);
-                setAuctions(res.data.auctions);
-                setItemCategories(res.data.itemCategories);
+                axios.post('http://localhost:9000/homepage/', {userID: userID}).then(res => 
+                {
+                    setUsername(res.data.username);
+                    setAuctions(res.data.auctions);
+                    setItemCategories(res.data.itemCategories);
 
-            }).catch(err => {return <div>{err}</div>});
-        }
-        else
-        {
-            navigate("/SignIn");
-        }
+                }).catch(err => {return <div>{err}</div>});
+            }
+            
+        // }
+        // else
+        // {
+        //     navigate("/SignIn");
+        // }
     }, [location.state.userID])
 
     return (
