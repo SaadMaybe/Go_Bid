@@ -80,11 +80,14 @@ export const ViewMyAuctions = () =>
                     auctionList.map((auction, index) =>
                         <div className='playcards'>
                             <li key={auction.auctionID}>
-                                Title of the auction: {auction.itemBeingAuctioned.itemTitle}
-                                <p>   </p>
-                                Maximum Bid on the auction: {bidList[index]};
-                                <button className='sell' onClick={() => sellAuction(auction.auctionID)}>Sell</button>
-                                <button className='cancel' onClick={() => cancelAuction(auction.auctionID)}>Cancel</button>                                             
+                                <div className='in-text'>
+                                    Title of the auction: {auction.itemBeingAuctioned.itemTitle}
+                                    <p>   </p>
+                                    Maximum Bid on the auction: {bidList[index]};
+                                    <button className='sell' onClick={() => sellAuction(auction.auctionID)}>Sell</button>
+                                    <button className='cancel' onClick={() => cancelAuction(auction.auctionID)}>Cancel</button> 
+                                </div>
+
                             </li>
                         </div>
                     )}
