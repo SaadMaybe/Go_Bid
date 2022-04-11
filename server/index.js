@@ -20,6 +20,10 @@ const contactUsRouter = require("./routes/contactUs.js");
 const userProfileRouter = require("./routes/userProfile.js");
 const createAnItemRouter = require("./routes/createanitem.js");
 const PostAnAuctionRouter = require("./routes/postanauction.js");
+const getAuctionRouter = require("./routes/getauction.js");
+const getItemRouter = require("./routes/getitem.js");
+const postABidRouter = require("./routes/postabid.js");
+
 
 
 
@@ -32,7 +36,10 @@ app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
 app.use('/postanauction', PostAnAuctionRouter);
-app.use('createanitem', createAnItemRouter);
+app.use('/createanitem', createAnItemRouter);
+app.use('/getauction', getAuctionRouter);
+app.use('/getitem', getItemRouter);
+app.use('/postabid', postABidRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
