@@ -375,6 +375,7 @@ position: relative;
   border-radius: 5px;
   background-color: black;
   color: white;
+  font-weight: 700;
 }
 .cancel{
   position: absolute;
@@ -382,6 +383,7 @@ position: relative;
   color:red;
   border-radius: 5px;
   background-color: black;
+  font-weight: 700;
 }
 
 .in-text{
