@@ -60,24 +60,39 @@ export const ViewMyAuctions = () =>
 
     return (
         <div>
-            <button onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>Go back</button>
-            <br></br>
-            List of auctions for user {username}:
-            <ul>
-                { 
-                auctionList.map((auction, index) =>
-                    <li key={auction.auctionID}>
-                        Title of the auction: {auction.itemBeingAuctioned.itemTitle}
-                        <p>   </p>
-                        Maximum Bid on the auction: {bidList[index]};
-                        <button onClick={() => sellAuction(auction.auctionID)}>Sell</button>
-                        <button onClick={() => cancelAuction(auction.auctionID)}>Cancel</button>                                             
-                    </li>
-                )}
-            </ul>
-            <div>
-                <button onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
+            {/* <div className='top-dash-user'>
+                <div className='back-btn'><button className='back'  onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button></div>
+            </div> */}
+            <div className = "top-dash-user">
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+            My Auctions
             </div>
+            <br></br>
+            <div className='past-btn'>
+                <button className='past-auction' onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
+            </div>
+            <div className='auction-list'>
+                List of auctions for user {username}:
+                <br></br><br></br><br></br><br></br>
+
+                <ul>
+                    { 
+                    auctionList.map((auction, index) =>
+                        <div className='playcards'>
+                            <li key={auction.auctionID}>
+                                Title of the auction: {auction.itemBeingAuctioned.itemTitle}
+                                <p>   </p>
+                                Maximum Bid on the auction: {bidList[index]};
+                                <button className='sell' onClick={() => sellAuction(auction.auctionID)}>Sell</button>
+                                <button className='cancel' onClick={() => cancelAuction(auction.auctionID)}>Cancel</button>                                             
+                            </li>
+                        </div>
+                    )}
+                </ul>
+            </div>
+            {/* <div>
+                <button onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
+            </div> */}
         </div>
     )
 }

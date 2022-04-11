@@ -144,7 +144,7 @@ input[type="submit"]:active {
 }
 
 
-
+/* homepage */
 
 
 
@@ -277,9 +277,6 @@ position: relative;
 
 }
 .profile-bg{
-  /* position:fixed; */
-  
-  /* box-sizing: border-box; */
   color: black;
   top:0%;
   font-weight: 900;
@@ -330,4 +327,56 @@ position: relative;
   margin-left: 42%;
   border-radius: 5px;
   padding: 20px;
+}
+
+
+/* view my auction */
+
+
+
+
+
+
+.past-btn{
+  margin: 0;
+  position: absolute;
+  background-color: black;
+  color:black;
+  padding: 0;
+  margin: 0;
+  top: 10%;
+  right:10%;
+  border-radius: 50px;
+}
+.past-auction{
+  color: white;
+  background-color: black;
+  width: auto;
+  height: 40px;
+  top: 0px;
+  border-radius: 50px;
+}
+
+.auction-list{
+  margin-top: 30px;
+  margin-left: 30px;
+  /* padding: 50px; */
+}
+
+.playcards{
+  background-color: #16a085;
+  padding: 25px;
+  margin:50px
+}
+
+.sell{
+  position: absolute;
+  right:250px;
+  border-radius: 5px;
+}
+.cancel{
+  position: absolute;
+  right: 170px;
+  color:red;
+  border-radius: 5px;
 }
