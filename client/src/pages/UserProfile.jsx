@@ -38,12 +38,25 @@ export const  UserProfile = () => {
 
     return (
         
-        <div>
-            <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button>
-            <br></br><br></br>
-            User Profile for {username}:<br></br><br></br>
-            phoneNumber: {phoneNumber}<br></br>
-            email: {email}<br></br>
+        <div className="user-outer">
+            <div className = "top-dash-user">
+            <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+            UserProfile
+            </div>
+            <div className="profile-bg">
+                
+            </div>
+            <div className="profile-details">
+                {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
+                <br></br><br></br>
+                Hello {username}:<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+                <div className="user-details">
+                    phoneNumber: {phoneNumber}<br></br>
+                    email: {email}<br></br>
+                </div>
+                
+            </div>
         </div>
 
     )
