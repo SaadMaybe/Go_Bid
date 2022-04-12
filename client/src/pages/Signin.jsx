@@ -40,9 +40,8 @@ export const SignIn = () => {
     else
     {
       alert("stupid")
-      // await setPhoneNumber("");
-      // await setPassword("");
-      // navigate("/Signin");
+      setPhoneNumber("");
+      setPassword("");
     }
 
     
@@ -76,14 +75,14 @@ export const SignIn = () => {
           onChange={changePassword}
           />
           <input type="submit" value="Sign In" className="btn btn-primary" />
-          <div><button  onClick={() => navigate("/Signup")} className="signup-link">SIGNUP</button></div>
+          <div><Link to= {"./signup"}> <button className="signup-link">SIGNUP</button></Link></div>
           
           <div className="right"></div>
         </div>
         
       </form>
       {/* <Link to= {"./Signup"}> */}
-         {/* <button onClick={() => navigate("/Signup")}>Signup</button> */}
+         <button onClick={() => navigate("/Signup")}>Signup</button>
       {/* </Link> */}
       </div>
     )

@@ -5,13 +5,12 @@ const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
 const bidsModel = require('../models/bid.model');
-const messagesModel = require('../models/message.model');
 
 router.route("/").post(async (req, res) => 
 {
     // console.log("Kill me quickly, so that i don't feel any more pain")
     const userID = req.body.userID;
-    const user = await usersModel.findOne({userID: userID, account_status: {$in : ["user", "admin"]}});
+    const user = await usersModel.findOne({userID: userID});
     if(user)
     {
         // console.log("I just love being ")
@@ -28,10 +27,10 @@ router.route("/").post(async (req, res) =>
         for(var i = 0; i < auctions.length; i++)
         {
             var auction = auctions[i];
-            var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
+            var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
             if(bids.length > 0)
             {
-                bidList.push(bids[0].amountBidded); 
+                bidList.push(bids[0]); 
             }
             else
             {
@@ -68,89 +67,7 @@ router.route("/").post(async (req, res) =>
 
 router.route('/sell').post(async (req, res) => 
 {
-//     const auctionID = req.body.auctionID;
-//     const auction = await auctionsModel.findOne({auctionID: auctionID});
-
-//     const kek = await usersModel.findOne({username: "ahmed taimoor"});
-//     const myBid = new bidsModel({bidID: 2, amountBidded: 500000, bidStatus: "pending", associatedAuction: auction._id, bidder: kek._id});
-
-//     await myBid.save();
-//     var sQue = await auctionsModel.findOne({auctionID: auctionID});
-//     var hmmm = sQue.listOfBids;
-//     hmmm.push(myBid._id);
-//     await auctionsModel.updateOne({auctionID: auctionID}, {listOfBids: hmmm}, {new: true});
-
-
-//     res.json({status: "ok"});
-// });
-
-    const auctionID = req.body.auctionID;
-    const auction = await auctionsModel.findOne({auctionID: auctionID}).populate('itemBeingAuctioned').populate('auctioner');
-    console.log(auction);
-    if(auction)
-    {
-        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1}).limit(1)
-        if(highestBid.length > 0)
-        {
-            try
-            {
-                const highestBidder = await highestBid[0].populate('bidder');
-                
-                //Firstly, we close the auction
-                await auctionsModel.updateOne({auctionID: auctionID}, {auctionStatus: "closed"}, {new: true});
-                console.log("I am done with closing the auction");
-
-
-                //Then, we tell the highest bidder that they won the auction
-                var maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
-                var newMessID = 0;
-                if(maxMessID.length > 0)
-                {
-                    newMessID = maxMessID[0].messageID + 1;
-                }
-                else
-                {
-                    newMessID = 1;
-                }
-                await messagesModel.create({messageID: newMessID, to: highestBidder.bidder._id, contents: "You won the auction for " + auction.itemBeingAuctioned.itemTitle + " with a bid of " + highestBidder.amountBidded + "!\nHere are the contact details of the auctioner so that you may contact them: " + "Username: " + auction.auctioner.username + "\nEmail:" + auction.auctioner.email + "\nPhone Number:" + auction.auctioner.phoneNumber});
-
-                //Then, we will tell the auctioner that their auction has been sold
-                maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
-                newMessID = maxMessID[0].messageID + 1;
-                
-                await messagesModel.create({messageID: newMessID, to: auction.auctioner._id, contents: "Your auction for " + auction.itemBeingAuctioned.itemTitle + " has been sold!\nHere are the contact details of the highest bidder so that you may contact them: " + "Username: " + highestBidder.bidder.username + "\nEmail:" + highestBidder.bidder.email + "\nPhone Number:" + highestBidder.bidder.phoneNumber});
-
-                console.log("I'm done with sending the messages")
-                //Then, we wil cancel all of the bids on the auction
-                var bids = await bidsModel.find({associatedAuction: auction._id});
-                for(var i = 0; i < bids.length; i++)
-                {
-                    await bidsModel.updateOne({bidID: bids[i].bidID}, {bidStatus: "rejected"});
-                }
-                await bidsModel.updateOne({bidID: highestBid[0].bidID}, {bidStatus: "accepted"});
-
-
-                console.log("I'm done with handling the bids as well")
-
-                res.json({status: 'ok', message: "Auction has been sold!"});
-            }
-            catch(err)
-            {
-                console.log(err);
-            }
-            
-        }
-        else 
-        {
-            res.json("Murder me please, I can't take it anymore")
-        }
-        
-    }
-    else
-    {
-        res.json({status: "error"});
-    }
-
+    res.json({status: "ok"});
 })
 
 

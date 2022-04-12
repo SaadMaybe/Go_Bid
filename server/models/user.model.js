@@ -1,3 +1,24 @@
+/*
+
+const mongoose = require('mongoose');
+
+const userschema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  password:{
+    type: String,
+    required: true,
+  }
+});
+
+const UsersModel = mongoose.model('Users', userschema);
+
+module.exports = UsersModel;
+
+*/
+
 //Changes made by taimur:
 const mongoose = require('mongoose');
 let auctionmodel = require('./auction.model.js');
@@ -63,7 +84,7 @@ const userschema = new mongoose.Schema({
   },
   account_status:{
     type: String,
-    enum: ["admin", "user", "banned", "deleted"],
+    enum: ["admin", "user", "deactivated", "deleted"],
     default: "user",
   }
 
