@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
 import { PostAnAuction } from './pages/PostAnAuction';
+import { ViewMyAuctions } from './pages/ViewMyAuctions';
+import { DisplayAnAuction } from './pages/DisplayAnAuction';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path='/ContactUs' element={<ContactUs/>} />
           <Route path='/UserProfile' element={<UserProfile/>} />
           <Route path='/PostAnAuction' element={<PostAnAuction/>} />
+          <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
+          <Route path='/DisplayAnAuction' element={<DisplayAnAuction/>} />
         </Routes>
       </Router>
     </div>

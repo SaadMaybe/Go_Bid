@@ -1,11 +1,11 @@
 const router = require('express').Router();
 let AuctionModel = require('../models/auction.model');
 
-router.route('/').post((req,res) => {
+router.route('/').post(async (req,res) => {
 
     const id = req.body.auctionid;
 
-    const returnAuction = AuctionModel.findOne({_id : id});
+    const returnAuction = await AuctionModel.findOne({_id : id});
 
     res.json({value : returnAuction});
 })

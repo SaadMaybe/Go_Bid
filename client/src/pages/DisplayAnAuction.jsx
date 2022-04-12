@@ -6,22 +6,20 @@ import axios from 'axios';
 
 
 
-export const DisplayAnAuction = () => {
+export const DisplayAnAuction = async () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const [amountBidded, setAmountBidded] = useState(0);
 
     const auction = { auctionid: location.state.auctionid};
-
     let auctionQuery = await axios.post('http://localhost:9000/getauction', auction);
-
-    let returnAuction = auctionQuery.value;
+    let returnAuction = auctionQuery.data.value;
 
     let maximumBid = location.state.maximumBid;
 
     const item = { itemid : returnAuction.itemBeingAuctioned}
     let itemQuery = await axios.post('http://localhost:9000/getitem', item)
-
-    let returnItem = itemQuery.value;
+    let returnItem = itemQuery.data.value;
 
     const changeAmountBidded = (amountBidded) => {
         setAmountBidded(amountBidded.target.value);
@@ -47,26 +45,7 @@ export const DisplayAnAuction = () => {
 
 return (
     <div>
-        Title: {returnItem.itemTitle}<br></br>
-        Auctioneer: {returnAuction.auctioner}<br></br>
-        Current Highest Bid: {maximumBid}<br></br>
-        Picture: {returnItem.picture}<br></br>
-        tags: {returnItem.tags}<br></br>
-
-        <form onSubmit={onSubmit}>
-            
-            <div className="form-group">
-            <label>Enter your bid:</label>
-            <input  type="number"
-            required
-            className="form-control"
-            // value={this.state.UserName}
-            onChange={changeAmountBidded}
-            />
-            <input type="submit" value="Post a bid" className="btn btn-primary" />
-            <div className="right"></div>
-            </div>
-        </form>
+    afsfasf
     </div>
 )
 }

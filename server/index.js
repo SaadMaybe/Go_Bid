@@ -23,6 +23,7 @@ const PostAnAuctionRouter = require("./routes/postanauction.js");
 const getAuctionRouter = require("./routes/getauction.js");
 const getItemRouter = require("./routes/getitem.js");
 const postABidRouter = require("./routes/postabid.js");
+const ViewMyAuctionsRouter = require("./routes/ViewMyAuctions.js");
 
 
 
@@ -40,6 +41,7 @@ app.use('/createanitem', createAnItemRouter);
 app.use('/getauction', getAuctionRouter);
 app.use('/getitem', getItemRouter);
 app.use('/postabid', postABidRouter);
+app.use('/ViewMyAuctions', ViewMyAuctionsRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
