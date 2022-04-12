@@ -131,6 +131,7 @@ export const Homepage = () => {
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
+    const [userObjID, setUserObjID] = useState('');
 
     function myNav()
     {
@@ -155,6 +156,7 @@ export const Homepage = () => {
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
                     setBidList(res.data.bidList);
+                    setUserObjID(res.data.userObjID);
 
                 }).catch(err => {return <div>{err}</div>});
             // }
@@ -241,7 +243,7 @@ export const Homepage = () => {
                             {/* <h12> */}
                                 <b>Highest Bid: {bidList[index]}</b>
                             {/* </h12> */}
-                            {/* <button onClick={() => navigate('/DisplayAnAuction', {state: {auctionID: auction.auctionID}})}>')} */}
+                            <button onClick={() => navigate('/DisplayAnAuction', {state: {auctionid: auction._id, maximumBid: bidList[index], userid: userObjID}})}>View Auction</button>
                         </div>
 
                 </div>
