@@ -12,6 +12,7 @@ export const  UserProfile = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
+    const [accountStatus, setAccountStatus] = useState("");
     // let done = false;    
 
     useEffect(async () => {
@@ -28,6 +29,7 @@ export const  UserProfile = () => {
             setUsername(res.data.username);
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
+            setAccountStatus(res.data.account_status)
             // console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
@@ -44,6 +46,11 @@ export const  UserProfile = () => {
             User Profile for {username}:<br></br><br></br>
             phoneNumber: {phoneNumber}<br></br>
             email: {email}<br></br>
+            <br></br>
+            <div>
+            {(accountStatus==="admin") ? <button onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}
+            
+            </div>
         </div>
 
     )

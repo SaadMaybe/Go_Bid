@@ -72,6 +72,8 @@ export const ViewMyAuctions = () =>
                         Maximum Bid on the auction: {bidList[index]};
                         <button onClick={() => sellAuction(auction.auctionID)}>Sell</button>
                         <button onClick={() => cancelAuction(auction.auctionID)}>Cancel</button>                                             
+                        <br></br>
+                        <br></br>
                     </li>
                 )}
             </ul>

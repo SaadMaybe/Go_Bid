@@ -4,7 +4,7 @@ const sha256 = require('sha256');
 
 router.route("/signin").post( async (req,res) => {
 
-    const user = await UsersModel.findOne({phoneNumber: req.body.phoneNumber, password: sha256(req.body.Password)});
+    const user = await UsersModel.findOne({phoneNumber: req.body.phoneNumber, password: sha256(req.body.Password), account_status: { $in: ["user", "admin"]}});
     // console.log(user)
     if(user)
     {

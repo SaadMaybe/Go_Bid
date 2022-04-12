@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
+const bidsModel = require('../models/bid.model');
 
 router.route("/").post(async (req, res) => 
 {
-    // console.log("Kill me quickly, so that i don't feel any more pain")
     const userID = req.body.userID;
     const user = await usersModel.findOne({userID: userID});
     if(user)
     {
-        // console.log("I just love being ")
+        
         const auctions = await auctionsModel.find(
             {
                 auctionStatus: "closed",
@@ -20,7 +20,7 @@ router.route("/").post(async (req, res) =>
                 auctionStartDate: {$lt: new Date()},    
                 auctioner: user._id
             })
-            .populate('itemBeingAuctioned').populate('auctioner')//.populate('listOfBids');
+            .populate('itemBeingAuctioned').populate('auctioner');
     
         var bidList = [];
         for(var i = 0; i < auctions.length; i++)

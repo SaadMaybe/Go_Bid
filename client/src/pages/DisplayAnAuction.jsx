@@ -4,7 +4,7 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import {useState} from 'react';
 import axios from 'axios';
 
-export const ViewAnAuction = () =>
+export const DisplayAnAuction = () =>
 {
     return (
         <div>
