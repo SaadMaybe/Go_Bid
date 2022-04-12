@@ -125,7 +125,7 @@ export const Homepage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const id = location.state.id
+
     const [userID, setUserID] = useState(0);
     const [username, setUsername] = useState('');
     const [auctions, setAuctions] = useState([]);
@@ -143,8 +143,7 @@ export const Homepage = () => {
         // if (location.state !== undefined &&)
         // {
             const hmmm = location.state.userID;
-            const id = location.state.id;
-            console.log("hmmm is :", location.state.id);
+            console.log("hmmm is " + hmmm);
             setUserID(location.state.userID);
             console.log("User ID is " + userID);
             // if(userID !== 0)
@@ -178,7 +177,7 @@ export const Homepage = () => {
                     <ul>
 
                         <li key={1}>
-                            <button className='boss' onClick={() => navigate('/PostAnAuction', {state: {userID : userID, id: id}})}> 
+                            <button className='boss' onClick={() => navigate('/PostAnAuction', {state: {userID : userID}})}> 
                                 Post an auction
                             </button>
                         </li>

@@ -21,7 +21,7 @@ router.route('/').post((req,res) =>
         //console.log(req.body);
 
         var auctioner = req.body.auctioner;
-
+        const userID = req.body.userID
         const itemTitle = req.body.itemTitle;
         const description = req.body.description;
         const category = req.body.category;
@@ -29,7 +29,7 @@ router.route('/').post((req,res) =>
         const pictures = [req.body.pictures];
         const tags = [req.body.tags];
 
-        ItemModel.find().sort({itemID:-1}).then(async item =>
+        await ItemModel.find().sort({itemID:-1}).then(async item =>
         {
             var itemID;
     
@@ -45,15 +45,14 @@ router.route('/').post((req,res) =>
             const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid});
         
             await newItem.save()
-            .then(() => res.json('Item added!'))
+            .then(() => {console.log("Item Added")})
             //.catch(err => res.status(400).json('Error: ' + err));
             
         })//.catch(err => res.status(400).json('Error: ' + err));
 
-        console.log("Item title:", itemTitle);
         const itemBeingAuctioned = await ItemModel.findOne({itemTitle: itemTitle});
         //console.log(ItemModel.findOne({itemTitle: itemTitle}));
-        console.log(itemBeingAuctioned._id);
+        console.log("item Being Auctioned: ",itemBeingAuctioned.itemTitle);
 
         const startingTime = Date.now();
         const endingTime = (req.body.endingTime * 24 * 60 * 60 * 1000) + startingTime;
@@ -61,13 +60,15 @@ router.route('/').post((req,res) =>
         const auctionStatus = "active";
         const listOfBids = [];
 
-        const newAuction = new AuctionModel({auctionID, auctioner, itemBeingAuctioned, startingTime, endingTime, auctionStatus, listOfBids});
+        const newAuction = await new AuctionModel({auctionID, auctioner, itemBeingAuctioned, startingTime, endingTime, auctionStatus, listOfBids});
 
         await newAuction.save()
-        .then(() => res.json('Auction added!'))
-        .catch(err => res.status(400).json('Error auction: ' + err));
+        .then(() => res.json({status: 'ok', message: 'Auction added!', userID: userID}))
+        .catch(err => res.json({status: 'error', message:'Error in post an auction: ' + err, userID: userID}));
 
-    }).catch(err => res.status(400).json('Error: ' + err));
+    }).catch(err => {
+        console.log(err)    
+        res.status(400).json(err)});
 })
 
 
