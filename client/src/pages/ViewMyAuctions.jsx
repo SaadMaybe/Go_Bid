@@ -39,8 +39,13 @@ export const ViewMyAuctions = () =>
         axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: auctionID}).then(res =>
         {
             console.log("res is " + res.data);
+            if(res.data.status === 'ok')
+                alert("Auction cancelled!")
+            else
+                alert("Auction not cancelled!")
             
             navigate("/ViewMyAuctions", {state: {userID: location.state.userID}});
+            
         })
         //Cancels an auction
     }
@@ -66,7 +71,7 @@ export const ViewMyAuctions = () =>
 
         });
         
-    }, [location.state.userID, location.state.auctionID]);
+    }, [location.state.userID]);
 
     return (
         <div>
