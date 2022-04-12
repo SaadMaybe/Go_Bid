@@ -76,7 +76,7 @@ export const ViewMyAuctions = () =>
     return (
         <div>
             <div className = "top-dash-user">
-            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>back;</button> </div>
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
             My Auctions
             </div>
             <br></br>
