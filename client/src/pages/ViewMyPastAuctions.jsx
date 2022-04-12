@@ -19,14 +19,18 @@ export const ViewMyPastAuctions = () =>
     {
         const hmmm = location.state.userID
         console.log("hmmm is " + hmmm);
-        axios.post('http://localhost:9000/viewMyPastAuctions', {userID: hmmm}).then(response => 
+        axios.post('http://localhost:9000/viewMyPastAuctions', {userID: hmmm}).then(async response => 
         {
-            if(response.status === 200)
+            if(response.data.status === 'ok')
             {
                 console.log("res is " + response.data.auctionList);
-                setAuctionList(response.data.auctionList);
-                setUsername(response.data.username);
-                setBidList(response.data.bidList);
+                await setAuctionList(response.data.auctionList);
+                await setUsername(response.data.username);
+                await setBidList(response.data.bidList);
+                console.log("auctionList is " + auctionList);
+                console.log("username is " + username);
+                console.log("bidList is " + bidList);
+
             }
             else
             {
@@ -38,30 +42,31 @@ export const ViewMyPastAuctions = () =>
 
     return (
         <div>
-            <div className = "top-dash-user">
-            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
-            Past Auctions
-            </div>
-            <div className='past-btn'>
-                <button className='past-auction' onClick={() => navigate('/ViewMyAuctions', {state:{userID: location.state.userID}})}>My Current Auctions</button>
-            </div>
-            <br></br>
-            <div className='auction-list'>
-                List of auctions for user {username}:
-                <ul>
-                    { 
-                    auctionList.map((auction, index) =>
-                        <div className='playcards'>
-                            <li key={auction.auctionID}>
+        <div className = "top-dash-user">
+        <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+        Past Auctions
+        </div>
+        <div className='past-btn'>
+            <button className='past-auction' onClick={() => navigate('/ViewMyAuctions', {state:{userID: location.state.userID}})}>My Current Auctions</button>
+        </div>
+        <br></br>
+        <div className='auction-list'>
+            List of auctions for user {username}:
+            <ul>
+                { 
+                auctionList.map((auction, index) =>
+                    <div className='playcards'>
+                        <li key={auction.auctionID}>
+                            <div className='in-text'>
                                 Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                                 <p>   </p>
                                 Highest Bid: {bidList[index]}
-                            
-                            </li>
-                        </div>
-                    )}
-                </ul>
-            </div>
+                            </div>
+                        </li>
+                    </div>
+                )}
+            </ul>
         </div>
+    </div>
     )
 }

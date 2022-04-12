@@ -131,6 +131,7 @@ export const Homepage = () => {
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
+    const [userObjID, setUserObjID] = useState('');
 
     function myNav()
     {
@@ -155,6 +156,7 @@ export const Homepage = () => {
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
                     setBidList(res.data.bidList);
+                    setUserObjID(res.data.userObjID);
 
                 }).catch(err => {return <div>{err}</div>});
             // }
@@ -174,25 +176,25 @@ export const Homepage = () => {
                 <div className='inner'>
                     <ul>
 
-                        <li>
+                        <li key={1}>
                             <button className='boss' onClick={() => navigate('/PostAnAuction', {state: {userID : userID}})}> 
                                 Post an auction
                             </button>
                         </li>
 
-                        <li>
+                        <li key={2}>
                             <button className='boss' onClick={() => navigate('/ViewMyAuctions', {state: {userID : userID}})}>
                                 My Auctions
                             </button>
                         </li>
 
-                        <li>
+                        <li key={3}>
                             <button className='boss' onClick={() => navigate('/ViewMyBids', {state: {userID : userID}})}>
                                 My Bids
                             </button>
                         </li>
 
-                        <li>
+                        <li key={4}>
                             <button className='boss' onClick={() => navigate('/ViewMyInbox', {state: {userID : userID}})}>
                                 My inbox    
                             </button>
@@ -203,7 +205,7 @@ export const Homepage = () => {
                         </li>
                         
                         
-                        <li>
+                        <li key={5}>
                             <button className='boss' onClick={() => myNav()}> 
                                 Hello there  {username}!
                             </button>
@@ -226,13 +228,22 @@ export const Homepage = () => {
                 <div className='item'>
                 <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
                         <div className='text-desc'>
-                            <h12><b>Title</b>:{auction.itemBeingAuctioned.itemTitle}.</h12> 
+                            {/* <h12> */}
+                                <b>Title</b>:{auction.itemBeingAuctioned.itemTitle}
+                            {/* </h12>  */}
                             <br></br>
-                            <h12><b>Description</b>:{auction.itemBeingAuctioned.description}.</h12>
+                            {/* <h12> */}
+                                <b>Description</b>:{auction.itemBeingAuctioned.description}
+                            {/* </h12> */}
                             <br></br>
-                            <h12><b>Posted by</b>: {auction.auctioner.username}.</h12>
+                            {/* <h12> */}
+                                <b>Posted by</b>: {auction.auctioner.username}
+                            {/* </h12> */}
                             <br></br>
-                            <h12><b>Highest Bid: {bidList[index]}</b></h12>
+                            {/* <h12> */}
+                                <b>Highest Bid: {bidList[index]}</b>
+                            {/* </h12> */}
+                            <button onClick={() => navigate('/DisplayAnAuction', {state: {auctionid: auction._id, maximumBid: bidList[index], userid: userObjID}})}>View Auction</button>
                         </div>
 
                 </div>

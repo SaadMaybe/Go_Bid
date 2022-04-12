@@ -21,6 +21,13 @@ const userProfileRouter = require("./routes/userProfile.js");
 const inboxRouter = require("./routes/inbox.js");
 const viewMyAuctionsRouter = require("./routes/viewMyAuctions.js");
 const viewMyPastAuctionsRouter = require("./routes/viewMyPastAuctions.js");
+const adminPortalRouter = require("./routes/adminPortal.js");
+// const createAnItemRouter = require("./routes/createanitem.js");
+// const PostAnAuctionRouter = require("./routes/postanauction.js");
+const getAuctionRouter = require("./routes/getauction.js");
+const getItemRouter = require("./routes/getitem.js");
+const postABidRouter = require("./routes/postabid.js");
+
 
 app.use(cors());
 app.use(express.json());
@@ -33,6 +40,13 @@ app.use('/userProfile', userProfileRouter);
 app.use('/viewMyInbox', inboxRouter);
 app.use('/viewMyAuctions', viewMyAuctionsRouter);
 app.use('/viewMyPastAuctions', viewMyPastAuctionsRouter);
+app.use('/adminPortal', adminPortalRouter);
+// app.use('/postanauction', PostAnAuctionRouter);
+// app.use('/createanitem', createAnItemRouter);
+app.use('/getauction', getAuctionRouter);
+app.use('/getitem', getItemRouter);
+app.use('/postabid', postABidRouter);
+
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {

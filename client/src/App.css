@@ -273,9 +273,7 @@ position: relative;
 
 /* user profile */
 
-.user-outer{
 
-}
 .profile-bg{
   color: black;
   top:0%;
@@ -367,6 +365,7 @@ position: relative;
   background-color: black;
   padding: 25px;
   margin:50px;
+  border-radius: 50px;
 }
 
 .sell{

@@ -57,7 +57,8 @@ router.route("/").post(async (req,res) =>
                 auctionList: auctions,
                 status: 'ok',
                 username: user.username,
-                bidList: bidList
+                bidList: bidList,
+                userObjID: user._id
             }
             );
     }
