@@ -29,7 +29,8 @@ export const SignIn = () => {
     }
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
-    console.log(s.data.id);
+    //console.log(s.data.id);
+    //console.log(s.data.userID);
 
     
     if (s.data.status !== "error")
