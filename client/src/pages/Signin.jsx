@@ -34,7 +34,7 @@ export const SignIn = () => {
     if (s.data.status !== "error")
     {
       // console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage", {state: {userID: s.data.userID}});
+      navigate("/Homepage", {state: {userID: s.data.userID, id: s.data.id}});
 
     }
     else

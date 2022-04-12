@@ -9,7 +9,8 @@ router.route("/signin").post( async (req,res) => {
     if(user)
     {
         s = user.userID
-        res.json({status:'ok', user: true, userID: s})
+        id = user._id
+        res.json({status:'ok', user: true, userID: s, userID_: id});
         // console.log("OK");
     }
     else
