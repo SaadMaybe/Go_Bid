@@ -159,7 +159,7 @@ export const Signup = () => {
     if (s.data.status !== "error")
     {
       console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/signin",);
+      navigate("/signin");
   
     }
     // this.setState({
