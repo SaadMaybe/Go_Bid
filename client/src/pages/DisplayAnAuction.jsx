@@ -35,7 +35,6 @@ export const DisplayAnAuction = async () => {
         }
 
         let s = await axios.post('http://localhost:9000/postabid/', bid);
-        
         if (s.data.status !== "error")
         {
             console.log("INSIDE THE ONSUBMIT BUTTON")
