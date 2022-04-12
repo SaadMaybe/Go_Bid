@@ -6,20 +6,12 @@ import axios from 'axios';
 
 
 
-export const DisplayAnAuction = async () => {
+export const DisplayAnAuction = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [amountBidded, setAmountBidded] = useState(0);
+    let display = {};
 
-    const auction = { auctionid: location.state.auctionid};
-    let auctionQuery = await axios.post('http://localhost:9000/getauction', auction);
-    let returnAuction = auctionQuery.data.value;
-
-    let maximumBid = location.state.maximumBid;
-
-    const item = { itemid : returnAuction.itemBeingAuctioned}
-    let itemQuery = await axios.post('http://localhost:9000/getitem', item)
-    let returnItem = itemQuery.data.value;
 
     const changeAmountBidded = (amountBidded) => {
         setAmountBidded(amountBidded.target.value);
@@ -43,9 +35,35 @@ export const DisplayAnAuction = async () => {
         }
     }
 
+    async function getData()
+    {
+        const auction = { auctionid: location.state.auctionid};
+        var auctionQuery = await axios.post('http://localhost:9000/getauction', auction);
+        var returnAuction = auctionQuery.data.value;
+    
+        const item = { itemid : returnAuction.itemBeingAuctioned}
+        var itemQuery = await axios.post('http://localhost:9000/getitem', item)
+        var returnItem = itemQuery.data.value;
+    
+    
+        display["itemTitle"] = returnItem.itemTitle;
+        display["Auctioneer"] = returnAuction.auctioner;
+        display["Current Highest Bid"] = location.state.maximumBid;
+        display["picture"] = returnItem.picture;
+        display["tags"] = returnItem.tags;
+        
+        console.log(display);
+    }
+
+    getData();
+
 return (
     <div>
-    afsfasf
+    Title: {display["itemTitle"]}<br></br>
+    Auctioneer: {display["Auctioneer"]}<br></br>
+    Current Highest Bid: {display["Current Highest Bid"]}<br></br>
+    Picture: {display["picture"]}<br></br>
+    tags: {display["tags"]}<br></br>
     </div>
 )
 }
