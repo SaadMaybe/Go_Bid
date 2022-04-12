@@ -7,7 +7,13 @@ import { useNavigate, useLocation } from "react-router-dom";
 export const Postanauction = () => {
     const navigate = useNavigate();
     const location = useLocation();
+<<<<<<< Updated upstream:client/src/pages/Postanauction.jsx
     const [auctioner, setAuctioner] = useState("");
+=======
+    const id = location.state.id;
+    const userID = location.state.userID;
+
+>>>>>>> Stashed changes:client/src/pages/PostAnAuction.jsx
     const [itemTitle, setItemTitle] = useState("");
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
@@ -51,7 +57,12 @@ export const Postanauction = () => {
 
 
         const auction = {
+<<<<<<< Updated upstream:client/src/pages/Postanauction.jsx
             auctioner: auctioner,
+=======
+            auctioner: location.state.id,
+            userID : userID,
+>>>>>>> Stashed changes:client/src/pages/PostAnAuction.jsx
             itemTitle: itemTitle,
             description: description,
             category: category,
@@ -63,11 +74,12 @@ export const Postanauction = () => {
         console.log(auction);
 
         let s = await axios.post('http://localhost:9000/postanauction/', auction);
-        
-        if (s.data.status !== "error")
+        console.log("s.status: L66 ", s.data.status)
+        if (s.data.status == "ok")
         {
-            console.log("INSIDE THE ONSUBMIT BUTTON")
-            navigate("/Homepage");
+            console.log("Posting auction")
+
+            navigate("/Homepage", { state: {userID:  userID, id: id}});
         }
       }
 
