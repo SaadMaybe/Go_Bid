@@ -13,7 +13,7 @@ export const ViewMyAuctions = () =>
     const [auctionList, setAuctionList] = useState([]);
     const [username, setUsername] = useState("");
     const [bidList, setBidList] = useState([]);
-
+    const [auctionID, setAuctionID] = useState(0);
 
     function sellAuction(e)
     {
@@ -21,6 +21,12 @@ export const ViewMyAuctions = () =>
         axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: e.target.auctonID}).then(res =>
         {
             console.log("res is " + res.data);
+            if(res.data.status === 'ok')
+                alert("Auction Sold!!")
+            else
+                alert("Auction not Sold!")
+            
+            navigate("/ViewMyAuctions", {state: {userID: location.state.userID}});
             
         })
         //Sells an auction to the highest bidder
@@ -43,6 +49,7 @@ export const ViewMyAuctions = () =>
         //Cancels an auction
     }
 
+    
 
     useEffect(() => 
     {
@@ -66,9 +73,6 @@ export const ViewMyAuctions = () =>
 
     return (
         <div>
-            {/* <div className='top-dash-user'>
-                <div className='back-btn'><button className='back'  onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button></div>
-            </div> */}
             <div className = "top-dash-user">
             <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
             My Auctions
@@ -77,10 +81,9 @@ export const ViewMyAuctions = () =>
             <div className='past-btn'>
                 <button className='past-auction' onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
             </div>
-            <div className='auction-list'>
-                List of auctions for user {username}:
-                <br></br><br></br><br></br><br></br>
 
+            List of auctions for user {username}:
+            <br></br><br></br><br></br><br></br>
                 <ul>
                     { 
                     auctionList.map((auction, index) =>
@@ -89,19 +92,18 @@ export const ViewMyAuctions = () =>
                                 <div className='in-text'>
                                     Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                                     <p>   </p>
-                                    Maximum Bid on the auction: {bidList[index]};
-                                    <button className='sell' onClick={() => sellAuction(auction.auctionID)}>Sell</button>
-                                    <button className='cancel' onClick={() => cancelAuction(auction.auctionID)}>Cancel</button> 
+                                    {bidList[index] == auction.itemBeingAuctioned.minimumBid ? "No bids yet. Starting value for the bid is " + auction.itemBeingAuctioned.minimumBid + " " : "Highest bid: " + bidList[index] + " "}
+
+                                    <button className='sell' onClick={() => {setAuctionID(auction.auctionID); sellAuction();}}>Sell</button>
+                                    <button className='cancel' onClick={() => {setAuctionID(auction.auctionID); cancelAuction();}}>Cancel</button> 
                                 </div>
 
                             </li>
                         </div>
                     )}
                 </ul>
+            <div>
             </div>
-            {/* <div>
-                <button onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
-            </div> */}
         </div>
     )
 }
