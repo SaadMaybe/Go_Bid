@@ -11,6 +11,7 @@ export const  UserProfile = () => {
     const [userID, setUserID] = useState(0);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [username, setUsername] = useState('');
+    const [accountStatus, setAccountStatus] = useState('')
     const [email, setEmail] = useState('');
     // let done = false;    
 
@@ -29,6 +30,7 @@ export const  UserProfile = () => {
             setUsername(res.data.username);
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
+            setAccountStatus(res.data.accountStatus);
             console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
