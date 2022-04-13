@@ -4,19 +4,26 @@ import "../App.css";
 import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from "react-router-dom";
 
-export const PostAnAuction = () => {
+export const Postanauction = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const id = location.state.id;
+    const userID = location.state.userID;
+
+    const [Auctioner, setAuctioner] = useState("");
     const [itemTitle, setItemTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("Electronics");
+    const [category, setCategory] = useState("");
     const [minimumBid, setminimumBid] = useState("");
     const [pictures, setPictures] = useState("");
     const [tags, setTags] = useState("");
-    const [endingTime, setEndingTime] = useState(0);
 
     const changeItemTitle = (title) => {
         setItemTitle(title.target.value);
+    }
+    
+    const changeAuctioner = (auctioner) => {
+        setAuctioner(auctioner.target.value);
     }
     
     const changeDescription = (description) => {
@@ -31,45 +38,41 @@ export const PostAnAuction = () => {
         setminimumBid(minimumBid.target.value);
     }
 
-    const changePictures = (pictures) => {
-        setPictures(pictures.target.value);
+    const changePictures = (picture) => {
+        setPictures(picture.target.value);
     }
 
     const changeTags = (tags) => {
         setTags(tags.target.value);
     }
 
-    const changeEndingTime = (endingTime) => {
-        setEndingTime(endingTime.target.value);
-    }
-
     const onSubmit = async (ev) =>{
         ev.preventDefault();
+    
+
+        console.log(location.state.userID);
+
 
         const auction = {
-            userID: location.state.userID,
             auctioner: location.state.id,
+            userID : userID,
             itemTitle: itemTitle,
             description: description,
             category: category,
             minimumBid: minimumBid,
             pictures: pictures,
-            tags: tags,
-            endingTime: endingTime
+            tags: tags
         }
         
-        console.log("id: ", location.state.id);
+        console.log(auction);
 
-        let s = await axios.post('http://localhost:9000/postanauction/', auction).then();
-        console.log("Status s: ",s.data.message)
+        let s = await axios.post('http://localhost:9000/postanauction/', auction);
+        console.log("s.status: L66 ", s.data.status)
         if (s.data.status == "ok")
         {
-            console.log("INSIDE THE ONSUBMIT BUTTON in post an auction")
-            navigate("/Homepage", {state: {userID: auction.userID, id: auction.auctioner}});
-        }
-        else
-        {
-            console.log("ErrorMSG: ", s.data.message)
+            console.log("Posting auction")
+
+            navigate("/Homepage", { state: {userID:  userID, id: id}});
         }
       }
 
@@ -106,7 +109,7 @@ return (
                 <br></br>
 
                 <label htmlFor="categories">Category:</label>
-                <select id="category" name = "category" onChange={changeCategory}>
+                <select id="category" name = "category" onchange = {changeCategory}>
                     <option value="Electronics">Electronics</option>
                     <option value="Clothing">Clothing</option>
                     <option value="Books">Books</option>
@@ -143,6 +146,7 @@ return (
                     onChange={changeTags}
                     />
                 <br></br>
+
 
 
                 <label>Duration:</label>

@@ -30,11 +30,13 @@ router.route('/').post((req,res) =>
         .then(() => res.json('Bid added!'))
         .catch(err => res.status(400).json('Error ' + err));
 
-        const list = AuctionModel.findOne({_id : associatedAuction}).listofBids;
+        let list = AuctionModel.findOne({_id : associatedAuction}).listofBids;
 
         const temp = BidModel.findOne({bidID : bidID});
 
         list = list.push(temp._id);
+
+        console.log(list);
     
         const updateAuction = AuctionModel.updateOne({_id: associatedAuction} , {listofBids : list});
 

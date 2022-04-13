@@ -62,7 +62,6 @@ export const ViewMyAuctions = () =>
             }
                         
         });
-        
     }, [location.state.userID]);
 
     return (
