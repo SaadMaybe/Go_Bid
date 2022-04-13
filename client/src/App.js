@@ -10,6 +10,7 @@ import { UserProfile } from './pages/UserProfile';
 import { PostAnAuction } from './pages/PostAnAuction';
 import { ViewMyAuctions } from './pages/ViewMyAuctions';
 import { DisplayAnAuction } from './pages/DisplayAnAuction';
+import { ViewMyInbox } from './pages/ViewMyInbox'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/PostAnAuction' element={<PostAnAuction/>} />
           <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
           <Route path='/DisplayAnAuction' element={<DisplayAnAuction/>} />
+          <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
         </Routes>
       </Router>
     </div>
