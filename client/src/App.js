@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
 import { SignIn } from './pages/Signin';
 import { Homepage } from './pages/Homepage';
 import { Signup } from './pages/Signup';
+import { contactUs } from './pages/ContactUs';
 import { useNavigate } from "react-router-dom";
 import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
@@ -33,6 +34,9 @@ function App() {
           <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>}/>
           <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>}/>
           
+          <Route path='/ContactUs' element={<contactUs/>} />
+
+          {/* <Route path='/contactUs' element={<contactUs/>} /> */}
         </Routes>
       </Router>
     </div>

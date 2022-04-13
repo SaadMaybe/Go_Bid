@@ -112,10 +112,10 @@
 import React, { useState, Component } from "react";
 import axios from "axios";
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
-export const ContactUs = () => {
+export const contactUs = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");

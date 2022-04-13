@@ -46,6 +46,7 @@ app.use('/ViewMyAuctions', ViewMyAuctionsRouter);
 app.use('/adminPortal', adminPortalRouter)
 app.use('/viewMyInbox', inboxRouter)
 
+app.use('/ContactUs', contactUsRouter);
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
