@@ -176,32 +176,36 @@ export const AdminPortal = () =>
 
     return (
         <div>
-                <div><button onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>Go back</button>
+            <div className = "top-dash-user">
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button></div>
+            Admin Portal
+            </div>
+            
                 <br></br><br></br>
-                Admin Portal for {username}:<br></br>
-                <br></br>
-                
-                <form>
-                    <h2>Search by User</h2>
-                    <label>Search by Username</label>
-                    <input type="text" onChange={changeInpUsername} />
-                    <label>Search by phone Number</label>
-                    <input type="text" onChange={changePhoneNumber} />
-                    <button onClick={userOnSubmit}>Search</button>
-                </form>
-                <br></br><br></br>
-                <form>
-                    <h2>Search by Auction</h2>
-                    <label>Search by Item Name</label>
-                    <input type="text" onChange={changeItemName} />
-                    <label>Search by Auctioner</label>
-                    <input type="text" onChange={changeAuctioner} />
-                    <button onClick={auctionOnSubmit}>Search</button>
-                </form>
+                <div className="portal">
+                    Admin Portal for {username}:<br></br>
+                    <br></br>
+                    
+                    <form className="by-user">
+                        <h2>Search by User</h2>
+                        <label>Search by Username</label>
+                        <input className = "in-user" type="text" onChange={changeInpUsername} />
+                        <label>Search by phone Number</label>
+                        <input className = "in-user" type="text" onChange={changePhoneNumber} />
+                        <button className="search-portal" onClick={userOnSubmit}>Search</button>
+                    </form>
+                    <br></br><br></br>
+                    <form className="by-user">
+                        <h2>Search by Auction</h2>
+                        <label>Search by Item Name</label>
+                        <input className="in-user" type="text" onChange={changeItemName} />
+                        <label>Search by Auctioner</label>
+                        <input className = "in-user" type="text" onChange={changeAuctioner} />
+                        <button className="search-portal" onClick={auctionOnSubmit}>Search</button>
+                    </form>
 
+                </div>
 
-
-        </div>
             
         </div>
     )

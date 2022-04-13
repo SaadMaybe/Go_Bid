@@ -50,27 +50,37 @@ export const AdminDisplayUsers = () => {
 
     return (
         <div>
-            <button onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Go back</button>
-            <br></br>
-            Admin Name: {username}
-            <br></br>
-            <br></br>
-            List of users:
-            <ul>
-                { 
-                userInfo.map(user =>
-                    <li key={user.userID}>
-                        User: {user.username}<br></br>
-                        Phone Number: {user.phoneNumber}<br></br>
-                        Email: {user.email}
-                        <p>   </p>
-                        
-                        <button onClick={() => BanUser(user._id)}>Ban</button>
-                        <br></br>
-                        <br></br>
-                    </li>
-                )}
-            </ul>
+            <div className = "top-dash-user">
+            <div className="back-btn"><button className="back" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>&#8249;</button></div>
+            Admin Portal
+            </div>
+            
+            <div className="portal">
+                <br></br>
+                Admin Name: {username}
+                <br></br>
+                <br></br>
+                List of users:
+                <ul>
+                    { 
+                    userInfo.map(user =>
+                        <div className="playcards">
+                            <li key={user.userID}>
+                                <div className="in-text">
+                                    User: {user.username}<br></br>
+                                    Phone Number: {user.phoneNumber}<br></br>
+                                    Email: {user.email}
+                                    <p>   </p>
+                                    
+                                    <button className="cancel" onClick={() => BanUser(user._id)}>Ban User</button>
+                                    <br></br>
+                                    <br></br>
+                                </div>
+                            </li>
+                        </div>
+                    )}
+                </ul>
+            </div>
         </div>
         
     )

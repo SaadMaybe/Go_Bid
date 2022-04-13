@@ -327,6 +327,16 @@ position: relative;
   padding: 20px;
 }
 
+.to-portal{
+  margin-top: 30px;
+  /* padding: 10px; */
+  position:absolute;
+  background-color: black;
+  color:black;
+  right:10%;
+  border-radius: 50px;
+}
+
 
 /* view my auction */
 
@@ -388,4 +398,52 @@ position: relative;
 .in-text{
   background-color: black;
   color: white;
+}
+
+
+/* Admin portal */
+
+
+.portal{
+  /* background-color: red; */
+  margin-left: 100px;
+}
+.by-user{
+  /* position:fixed; */
+  background-color: black;
+  padding: 50px;
+  width:80%;
+  height:auto;
+  color: white;
+  border-radius: 50px;
+}
+.in-user{
+  /* background-color: #222; */
+  /* text-align: center; */
+  /* right:0px; */
+  margin-right: 0px;
+  border-radius: 5px;
+}
+
+.search-portal{
+  position: absolute;
+  right:250px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  width: 250px;
+  height: auto;
+}
+.col-75{
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+  position: relative;
+}
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+  position: relative;
 }

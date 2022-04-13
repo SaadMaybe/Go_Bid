@@ -45,9 +45,11 @@ export const  UserProfile = () => {
         <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
         UserProfile
         </div>
+
         <div className="profile-bg">
             
         </div>
+        <div className="to-portal">{(accountStatus==="admin") ? <button className="past-auction" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>
         <div className="profile-details">
             {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
             <br></br><br></br>
@@ -57,7 +59,7 @@ export const  UserProfile = () => {
                 phoneNumber: {phoneNumber}<br></br>
                 email: {email}<br></br>
             </div>
-            {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}    
+            {/* <div className="hojana">{(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>     */}
         </div>
         </div>
         
