@@ -11,6 +11,7 @@ export const  UserProfile = () => {
     const [userID, setUserID] = useState(0);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [username, setUsername] = useState('');
+    const [accountStatus, setAccountStatus] = useState('')
     const [email, setEmail] = useState('');
     // let done = false;    
 
@@ -29,6 +30,7 @@ export const  UserProfile = () => {
             setUsername(res.data.username);
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
+            setAccountStatus(res.data.accountStatus);
             console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
@@ -38,16 +40,32 @@ export const  UserProfile = () => {
 
 
     return (
-
-        <div>
-            Heyo<br></br>
-            phoneNumber: {phoneNumber}<br></br>
-            username: {username}<br></br>
-            email: {email}<br></br>
+        
+        
+        <div className="user-outer">
+        <div className = "top-dash-user">
+        <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+        UserProfile
         </div>
-
+        <div className="profile-bg">
+            
+        </div>
+        <div className="profile-details">
+            {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
+            <br></br><br></br>
+            Hello {username}:<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        
+            <div className="user-details">
+                phoneNumber: {phoneNumber}<br></br>
+                email: {email}<br></br>
+            </div>
+            {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}    
+        </div>
+        </div>
+        
     )
 
 }
 
-///hmm
+     
+
