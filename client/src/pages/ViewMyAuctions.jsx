@@ -26,7 +26,7 @@ export const ViewMyAuctions = () =>
             else
                 alert("Auction not Sold!")
             
-            navigate("/ViewMyAuctions", {state: {userID: location.state.userID}});
+            navigate("/Homepage", {state: {userID: location.state.userID}});
             
         })
         //Sells an auction to the highest bidder
