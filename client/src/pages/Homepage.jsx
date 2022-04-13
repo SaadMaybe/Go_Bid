@@ -15,7 +15,7 @@ export const Homepage = () => {
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
     const [userObjID, setUserObjID] = useState('');
-    const [id, setID] = useState('');
+    
 
     function myNav()
     {
@@ -27,12 +27,10 @@ export const Homepage = () => {
         // if (location.state !== undefined &&)
         // {
             const hmmm = location.state.userID;
-            const id = location.state.id;
+        
             console.log("hmmm is :", location.state.id);
             setUserID(location.state.userID);
             // console.log("User ID is " + userID);
-            const huh = location.state.id;
-            setID(huh);
             // if(userID !== 0)
             // {
                 await axios.post('http://localhost:9000/homepage/', {userID: hmmm}).then(res => 
