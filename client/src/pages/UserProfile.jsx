@@ -41,6 +41,7 @@ export const  UserProfile = () => {
 
     return (
         
+        
         <div className="user-outer">
         <div className = "top-dash-user">
         <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
