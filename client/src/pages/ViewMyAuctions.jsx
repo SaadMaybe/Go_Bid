@@ -18,7 +18,7 @@ export const ViewMyAuctions = () =>
     function sellAuction(e)
     {
         console.log("Sell Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: e.target.auctonID}).then(res =>
+        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: auctionID}).then(res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -35,7 +35,7 @@ export const ViewMyAuctions = () =>
     function cancelAuction(e)
     {
         console.log("Cancel Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: e.target.auctionId}).then(res =>
+        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: auctionID}).then(res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')

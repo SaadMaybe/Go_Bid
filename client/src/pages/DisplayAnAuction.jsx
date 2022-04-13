@@ -44,12 +44,13 @@ export const DisplayAnAuction = () => {
         }
     }
 
-    async function getData()
+    useEffect(async () =>
     {
         const auction = { auctionid: location.state.auctionid};
         var auctionQuery = await axios.post('http://localhost:9000/getauction', auction);
+        console.log("AuctionQuery: ", auctionQuery.data)
         var returnAuction = auctionQuery.data.value;
-    
+        
         const item = { itemid : returnAuction.itemBeingAuctioned}
         var itemQuery = await axios.post('http://localhost:9000/getitem', item)
         var returnItem = itemQuery.data.value;
@@ -67,9 +68,9 @@ export const DisplayAnAuction = () => {
         display["picture"] = returnItem.picture;
         display["tags"] = returnItem.tags; */
         
-    }
+    },[location.state.userID, location.state.auctionid])
 
-    getData();
+    // getData();
 
 return (
     <div>

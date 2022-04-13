@@ -28,14 +28,10 @@ export const Homepage = () => {
         // {
             const hmmm = location.state.userID;
         
-            console.log("hmmm is :", location.state.id);
             setUserID(location.state.userID);
-            // console.log("User ID is " + userID);
-            // if(userID !== 0)
-            // {
+            
                 await axios.post('http://localhost:9000/homepage/', {userID: hmmm}).then(res => 
                 {
-                    console.log("res is " + res.data.auctionList);
                     setUsername(res.data.username);
                     
                     setAuctions(res.data.auctionList);

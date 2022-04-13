@@ -41,8 +41,8 @@ export const SignIn = () => {
     else
     {
       alert("stupid")
-      setPhoneNumber("");
-      setPassword("");
+      // setPhoneNumber("");
+      // setPassword("");
     }
 
     

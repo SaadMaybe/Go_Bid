@@ -5,6 +5,7 @@ const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
 const bidsModel = require('../models/bid.model');
+const messagesModel = require('../models/message.model')
 
 router.route("/").post(async (req, res) => 
 {
