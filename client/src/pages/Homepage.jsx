@@ -244,7 +244,7 @@ export const Homepage = () => {
                             {/* <h12> */}
                                 <b>Highest Bid: {bidList[index]}</b>
                             {/* </h12> */}
-                            <button onClick={() => navigate('/DisplayAnAuction', {state: {auctionid: auction._id, maximumBid: bidList[index], userid: userObjID}})}>View Auction</button>
+                            <button onClick={() => navigate('/DisplayAnAuction', {state: {userID: userID, auctionid: auction._id, maximumBid: bidList[index], id: userObjID}})}>View Auction</button>
                         </div>
 
                 </div>

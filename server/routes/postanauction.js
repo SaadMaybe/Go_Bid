@@ -3,9 +3,9 @@ let AuctionModel = require('../models/auction.model');
 let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
 
-router.route('/').post((req,res) => 
+router.route('/').post(async (req,res) => 
 {
-    AuctionModel.find().sort({auctionID:-1}).then(async auction =>
+    await AuctionModel.find().sort({auctionID:-1}).then(async auction =>
     {
         var auctionID;
 

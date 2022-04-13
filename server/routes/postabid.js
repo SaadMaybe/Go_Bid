@@ -37,8 +37,10 @@ router.route('/').post((req,res) =>
         list = list.push(temp._id);
 
         console.log(list);
-    
-        const updateAuction = AuctionModel.updateOne({_id: associatedAuction} , {listofBids : list});
+        
+        console.log(AuctionModel.findOne({_id: associatedAuction }));
+        
+        const updateAuction = AuctionModel.updateOne({_id: associatedAuction} , {$set : {listofBids : list}});
 
         await updateAuction.save()
         .then(() => res.json('Auction updated!'))

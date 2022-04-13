@@ -27,8 +27,10 @@ export const DisplayAnAuction = () => {
     const onSubmit = async (ev) => {
         ev.preventDefault();
 
+        const userID = location.state.userID;
+
         const bid = {
-            bidder : location.state.userid,
+            bidder : location.state.id,
             amountBidded : amountBidded,
             associatedAuction : location.state.auctionid
         }
@@ -38,7 +40,7 @@ export const DisplayAnAuction = () => {
         if (s.data.status !== "error")
         {
             console.log("INSIDE THE ONSUBMIT BUTTON")
-            navigate("/Homepage");
+            navigate("/Homepage", {state: {id: location.state.id, userID: userID}});
         }
     }
 
