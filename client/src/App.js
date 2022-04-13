@@ -11,7 +11,9 @@ import { PostAnAuction } from './pages/PostAnAuction';
 import { ViewMyAuctions } from './pages/ViewMyAuctions';
 import { DisplayAnAuction } from './pages/DisplayAnAuction';
 import { ViewMyInbox } from './pages/ViewMyInbox'
-
+import { AdminPortal } from './pages/AdminPortal'
+import { AdminDisplayUsers } from './pages/AdminDisplayUsers'
+import { AdminDisplayAuctions } from './pages/AdminDisplayAuctions'
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,10 @@ function App() {
           <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
           <Route path='/DisplayAnAuction' element={<DisplayAnAuction/>} />
           <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
+          <Route path='/AdminPortal' element={<AdminPortal/>} />
+          <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>}/>
+          <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>}/>
+          
         </Routes>
       </Router>
     </div>

@@ -30,7 +30,7 @@ export const  UserProfile = () => {
             setUsername(res.data.username);
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
-            setAccountStatus(res.data.accountStatus);
+            setAccountStatus(res.data.account_status);
             console.log("HMMM " + res.data)
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
@@ -57,9 +57,10 @@ export const  UserProfile = () => {
         
             <div className="user-details">
                 phoneNumber: {phoneNumber}<br></br>
-                email: {email}<br></br>
+                email: {email}<br></br><br></br>
+                {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}    
             </div>
-            {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}    
+            
         </div>
         </div>
         

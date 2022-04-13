@@ -11,7 +11,7 @@ export const ViewMyInbox = () =>
 
     const [userID, setUserID] = useState(0);
     const [messages, setMessages] = useState([]);
-    const [username, setUsername] = uaseState('');
+    const [username, setUsername] = useState('');
 
     useEffect(async () =>
     {
@@ -34,7 +34,7 @@ export const ViewMyInbox = () =>
             <div> The messages for {username} are:</div>
             <div class="unread">
                 {/* <span class="subject">The messages for {username} are:</span> */}
-                <input class="checkbox" type="checkbox" />
+                {/* <input class="checkbox" type="checkbox" /> */}
                 
                 <header>
                     
