@@ -29,7 +29,7 @@ router.route("/").post(async (req, res) =>
             for(var i = 0; i < auctions.length; i++)
             {
                 var auction = auctions[i];
-                var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
+                var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
                 if(bids.length > 0)
                 {
                     bidList.push(bids[0].amountBidded); 
@@ -102,7 +102,7 @@ router.route('/sell').post(async (req, res) =>
     // console.log(auction);
     if(auction)
     {
-        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1}).limit(1)
+        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1}).limit(1)
         if(highestBid.length > 0)
         {
             try
