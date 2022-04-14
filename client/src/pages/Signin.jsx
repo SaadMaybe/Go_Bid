@@ -83,7 +83,7 @@ export const SignIn = () => {
         
       </form>
       {/* <Link to= {"./Signup"}> */}
-         <button onClick={() => navigate("/Signup")}>Signup</button>
+         {/* <button onClick={() => navigate("/Signup")}>Signup</button> */}
       {/* </Link> */}
       </div>
     )

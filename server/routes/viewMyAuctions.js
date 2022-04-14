@@ -23,38 +23,50 @@ router.route("/").post(async (req, res) =>
                 auctioner: user._id
             })
             .populate('itemBeingAuctioned').populate('auctioner')//.populate('listOfBids');
-    
-        var bidList = [];
-        for(var i = 0; i < auctions.length; i++)
+        if(auctions.length > 0)
         {
-            var auction = auctions[i];
-            var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
-            if(bids.length > 0)
+            var bidList = [];
+            for(var i = 0; i < auctions.length; i++)
             {
-                bidList.push(bids[0].amountBidded); 
+                var auction = auctions[i];
+                var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
+                if(bids.length > 0)
+                {
+                    bidList.push(bids[0].amountBidded); 
+                }
+                else
+                {
+
+                    bidList.push(auction.itemBeingAuctioned.minimumBid);
+                }
             }
+            if(auctions)
+            {
+                res.json(
+                    {
+                        auctionList: auctions,
+                        status: 'ok',
+                        username: user.username,
+                        bidList: bidList
+                    }
+                    );
+            }    
             else
             {
-
-                bidList.push(auction.itemBeingAuctioned.minimumBid);
+                res.json({status: "error"});
             }
+
         }
-        if(auctions)
-        {
-            res.json(
-                {
-                    auctionList: auctions,
-                    status: 'ok',
-                    username: user.username,
-                    bidList: bidList
-                }
-                );
-        }    
         else
         {
-            res.json({status: "error"});
+            res.json({
+                auctionList: [],
+                status: 'ok',
+                username: user.username,
+                bidList: []
+            })
         }
-
+        
     }
     else
     {

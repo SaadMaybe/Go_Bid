@@ -14,6 +14,7 @@ export const ViewMyAuctions = () =>
     const [username, setUsername] = useState("");
     const [bidList, setBidList] = useState([]);
     const [auctionID, setAuctionID] = useState(0);
+    const [id, setId] = useState('');
 
     function sellAuction(e)
     {
@@ -26,7 +27,7 @@ export const ViewMyAuctions = () =>
             else
                 alert("Auction not Sold!")
             
-            navigate("/Homepage", {state: {userID: location.state.userID}});
+            navigate("/Homepage", {state: {userID: location.state.userID, id: id}});
             
         })
         //Sells an auction to the highest bidder
@@ -43,7 +44,7 @@ export const ViewMyAuctions = () =>
             else
                 alert("Auction not cancelled!")
             
-            navigate("/ViewMyAuctions", {state: {userID: location.state.userID}});
+            navigate("/Homepage", {state: {userID: location.state.userID, id: id}});
             
         })
         //Cancels an auction
@@ -51,9 +52,10 @@ export const ViewMyAuctions = () =>
 
     
 
-    useEffect(() => 
+    useEffect(async () => 
     {
-        const hmmm = location.state.userID
+        const hmmm = location.state.userID;
+        await setId(location.state.id);
         console.log("hmmm is " + hmmm);
         axios.post('http://localhost:9000/viewMyAuctions', {userID: hmmm}).then(response => 
         {
@@ -74,12 +76,12 @@ export const ViewMyAuctions = () =>
     return (
         <div>
             <div className = "top-dash-user">
-            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID, id: id}})}>&#8249;</button> </div>
             My Auctions
             </div>
             <br></br>
             <div className='past-btn'>
-                <button className='past-auction' onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID}})}>Past Auctions</button>
+                <button className='past-auction' onClick={() => navigate('/ViewMyPastAuctions', {state:{userID: location.state.userID, id: id}})}>Past Auctions</button>
             </div>
 
             List of auctions for user {username}:

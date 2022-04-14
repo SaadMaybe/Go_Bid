@@ -57,10 +57,10 @@ router.route('/').post(async (req,res) =>
         const startingTime = Date.now();
         const endingTime = (req.body.endingTime * 24 * 60 * 60 * 1000) + startingTime;
 
-        const auctionStatus = "active";
-        const listOfBids = [];
+        // const auctionStatus = "active";
+        // const listOfBids = [];
 
-        const newAuction = await new AuctionModel({auctionID, auctioner, itemBeingAuctioned, startingTime, endingTime, auctionStatus, listOfBids});
+        const newAuction = await new AuctionModel({auctionID: auctionID, auctioner: auctioner, itemBeingAuctioned: itemBeingAuctioned, startingTime: startingTime, endingTime: endingTime, auctionStatus: "active", listOfBids: [], highestBidValue: minimumBid, highestBidder: auctioner});
 
         await newAuction.save()
         .then(() => res.json({status: 'ok', message: 'Auction added!', userID: userID}))

@@ -18,6 +18,7 @@ export const AdminPortal = () =>
     const [phoneNumber, setPhoneNumber] = useState('');
     const [itemName, setItemName] = useState('');
     const [auctioner, setAuctioner] = useState('');
+    const [id, setId] = useState("");
 
 
     // function handleClick(e) {
@@ -53,11 +54,11 @@ export const AdminPortal = () =>
             axios.post('http://localhost:9000/adminPortal/searchPhoneNumber', {username: inpUsername, phoneNumber: phoneNumber}).then(res =>
             {
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr}});
+                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
                 else
                 {
                     alert("No user found with that username and phone number");
-                    navigate('/AdminPortal', {state:{userID: userID}});
+                    navigate('/AdminPortal', {state:{userID: userID, id: id}});
                     
                 }
                 //something
@@ -68,11 +69,11 @@ export const AdminPortal = () =>
             axios.post('http://localhost:9000/adminPortal/searchUsername', {username: inpUsername}).then(res =>
             {
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr}});
+                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
                 else
                 {
                     alert("No user found with that username and phone number");
-                    navigate('/AdminPortal', {state:{userID: userID}});
+                    navigate('/AdminPortal', {state:{userID: userID, id: id}});
                 }
                 //something
             }).catch(err => {return <div>{err}</div>});
@@ -82,11 +83,11 @@ export const AdminPortal = () =>
             axios.post('http://localhost:9000/adminPortal/searchPhoneNumber', {phoneNumber: phoneNumber}).then(res =>
             {
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr}});
+                    navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
                 else
                 {
                     alert("No user found with that username and phone number");
-                    navigate('/AdminPortal', {state:{userID: userID}});
+                    navigate('/AdminPortal', {state:{userID: userID, id: id}});
                 }
                 //something
             }).catch(err => {return <div>{err}</div>});
@@ -108,11 +109,11 @@ export const AdminPortal = () =>
             axios.post('http://localhost:9000/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
             {
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions}});
+                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions, id: id}});
                 else
                 {
                     alert("No auctions found");
-                    navigate('/AdminPortal', {state:{username: username, userID: userID}});
+                    navigate('/AdminPortal', {state:{username: username, userID: userID, id: id}});
                 }
                 //something
             }).catch(err => {return <div>{err}</div>});
@@ -124,11 +125,11 @@ export const AdminPortal = () =>
             {
                 
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions}});
+                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions, id: id}});
                 else
                 {
                     alert("No auctions found");
-                    navigate('/AdminPortal', {state:{username: username, userID: userID}});
+                    navigate('/AdminPortal', {state:{username: username, userID: userID, id: id}});
                 }
                 //something
             }).catch(err => {return <div>{err}</div>});
@@ -138,11 +139,11 @@ export const AdminPortal = () =>
             axios.post('http://localhost:9000/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
             {
                 if(res.data.status === 'ok')
-                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions}});
+                    navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions, id: id}});
                 else
                 {
                     alert("No auctions found");
-                    navigate('/AdminPortal', {state:{username: username, userID: userID}});
+                    navigate('/AdminPortal', {state:{username: username, userID: userID, id: id}});
                 }
                 //something
             }).catch(err => {return <div>{err}</div>});
@@ -159,6 +160,7 @@ export const AdminPortal = () =>
         
         const hmmm = location.state.userID;
         setUserID(hmmm);
+        setId(location.state.id);
 
         axios.post('http://localhost:9000/adminPortal/', {userID: hmmm}).then(res => 
         {
@@ -167,7 +169,7 @@ export const AdminPortal = () =>
             else
             {
                 alert("Error: User not found");
-                navigate("/Homepage", {state: {userID: hmmm}});
+                navigate("/Homepage", {state: {userID: hmmm, id: id}});
             }    
 
         });
@@ -177,7 +179,7 @@ export const AdminPortal = () =>
     return (
         <div>
             <div className = "top-dash-user">
-            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button></div>
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID, id: id}})}>&#8249;</button></div>
             Admin Portal
             </div>
             

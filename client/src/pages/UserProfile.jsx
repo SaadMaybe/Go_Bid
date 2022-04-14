@@ -13,11 +13,13 @@ export const  UserProfile = () => {
     const [username, setUsername] = useState('');
     const [accountStatus, setAccountStatus] = useState('')
     const [email, setEmail] = useState('');
+    const [id, setId] = useState("");
     // let done = false;    
 
     useEffect(() => {
         
         setUserID(location.state.userID);
+        setId(location.state.id);
         
         const huh = {
             userID: location.state.userID,
@@ -44,7 +46,7 @@ export const  UserProfile = () => {
         
         <div className="user-outer">
         <div className = "top-dash-user">
-        <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+        <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID, id: id}})}>&#8249;</button> </div>
         UserProfile
         </div>
         <div className="profile-bg">
@@ -58,7 +60,7 @@ export const  UserProfile = () => {
             <div className="user-details">
                 phoneNumber: {phoneNumber}<br></br>
                 email: {email}<br></br><br></br>
-                {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}    
+                {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID, id: id}})}>Admin Portal</button> : null}    
             </div>
             
         </div>

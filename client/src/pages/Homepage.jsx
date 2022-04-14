@@ -14,12 +14,11 @@ export const Homepage = () => {
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
-    const [userObjID, setUserObjID] = useState('');
     
 
     function myNav()
     {
-        navigate("/UserProfile", {state: {userID: userID}});
+        navigate("/UserProfile", {state: {userID: userID, id: id}});
     }
 
     useEffect(async () => 
@@ -37,7 +36,6 @@ export const Homepage = () => {
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
                     setBidList(res.data.bidList);
-                    setUserObjID(res.data.userObjID);
 
                 }).catch(err => {return <div>{err}</div>});
             // }
@@ -64,19 +62,19 @@ export const Homepage = () => {
                         </li>
 
                         <li key={2}>
-                            <button className='boss' onClick={() => navigate('/ViewMyAuctions', {state: {userID : userID}})}>
+                            <button className='boss' onClick={() => navigate('/ViewMyAuctions', {state: {userID : userID, id: id}})}>
                                 My Auctions
                             </button>
                         </li>
 
                         <li key={3}>
-                            <button className='boss' onClick={() => navigate('/ViewMyBids', {state: {userID : userID}})}>
+                            <button className='boss' onClick={() => navigate('/ViewMyBids', {state: {userID : userID, id: id}})}>
                                 My Bids
                             </button>
                         </li>
 
                         <li key={4}>
-                            <button className='boss' onClick={() => navigate('/ViewMyInbox', {state: {userID : userID}})}>
+                            <button className='boss' onClick={() => navigate('/ViewMyInbox', {state: {userID : userID, id: id}})}>
                                 My inbox    
                             </button>
                         </li>
@@ -124,7 +122,7 @@ export const Homepage = () => {
                             {/* <h12> */}
                                 <b>Highest Bid: {bidList[index]}</b>
                             {/* </h12> */}
-                            <button onClick={() => navigate('/DisplayAnAuction', {state: {userID: userID, auctionid: auction._id, maximumBid: bidList[index], id: userObjID}})}>View Auction</button>
+                            <button onClick={() => navigate('/DisplayAnAuction', {state: {userID: userID, auctionid: auction._id, maximumBid: bidList[index], id: id}})}>View Auction</button>
                         </div>
 
                 </div>
