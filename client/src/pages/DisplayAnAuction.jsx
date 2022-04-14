@@ -28,20 +28,22 @@ export const DisplayAnAuction = () => {
         ev.preventDefault();
 
         const userID = location.state.userID;
-
+        
         const bid = {
             bidder : location.state.id,
             amountBidded : amountBidded,
-            associatedAuction : location.state.auctionid
+            associatedAuction : location.state.auctionid,
+            currentBid : location.state.highestBidValue,
+            BidID : location.state.highestBid
         }
 
         let s = await axios.post('http://localhost:9000/postabid/', bid);
         console.log(s)
         if (s.data.status !== "error")
         {
-            console.log("INSIDE THE ONSUBMIT BUTTON")
-            navigate("/Homepage", {state: {id: location.state.id, userID: userID}});
+            alert("Bid lesser than minimum Bid")
         }
+        
     }
 
     useEffect(async () =>
@@ -54,12 +56,15 @@ export const DisplayAnAuction = () => {
         const item = { itemid : returnAuction.itemBeingAuctioned}
         var itemQuery = await axios.post('http://localhost:9000/getitem', item)
         var returnItem = itemQuery.data.value;
-    
+
+        setMaximumBid(location.state.highestBidValue)
         setTitle(returnItem.itemTitle);
         setAuctioneer(returnAuction.auctioneer);
-        setMaximumBid(location.state.maximumBid);
+        // setMaximumBid(location.state.maximumBid);
         setPicture(returnItem.picture);
         setTags(returnItem.tags);
+
+        console.log("maximum bid IN displayAnAuction: ", maximumBid)
 
 
 /*         display["itemTitle"] = returnItem.itemTitle;

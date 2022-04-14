@@ -33,18 +33,18 @@ router.route("/").post(async (req,res) =>
     .populate('itemBeingAuctioned').populate('auctioner')   
     
     var bidList = [];
-    console.log("Length of auctions is " + auctions.length)
+    // console.log("Length of auctions is " + auctions.length)
     for(var i = 0; i < auctions.length; i++)
     {
         
         var auction = auctions[i];
-        console.log("Auction is " + auction)
+        // console.log("Auction is " + auction)
         var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
 
         if(bids.length > 0)
         {
-            console.log("Bid is " + bids[0].amountBidded)
-            console.log("Bid is " + bids[1].amountBidded)
+            // console.log("Bid is " + bids[0].amountBidded)
+            // console.log("Bid is " + bids[1].amountBidded)
             bidList.push(bids[0].amountBidded);
         }
         else

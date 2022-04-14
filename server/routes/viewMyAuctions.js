@@ -102,7 +102,7 @@ router.route('/sell').post(async (req, res) =>
     // console.log(auction);
     if(auction)
     {
-        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1}).limit(1)
+        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1}).limit(1)
         if(highestBid.length > 0)
         {
             try

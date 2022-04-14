@@ -40,9 +40,9 @@ router.route('/').post(async (req,res) =>
 
         list.push(temp._id);
 
-        console.log("fasfasf:", list);
-        
-        const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listOfBids : list}});
+        // console.log("fasfasf:", list);
+        console.log("req on postabid.js: ", req.body)
+        const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listOfBids : list, highestBidValue : req.body.amountBidded, highestBid : req.body.bidID}});
         // console.log("L46: ")
         // await updateAuction.save()
         res.json('Auction updated!')

@@ -54,7 +54,7 @@ router.route('/').post(async (req,res) =>
 
         const itemBeingAuctioned = await ItemModel.findOne({itemTitle: itemTitle});
         //console.log(ItemModel.findOne({itemTitle: itemTitle}));
-        console.log("item Being Auctioned: ",itemBeingAuctioned._id);
+        
 
         const startingTime = Date.now();
         const endingTime = (req.body.endingTime * 24 * 60 * 60 * 1000) + startingTime;
