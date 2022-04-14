@@ -26,8 +26,11 @@ router.route('/').post(async (req,res) =>
 
         const newBid = new BidModel({bidID, bidder, amountBidded, bidStatus, associatedAuction});
 
+        // console.log("L29 before save");
         await newBid.save()
         .then(() => { console.log('Bid added!') })
+        // .catch(err => res.status(400).json('Error ' + err));
+
         
         let list2 = await AuctionModel.findOne({_id : associatedAuction});
 

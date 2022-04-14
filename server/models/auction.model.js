@@ -55,7 +55,7 @@ const auctionschema = new mongoose.Schema({
       ref: 'bids',
       default: 0,
     }
-    }
+  
   
   });
   
