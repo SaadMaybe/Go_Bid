@@ -29,13 +29,16 @@ router.route("/").post(async (req,res) =>
             auctionStartDate: {$lt: new Date()},
             auctioner: {$ne: user._id},
  
-        })
-    .populate('itemBeingAuctioned').populate('auctioner')//.populate('listOfBids')
+        })//.populate('listOfBids')
+    .populate('itemBeingAuctioned').populate('auctioner')   
     
     var bidList = [];
+    console.log("Length of auctions is " + auctions.length)
     for(var i = 0; i < auctions.length; i++)
     {
+        
         var auction = auctions[i];
+        console.log("Auction is " + auction)
         var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
         if(bids.length > 0)
         {
@@ -66,7 +69,7 @@ router.route("/").post(async (req,res) =>
     {
         res.json({status: "error"});
     }
-    
+
 });
 
 module.exports = router;
