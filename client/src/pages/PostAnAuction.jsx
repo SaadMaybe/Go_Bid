@@ -51,7 +51,7 @@ export const PostAnAuction = () => {
             auctioner: location.state.id,
             itemTitle: itemTitle,
             highestBid: null,
-            highestBidValue: minimumBid,
+            highestBidValue: 0,
             description: description,
             category: category,
             minimumBid: minimumBid,
@@ -60,13 +60,13 @@ export const PostAnAuction = () => {
             endingTime: endingTime
         }
         
-        console.log("id: ", location.state.id);
+        // console.log("id: ", location.state.id);
 
         let s = await axios.post('http://localhost:9000/postanauction/', auction).then();
-        console.log("Status s: ",s.data.message)
+        // console.log("Status s: ",s.data.message)
         if (s.data.status == "ok")
         {
-            console.log("INSIDE THE ONSUBMIT BUTTON in post an auction")
+            // console.log("INSIDE THE ONSUBMIT BUTTON in post an auction")
             navigate("/Homepage", {state: {userID: auction.userID, id: auction.auctioner}});
         }
         else
