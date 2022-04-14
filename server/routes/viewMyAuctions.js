@@ -132,13 +132,14 @@ router.route('/sell').post(async (req, res) =>
                 newMessID = maxMessID[0].messageID + 1;
                 
                 await messagesModel.create({messageID: newMessID, to: auction.auctioner._id, contents: "Your auction for " + auction.itemBeingAuctioned.itemTitle + " has been sold!\nHere are the contact details of the highest bidder so that you may contact them: " + "Username: " + highestBidder.bidder.username + "\nEmail:" + highestBidder.bidder.email + "\nPhone Number:" + highestBidder.bidder.phoneNumber});
-
                 console.log("I'm done with sending the messages")
+
                 //Then, we wil cancel all of the bids on the auction
                 var bids = await bidsModel.find({associatedAuction: auction._id}).populate('bidder');
                 for(var i = 0; i < bids.length; i++)
                 {
-                    await bidsModel.updateOne({bidID: bids[i].bidID}, {bidStatus: "rejected"});
+                    let everyBidID = bids[i].bidID;
+                    await bidsModel.updateOne({bidID: everyBidID}, {bidStatus: "rejected"});
                 }
                 await bidsModel.updateOne({bidID: highestBid[0].bidID}, {bidStatus: "accepted"});
 
@@ -147,8 +148,12 @@ router.route('/sell').post(async (req, res) =>
                 newMessID = maxMessID[0].messageID + 1;
                 for(var i = 0; i < bids.length; i++)
                 {
-                    await messagesModel.create({messageID: newMessID, to: bids[i].bidder._id, contents: "Your bid on the auction for " + auction.itemBeingAuctioned.itemTitle + " has been cancelled."});
-                    newMessID += 1;
+                    if(bids[i].bidStatus != "accepted")
+                    {
+                        await messagesModel.create({messageID: newMessID, to: bids[i].bidder._id, contents: "Your bid on the auction for " + auction.itemBeingAuctioned.itemTitle + " has been rejected."});   
+                        newMessID += 1;
+                    }
+                        
                 }
 
 

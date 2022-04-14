@@ -19,7 +19,7 @@ export const ViewMyAuctions = () =>
     function sellAuction(e)
     {
         console.log("Sell Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: auctionID}).then(res =>
+        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: auctionID}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -27,6 +27,11 @@ export const ViewMyAuctions = () =>
             else
                 alert("Auction not Sold!")
             
+            await setAuctionList([]);
+            await setBidList([]);
+            await setUsername("");
+            await setAuctionID(0);
+            // navigate("/viewMyAuctions");
             navigate("/Homepage", {state: {userID: location.state.userID, id: id}});
             
         })
@@ -36,14 +41,17 @@ export const ViewMyAuctions = () =>
     function cancelAuction(e)
     {
         console.log("Cancel Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: auctionID}).then(res =>
+        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: auctionID}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
                 alert("Auction cancelled!")
             else
                 alert("Auction not cancelled!")
-            
+            await setAuctionList([]);
+            await setBidList([]);
+            await setUsername("");
+            await setAuctionID(0);
             navigate("/Homepage", {state: {userID: location.state.userID, id: id}});
             
         })
