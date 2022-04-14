@@ -44,7 +44,18 @@ const auctionschema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'bids',
       default: []
-    }]
+    }],
+    highestBidValue: {
+      type: Number,
+      default: 0,
+      min: 0
+    },
+    highestBidder: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'bids',
+      default: 0,
+    }
+    }
   
   });
   
