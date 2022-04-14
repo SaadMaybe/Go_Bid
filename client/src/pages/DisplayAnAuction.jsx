@@ -33,13 +33,26 @@ export const DisplayAnAuction = () => {
             bidder : location.state.id,
             amountBidded : amountBidded,
             associatedAuction : location.state.auctionid,
+            
             currentBid : location.state.highestBidValue,
             BidID : location.state.highestBid
         }
-
-        let s = await axios.post('http://localhost:9000/postabid/', bid);
-        console.log(s)
-        if (s.data.status !== "error")
+        
+        if (amountBidded > location.state.highestBidValue)
+        {  
+            let s = await axios.post('http://localhost:9000/postabid/', bid);
+            console.log("S: ", s)
+            if (s.data.status !== "error")
+            {
+                console.log("INSIDE THE ONSUBMIT BUTTON")
+                navigate("/Homepage", {state: {id: location.state.id, userID: userID}});
+            }
+            else
+            {
+                alert("Bid Not Placed")
+            }
+        }
+        else
         {
             alert("Bid lesser than minimum Bid")
         }

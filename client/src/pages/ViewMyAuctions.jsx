@@ -18,8 +18,9 @@ export const ViewMyAuctions = () =>
 
     function sellAuction(e)
     {
-        console.log("Sell Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: auctionID}).then(async res =>
+        const hmmm = e
+        console.log("Sell Auction, the auction ID is " + hmmm);
+        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: hmmm}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -40,8 +41,9 @@ export const ViewMyAuctions = () =>
 
     function cancelAuction(e)
     {
+        const hmmm = e
         console.log("Cancel Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: auctionID}).then(async res =>
+        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: e}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -69,6 +71,7 @@ export const ViewMyAuctions = () =>
         {
             if(response.status === 200)
             {
+                
                 setAuctionList(response.data.auctionList);
                 setUsername(response.data.username);
                 setBidList(response.data.bidList);
@@ -104,8 +107,8 @@ export const ViewMyAuctions = () =>
                                     <p>   </p>
                                     {bidList[index] == auction.itemBeingAuctioned.minimumBid ? "No bids yet. Starting value for the bid is " + auction.itemBeingAuctioned.minimumBid + " " : "Highest bid: " + bidList[index] + " "}
 
-                                    <button className='sell' onClick={() => {setAuctionID(auction.auctionID); sellAuction();}}>Sell</button>
-                                    <button className='cancel' onClick={() => {setAuctionID(auction.auctionID); cancelAuction();}}>Cancel</button> 
+                                    <button className='sell' onClick={async () => {await setAuctionID(auction.auctionID); sellAuction(auction.auctionID);}}>Sell</button>
+                                    <button className='cancel' onClick={async () => {await setAuctionID(auction.auctionID); cancelAuction(auction.auctionID);}}>Cancel</button> 
                                 </div>
 
                             </li>
