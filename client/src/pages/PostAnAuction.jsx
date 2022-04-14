@@ -50,6 +50,8 @@ export const PostAnAuction = () => {
             userID: location.state.userID,
             auctioner: location.state.id,
             itemTitle: itemTitle,
+            highestBid: null,
+            highestBidValue: minimumBid,
             description: description,
             category: category,
             minimumBid: minimumBid,

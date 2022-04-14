@@ -23,6 +23,10 @@ router.route('/').post(async (req,res) =>
         var auctioner = req.body.auctioner;
         const userID = req.body.userID
         const itemTitle = req.body.itemTitle;
+
+        const highestBid = req.body.highestBid;
+        const highestBidValue = req.body.highestBidValue;
+            
         const description = req.body.description;
         const category = req.body.category;
         const minimumBid = req.body.minimumBid;
@@ -60,7 +64,7 @@ router.route('/').post(async (req,res) =>
         const auctionStatus = "active";
         const listOfBids = [];
 
-        const newAuction = await new AuctionModel({auctionID, auctioner, itemBeingAuctioned, startingTime, endingTime, auctionStatus, listOfBids});
+        const newAuction = await new AuctionModel({auctionID, auctioner, itemBeingAuctioned, startingTime, endingTime, auctionStatus, listOfBids, highestBidValue, highestBid});
 
         await newAuction.save()
         .then(() => res.json({status: 'ok', message: 'Auction added!', userID: userID}))
