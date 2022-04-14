@@ -29,13 +29,16 @@ router.route("/").post(async (req,res) =>
             auctionStartDate: {$lt: new Date()},
             auctioner: {$ne: user._id},
  
-        })
-    .populate('itemBeingAuctioned').populate('auctioner')//.populate('listOfBids')
+        })//.populate('listOfBids')
+    .populate('itemBeingAuctioned').populate('auctioner')   
     
     var bidList = [];
+    console.log("Length of auctions is " + auctions.length)
     for(var i = 0; i < auctions.length; i++)
     {
+        
         var auction = auctions[i];
+        console.log("Auction is " + auction)
         var bids = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1});
         if(bids.length > 0)
         {
@@ -66,16 +69,7 @@ router.route("/").post(async (req,res) =>
     {
         res.json({status: "error"});
     }
-    // const myItem = new itemsModel({itemID: 0, description: "this is a test item", category: "electronics"});
-    // myItem.save().then(() => {res.json("yoyoyo")});
-    // const myUser = await usersModel.findOne({userID: "1"});
-    // const myItem = await itemsModel.findOne({itemID: "1"});
-    // console.log(myUser.userID);
-    // console.log("User: " + myUser.userID + " " + myUser._id);
-    // console.log("Item: " + myItem.itemID + " " + myItem._id);
-    // res.json("KEk")
-    // const myAuction = new auctionsModel({auctionID: 1, auctioner: myUser._id, itemBeingAuctioned: myItem._id, startingTime: Date.now(), endingTime: Date.now() + (2 * 24 * 3600), auctionStatus: "active", listOfBids: []});
-    // myAuction.save().then(() => {res.json("yoyoyo")});
+
 });
 
 module.exports = router;

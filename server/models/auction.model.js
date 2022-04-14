@@ -50,7 +50,7 @@ const auctionschema = new mongoose.Schema({
       default: 0,
       min: 0
     },
-    highestBidder: {
+    highestBid: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'bids',
       default: 0,
