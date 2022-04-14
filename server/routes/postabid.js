@@ -26,26 +26,23 @@ router.route('/').post(async (req,res) =>
 
         const newBid = new BidModel({bidID, bidder, amountBidded, bidStatus, associatedAuction});
 
-        console.log("L29 before save");
         await newBid.save()
         .then(() => { console.log('Bid added!') })
-        // .catch(err => res.status(400).json('Error ' + err));
-
         
         let list2 = await AuctionModel.findOne({_id : associatedAuction});
-        console.log("response: ", list2)
+
         let list = list2.listOfBids
-        console.log("LIST: ", list)
+
         const temp = await BidModel.findOne({bidID : bidID});
-        console.log("tempp:", temp._id);
+
         list.push(temp._id);
 
         console.log("fasfasf:", list);
         
         const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listOfBids : list}});
-        console.log("L46")
-        await updateAuction.save()
-        .then(() => res.json('Auction updated!'))
+        // console.log("L46: ")
+        // await updateAuction.save()
+        res.json('Auction updated!')
        // .catch(err => res.status(400).json('Error ' + err));
 
 
