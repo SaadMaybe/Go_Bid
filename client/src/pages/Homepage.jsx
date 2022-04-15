@@ -49,15 +49,17 @@ export const Homepage = () => {
         ev.preventDefault();
 
         const searchData = {
-            searchString : searchQuery
+            searchString : searchQuery,
+            userID: location.state.userID,
+            id : location.state.id
         }
         
 
-        let s = await axios.post('http://localhost:9000/homepage/Search', searchData).then();
+        let s = await axios.post('http://localhost:9000/homepage/search', searchData).then();
 
         if (s.data.status == "ok")
         {
-            navigate("/Search", {state: {userID: location.state.userID, id: id}});
+            navigate("/SearchResults", {state: {userID: location.state.userID, id: id, searchString: searchQuery}});
         }
         else
         {

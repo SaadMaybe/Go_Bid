@@ -76,10 +76,15 @@ router.route("/").post(async (req,res) =>
 });
 //-------------------------------------------------
 
-router.route("/Search").post(async (req,res) => 
+router.route("/search").post(async (req,res) => 
 {
     const searchString = req.body.searchString;
     var stringArr = searchString.split(" ")
+    for (let i = 0; i < stringArr.length; i++) {
+        const element = stringArr[i];
+        if (element.trim.length == 0)
+        stringArr.splice(i, 1);        
+    }
         /*  
 
     The things that we need for the homepage:
@@ -90,15 +95,16 @@ router.route("/Search").post(async (req,res) =>
     */
     // const hmmm = new itemsModel()
     const userID = req.body.userID;
-    
+    console.log("User ID in homepage/search: ",userID)
     const user = await usersModel.findOne({userID: userID});
+    console.log(user)
     const auctions = await auctionsModel.find(
         {
             auctionStatus: "active",
             auctionEndDate: {$gt: new Date()},
             auctionStartDate: {$lt: new Date()},
             auctioner: {$ne: user._id},
- 
+
         })//.populate('listOfBids')
     .populate('itemBeingAuctioned').populate('auctioner')   
     var auctionList = []
@@ -113,6 +119,8 @@ router.route("/Search").post(async (req,res) =>
         for (let i = 0; i < stringArr.length && !includeTest; i++) {
             if(auction.itemBeingAuctioned.itemTitle.includes(stringArr[i]))
             {
+                // console.log("Item title is " + auction.itemBeingAuctioned.itemTitle);
+                // console.log("the value of the string that was matched is " + stringArr[i])
                 includeTest = true;
                 auctionList.push(auction);
             }
@@ -141,7 +149,7 @@ router.route("/Search").post(async (req,res) =>
         res.json(
             {
                 itemCategories: itemsModel.schema.path('category').enumValues,
-                auctionList: auctions,
+                auctionList: auctionList,
                 status: 'ok',
                 username: user.username,
                 bidList: bidList,

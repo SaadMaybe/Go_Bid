@@ -14,6 +14,7 @@ import { ViewMyInbox } from './pages/ViewMyInbox'
 import { AdminPortal } from './pages/AdminPortal'
 import { AdminDisplayUsers } from './pages/AdminDisplayUsers'
 import { AdminDisplayAuctions } from './pages/AdminDisplayAuctions'
+import { SearchResults } from './pages/SearchResults'
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,7 @@ function App() {
           <Route path='/AdminPortal' element={<AdminPortal/>} />
           <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>}/>
           <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>}/>
+          <Route path='/SearchResults' element={<SearchResults/>}/>
           
         </Routes>
       </Router>

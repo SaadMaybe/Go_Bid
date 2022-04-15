@@ -28,8 +28,8 @@ export const SearchResults = () => {
             const hmmm = location.state.userID;
         
             setUserID(location.state.userID);
-            
-                await axios.post('http://localhost:9000/homepage/search', {userID: hmmm}).then(res => 
+                console.log("Posting Search Results.jsx L31: ", location.state.userID)
+                await axios.post('http://localhost:9000/homepage/Search', {userID: hmmm, searchString: location.state.searchString}).then(res => 
                 {
                     setUsername(res.data.username);
                     
@@ -78,7 +78,7 @@ export const SearchResults = () => {
                         
                         <li key={5}>
                             <button className='boss' onClick={() => myNav()}> 
-                                Hello there  {username}!
+                                Hello there {username}!
                             </button>
                         </li>
 
