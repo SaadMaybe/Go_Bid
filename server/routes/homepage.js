@@ -78,13 +78,20 @@ router.route("/").post(async (req,res) =>
 
 router.route("/search").post(async (req,res) => 
 {
+    console.log("I'm stuck here stepbro");
     const searchString = req.body.searchString;
     var stringArr = searchString.split(" ")
+    console.log(stringArr);
     for (let i = 0; i < stringArr.length; i++) {
         const element = stringArr[i];
-        if (element.trim.length == 0)
-        stringArr.splice(i, 1);        
+        console.log("ele is " + element.trim());
+        if (element.trim().length == 0)
+        {
+            stringArr.splice(i, 1);        
+        }
+            
     }
+    console.log(stringArr)
         /*  
 
     The things that we need for the homepage:
@@ -95,9 +102,9 @@ router.route("/search").post(async (req,res) =>
     */
     // const hmmm = new itemsModel()
     const userID = req.body.userID;
-    console.log("User ID in homepage/search: ",userID)
+    // console.log("User ID in homepage/search: ",userID)
     const user = await usersModel.findOne({userID: userID});
-    console.log(user)
+    // console.log(user)
     const auctions = await auctionsModel.find(
         {
             auctionStatus: "active",
@@ -146,6 +153,9 @@ router.route("/search").post(async (req,res) =>
     // console.log(auctions)
     if(auctions && user)
     {
+        console.log("What is being returned is:")
+        console.log(auctionList)
+
         res.json(
             {
                 itemCategories: itemsModel.schema.path('category').enumValues,

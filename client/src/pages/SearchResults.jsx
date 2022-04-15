@@ -29,13 +29,14 @@ export const SearchResults = () => {
         
             setUserID(location.state.userID);
                 console.log("Posting Search Results.jsx L31: ", location.state.userID)
-                await axios.post('http://localhost:9000/homepage/Search', {userID: hmmm, searchString: location.state.searchString}).then(res => 
+                await axios.post('http://localhost:9000/homepage/search', {userID: hmmm, searchString: location.state.searchString}).then(async res => 
                 {
-                    setUsername(res.data.username);
-                    
-                    setAuctions(res.data.auctionList);
-                    setItemCategories(res.data.itemCategories);
-                    setBidList(res.data.bidList);
+                    await setUsername(res.data.username);
+                    await setAuctions(res.data.auctionList);
+                    await setItemCategories(res.data.itemCategories);
+                    await setBidList(res.data.bidList);
+                    console.log("User name is " + username);
+                    console.log("Auction list is " + auctions[0]);
 
                 }).catch(err => {return <div>{err}</div>});
     }, [location.state.userID])
