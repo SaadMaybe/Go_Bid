@@ -60,6 +60,7 @@ router.route("/searchPhoneNumber").post(async (req, res) => {
     const phoneNumber = req.body.phoneNumber;
     const user = await usersModel.find({ phoneNumber: phoneNumber, account_status: "user" });
     if (user) {
+        console.log("no way am i here, user is " + user)
         res.json(
             {
                 status: 'ok',
@@ -68,6 +69,7 @@ router.route("/searchPhoneNumber").post(async (req, res) => {
         );
     }
     else {
+        console.log("Why doesn't AI just kill itself. Is it not smart enough to realise that")
         res.json(
             {
                 status: 'error',

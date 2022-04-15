@@ -80,12 +80,14 @@ export const AdminPortal = () =>
         }
         else if(phoneNumber !== '')
         {
+            console.log("I mean- death isn't that bad when you think about it");
             axios.post('http://localhost:9000/adminPortal/searchPhoneNumber', {phoneNumber: phoneNumber}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
                 else
                 {
+                    console.log("I hope I die and burn all the pain away ")
                     alert("No user found with that username and phone number");
                     navigate('/AdminPortal', {state:{userID: userID, id: id}});
                 }
