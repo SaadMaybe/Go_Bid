@@ -235,7 +235,7 @@ router.route('/cancel').post(async (req, res) =>
         await messagesModel.create({messageID: newMessID, to: auction.auctioner._id, contents: "Your auction for " + auction.itemBeingAuctioned.itemTitle + " has been cancelled!"});
 
         //We increase the number of cancelled auctions for the user by 1
-        await usersModel.updateOne({userID: auction.auctioner.userID}, {$set:{cancelledAuctions: auction.auctioner.cancelledAuctions + 1}}, {new: true});
+        await usersModel.updateOne({userID: auction.auctioner.userID}, {cancelledAuctions: auction.auctioner.cancelledAuctions + 1}, {new: true});
         
         res.json({status: 'ok', message: "Auction has been cancelled!"});
 
