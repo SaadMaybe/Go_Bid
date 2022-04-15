@@ -110,7 +110,7 @@ router.route('/sell').post(async (req, res) =>
                 const highestBidder = await highestBid[0].populate('bidder');
                 
                 //Firstly, we close the auction
-                await auctionsModel.updateOne({auctionID: auctionID}, {auctionStatus: "closed"}, {new: true});
+                await auctionsModel.updateOne({auctionID: auctionID}, {$set: {auctionStatus: "closed"}}, {new: true});
                 console.log("I am done with closing the auction");
 
 
@@ -139,9 +139,9 @@ router.route('/sell').post(async (req, res) =>
                 for(var i = 0; i < bids.length; i++)
                 {
                     let everyBidID = bids[i].bidID;
-                    await bidsModel.updateOne({bidID: everyBidID}, {bidStatus: "rejected"});
+                    await bidsModel.updateOne({bidID: everyBidID}, {$set: {bidStatus: "rejected"}});
                 }
-                await bidsModel.updateOne({bidID: highestBid[0].bidID}, {bidStatus: "accepted"});
+                await bidsModel.updateOne({bidID: highestBid[0].bidID}, {$set: {bidStatus: "accepted"}});
 
                 //We'll also send a message to the bidders           
                 maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
@@ -164,12 +164,12 @@ router.route('/sell').post(async (req, res) =>
                 
                 //Now, we increment certain counters and arrays (which imo, suck)
                 //First, we will consider the bidder
-                await usersModel.updateOne({userID: highestBidder.bidder.userID}, {completedBids: highestBidder.bidder.completedBids + 1}, {new: true});
+                await usersModel.updateOne({userID: highestBidder.bidder.userID}, {$set: {completedBids: highestBidder.bidder.completedBids + 1}}, {new: true});
 
                 //Then, we will consider the auctioner
                 var completedA = auction.auctioner.completedAuctions
                 completedA.push(auction._id);
-                await usersModel.updateOne({userID: auction.auctioner.userID}, {completedAuctions: completedA}, {new: true});
+                await usersModel.updateOne({userID: auction.auctioner.userID}, {$set:{completedAuctions: completedA}}, {new: true});
 
                 res.json({status: 'ok', message: "Auction has been sold!"});
             }
@@ -200,13 +200,13 @@ router.route('/cancel').post(async (req, res) =>
     if(auction)
     {
         //We cancel the auction
-        await auctionsModel.updateOne({auctionID: auctionID}, {auctionStatus: "cancelled"});
+        await auctionsModel.updateOne({auctionID: auctionID}, {$set:{auctionStatus: "cancelled"}});
 
         //We then get the list of all the bidders on the auction
         var bids = await bidsModel.find({associatedAuction: auction._id}).populate('bidder');
         for(var i = 0; i < bids.length; i++)
         {
-            await bidsModel.updateOne({bidID: bids[i].bidID}, {bidStatus: "rejected"});
+            await bidsModel.updateOne({bidID: bids[i].bidID}, {$set:{bidStatus: "rejected"}});
         }
 
         //We send a message to the bidders as well
