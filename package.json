@@ -4,10 +4,7 @@
     "bootstrap": "^5.1.3",
     "formik": "^2.2.9",
     "react-router-dom": "^6.3.0",
-<<<<<<< Updated upstream
-=======
     "react-scripts": "^5.0.0",
->>>>>>> Stashed changes
     "yup": "^0.32.11"
   }
 }
