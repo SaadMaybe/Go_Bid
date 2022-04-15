@@ -67,12 +67,12 @@ export const AdminDisplayUsers = () => {
                         <div className="playcards">
                             <li key={user.userID}>
                                 <div className="in-text">
-                                    User: {user.username}<br></br>
-                                    Phone Number: {user.phoneNumber}<br></br>
+                                    User: {user.username}<br></br><br></br>
+                                    Phone Number: {user.phoneNumber}<br></br><br></br>
                                     Email: {user.email}
                                     <p>   </p>
                                     
-                                    <button className="cancel" onClick={() => BanUser(user._id)}>Ban User</button>
+                                    <button className="ban" onClick={() => BanUser(user._id)}>Ban User</button>
                                     <br></br>
                                     <br></br>
                                 </div>

@@ -78,7 +78,7 @@ export const AdminDisplayAuctions = () => {
 
                                     <p>   </p>
                                     
-                                    <button className="cancel" onClick={() => {setThanos(auction._id); deleteAuction()}}>Delete Auction</button>
+                                    <button className="ban" onClick={() => {setThanos(auction._id); deleteAuction()}}>Delete Auction</button>
                                     <br></br>
                                     <br></br>
                                 </div>

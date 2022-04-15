@@ -188,19 +188,23 @@ export const AdminPortal = () =>
                     
                     <form className="by-user">
                         <h2>Search by User</h2>
-                        <label>Search by Username</label>
-                        <input className = "in-user" type="text" onChange={changeInpUsername} />
-                        <label>Search by phone Number</label>
-                        <input className = "in-user" type="text" onChange={changePhoneNumber} />
+                        <label className="don2">Search by Username</label>
+                        <input className = "in-user" type="search" onChange={changeInpUsername} />
+                        <br></br><br></br><br></br>
+                        <label className="don2">Search by phone Number</label>
+                        <input className = "in-user" type="search" onChange={changePhoneNumber} />
+                        <br></br><br></br>
                         <button className="search-portal" onClick={userOnSubmit}>Search</button>
                     </form>
                     <br></br><br></br>
                     <form className="by-user">
                         <h2>Search by Auction</h2>
-                        <label>Search by Item Name</label>
-                        <input className="in-user" type="text" onChange={changeItemName} />
-                        <label>Search by Auctioner</label>
-                        <input className = "in-user" type="text" onChange={changeAuctioner} />
+                        <label className="don2">Search by Item Name</label>
+                        <input className="in-user" type="search" onChange={changeItemName} />
+                        <br></br><br></br><br></br>
+                        <label className="don2">Search by Auctioner</label>
+                        <input className = "in-user" type="search" onChange={changeAuctioner} />
+                        <br></br><br></br>
                         <button className="search-portal" onClick={auctionOnSubmit}>Search</button>
                     </form>
 
