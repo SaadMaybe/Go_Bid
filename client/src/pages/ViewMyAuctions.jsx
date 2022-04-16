@@ -60,6 +60,42 @@ export const ViewMyAuctions = () =>
         //Cancels an auction
     }
 
+    function timeDiff(d1, d2)
+    {
+        var date1 = new Date(d1);
+        var date2 = new Date(d2);
+        var diff = date1.getTime() - date2.getTime();
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff -= days * (1000 * 60 * 60 * 24);
+        var hours = Math.floor(diff / (1000 * 60 * 60));
+        diff -= hours * (1000 * 60 * 60);
+        var minutes = Math.floor(diff / (1000 * 60));
+        diff -= minutes * (1000 * 60); 
+        var seconds = Math.floor(diff / (1000));
+
+        var returnString = "";
+        if(days > 0)
+            if(days == 1)
+                returnString += days + " day ";
+            else
+                returnString += days + " days ";
+        if(hours > 0)
+            if(hours == 1)
+                returnString += hours + " hour ";
+            else
+                returnString += hours + " hours ";
+        if(minutes > 0)
+            if(minutes == 1)
+                returnString += minutes + " minute ";
+            else
+                returnString += minutes + " minutes "; 
+        if(seconds > 0)
+            if(seconds == 1)
+                returnString += seconds + " seconds ";
+            else
+                returnString += seconds + " seconds ";
+        return returnString;
+    }
     
 
     useEffect(async () => 
@@ -106,7 +142,8 @@ export const ViewMyAuctions = () =>
                                     Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                                     <p>   </p>
                                     {bidList[index] == auction.itemBeingAuctioned.minimumBid ? "No bids yet. Starting value for the bid is " + auction.itemBeingAuctioned.minimumBid + " " : "Highest bid: " + bidList[index] + " "}
-
+                                    <p>   </p>
+                                    Time remaining: {timeDiff(auction.endingTime, new Date())}
                                     <button className='sell' onClick={async () => {await setAuctionID(auction.auctionID); sellAuction(auction.auctionID);}}>Sell</button>
                                     <button className='cancel' onClick={async () => {await setAuctionID(auction.auctionID); cancelAuction(auction.auctionID);}}>Cancel</button> 
                                 </div>

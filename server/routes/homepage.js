@@ -30,7 +30,7 @@ router.route("/").post(async (req,res) =>
             auctioner: {$ne: user._id},
  
         })//.populate('listOfBids')
-    .populate('itemBeingAuctioned').populate('auctioner')   
+    .populate('itemBeingAuctioned').populate('auctioner').limit(50);   
     
     var bidList = [];
     // console.log("Length of auctions is " + auctions.length)
