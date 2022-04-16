@@ -78,7 +78,6 @@ router.route("/").post(async (req,res) =>
 
 router.route("/search").post(async (req,res) => 
 {
-    console.log("I'm stuck here stepbro");
     const searchString = req.body.searchString;
     var stringArr = searchString.split(" ")
     console.log(stringArr);
@@ -153,8 +152,6 @@ router.route("/search").post(async (req,res) =>
     // console.log(auctions)
     if(auctions && user)
     {
-        console.log("What is being returned is:")
-        console.log(auctionList)
 
         res.json(
             {

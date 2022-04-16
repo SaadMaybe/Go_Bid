@@ -3,6 +3,7 @@ import axios from "axios";
 import "../App.css";
 import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from "react-router-dom";
+// import { multer } from 'multer'
 
 export const PostAnAuction = () => {
     const navigate = useNavigate();
@@ -14,6 +15,12 @@ export const PostAnAuction = () => {
     const [pictures, setPictures] = useState("");
     const [tags, setTags] = useState("");
     const [endingTime, setEndingTime] = useState(0);
+
+    const [img, setImg] = useState();
+
+    const changeImg = (title) => {
+        setImg(title.target.files.files[0]);
+    }
 
     const changeItemTitle = (title) => {
         setItemTitle(title.target.value);
@@ -46,28 +53,43 @@ export const PostAnAuction = () => {
     const onSubmit = async (ev) =>{
         ev.preventDefault();
 
-        const auction = {
-            userID: location.state.userID,
-            auctioner: location.state.id,
-            itemTitle: itemTitle,
-            highestBid: null,
-            highestBidValue: 0,
-            description: description,
-            category: category,
-            minimumBid: minimumBid,
-            pictures: pictures,
-            tags: tags,
-            endingTime: endingTime
-        }
-        
+        // const auction = {
+        //     userID: location.state.userID,
+        //     auctioner: location.state.id,
+        //     itemTitle: itemTitle,
+        //     highestBid: null,
+        //     highestBidValue: 0,
+        //     description: description,
+        //     category: category,
+        //     minimumBid: minimumBid,
+        //     pictures: pictures,
+        //     tags: tags,
+        //     endingTime: endingTime
+        // }
+
+        const auction = new FormData()
+        auction.append("userID", location.state.userID)
+        auction.append("auctioner", location.state.id)
+        auction.append("itemTitle", itemTitle)
+        auction.append("highestBid", null)
+        auction.append("highestBidValue", 0)
+        auction.append("description", description)
+        auction.append("category", category)
+        auction.append("minimumBid", minimumBid)
+        auction.append("pictures", pictures)
+        auction.append("tags", tags)
+        auction.append("endingTime", endingTime)
+        auction.append("image", img)
         // console.log("id: ", location.state.id);
 
-        let s = await axios.post('http://localhost:9000/postanauction/', auction).then();
+        console.log("Before sending form data", auction.values())
+        let s = await axios.post('http://localhost:9000/postanauction/', auction,{ headers :{ 'Content-Type' : 'multipart/form-data' }} ).then();
+        console.log("After sending form data")
         // console.log("Status s: ",s.data.message)
         if (s.data.status == "ok")
         {
             // console.log("INSIDE THE ONSUBMIT BUTTON in post an auction")
-            navigate("/Homepage", {state: {userID: auction.userID, id: auction.auctioner}});
+            navigate("/Homepage", {state: {userID: location.state.userID, id: location.state.id}});
         }
         else
         {
@@ -77,13 +99,7 @@ export const PostAnAuction = () => {
 
 
 return (
-/*     <input  type="file"
-    // Style this input in CSS.
-        required id="picture" name="picturename"
-        className="form-control" multiple
-        onChange={changePictures}
-        />
-    <br></br> */
+
         <div className="left">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
@@ -155,12 +171,19 @@ return (
                     onChange={changeEndingTime}
                     />
                 <br></br>
-
+                {/* //-----------CODE FOR UPLOADING IMAGES------------------ */}
+                <label>Upload a picture:</label>
+                <input type="file" 
+                    enctype='multipart/form-data'
+                    id="avatar"
+                    accept="image/png, image/jpeg" 
+                    onChange = {changeImg}/>
                 <input type="submit" value="Post an Auction" className="btn btn-primary" />
                 <div className="right"></div>
                 </div>
             </form>
         </div>
+
 )
 
 }

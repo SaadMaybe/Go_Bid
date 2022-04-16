@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
-const jwt = require('jsonwebtoken')
-const sha256 = require('sha256')
+const jwt = require('jsonwebtoken');
+const sha256 = require('sha256');
+const multer = require('multer');
 
+const upload = multer();
 const UsersModel = require('./models/user.model')
 
 require('dotenv').config();
@@ -12,6 +14,7 @@ const app = express();
 const port  = process.env.PORT || 3001;
 
 //Defining routers.
+
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
@@ -37,7 +40,7 @@ app.use('/users', usersRouter);
 app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
-app.use('/postanauction', PostAnAuctionRouter);
+app.use('/postanauction',upload.single("verifyDoc"), PostAnAuctionRouter);
 app.use('/createanitem', createAnItemRouter);
 app.use('/getauction', getAuctionRouter);
 app.use('/getitem', getItemRouter);

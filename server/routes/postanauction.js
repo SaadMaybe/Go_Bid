@@ -1,10 +1,14 @@
 const router = require('express').Router();
+const multer = require('multer');
+
 let AuctionModel = require('../models/auction.model');
 let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
+let imageModel = require('../models/image.model');
 
 router.route('/').post(async (req,res) => 
 {
+
     await AuctionModel.find().sort({auctionID:-1}).then(async auction =>
     {
         var auctionID;
@@ -17,8 +21,6 @@ router.route('/').post(async (req,res) =>
         {
             auctionID = auction[0].auctionID + 1;
         }   
-
-        //console.log(req.body);
 
         var auctioner = req.body.auctioner;
         const userID = req.body.userID
