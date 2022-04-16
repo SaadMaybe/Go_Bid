@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
+<<<<<<< Updated upstream
 const bidsModel = require('../models/bid.model');
+=======
+const bidsModel = require('../models/bid.model')
+>>>>>>> Stashed changes
 
 router.route("/").post(async (req, res) => 
 {

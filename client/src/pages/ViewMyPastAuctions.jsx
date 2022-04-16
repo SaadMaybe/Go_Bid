@@ -42,6 +42,7 @@ export const ViewMyPastAuctions = () =>
 
     return (
         <div>
+<<<<<<< Updated upstream
         <div className = "top-dash-user">
         <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
         Past Auctions
@@ -66,6 +67,33 @@ export const ViewMyPastAuctions = () =>
                     </div>
                 )}
             </ul>
+=======
+            <div className = "top-dash-user">
+            <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+            Past Auctions
+            </div>
+            <div className='past-btn'>
+                <button className='past-auction' onClick={() => navigate('/ViewMyAuctions', {state:{userID: location.state.userID}})}>My Current Auctions</button>
+            </div>
+            <br></br>
+            <div className='auction-list'>
+                List of auctions for user {username}:
+                <ul>
+                    { 
+                    auctionList.map((auction, index) =>
+                        <div className='playcards'>
+                            <li key={auction.auctionID}>
+                                <div className='in-text'>
+                                    Title of the auction: {auction.itemBeingAuctioned.itemTitle}
+                                    <p>   </p>
+                                    Highest Bid: {bidList[index]}
+                                </div>
+                            </li>
+                        </div>
+                    )}
+                </ul>
+            </div>
+>>>>>>> Stashed changes
         </div>
     </div>
     )

@@ -375,8 +375,12 @@ position: relative;
   background-color: white;
   padding: 25px;
   margin:50px;
+<<<<<<< Updated upstream
   /* border-radius: 50px; */
   width:80%
+=======
+  border-radius: 50px;
+>>>>>>> Stashed changes
 }
 
 .sell{
