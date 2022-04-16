@@ -74,7 +74,15 @@ export const Homepage = () => {
             <div className='big-black'>
                 <div className='inner'>
                     <ul>
-
+                        <li key={0}>
+                            <button className='boss' onClick={() => 
+                                {
+                                    setUserID(0);
+                                    navigate('/');
+                                }}> 
+                                Logout
+                            </button>
+                        </li>    
                         <li key={1}>
                             <button className='boss' onClick={() => navigate('/PostAnAuction', {state: {userID : userID, id: id}})}> 
                                 Post an auction
@@ -100,7 +108,7 @@ export const Homepage = () => {
                         </li>
 
                         <li>
-                            <button className='boss' onClick={() => navigate('/ContactUs')}>Contact us</button> 
+                            <button className='boss' onClick={() => navigate('/ContactUs', {state: {userID : userID, id: id}})}>Contact us</button> 
                         </li>
                         
                         

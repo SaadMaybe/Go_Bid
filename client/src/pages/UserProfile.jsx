@@ -14,6 +14,8 @@ export const  UserProfile = () => {
     const [accountStatus, setAccountStatus] = useState('')
     const [email, setEmail] = useState('');
     const [id, setId] = useState("");
+    const [completedAuctions, setCompletedAuctions] = useState(0);
+    const [cancelledAuctions, setCancelledAuctions] = useState(0);
     // let done = false;    
 
     useEffect(() => {
@@ -25,7 +27,7 @@ export const  UserProfile = () => {
             userID: location.state.userID,
         }
         console.log("Huh is", huh)
-        axios.post('http://localhost:9000/userProfile/', huh).then(res => {
+        axios.post('http://localhost:9000/userProfile/', huh).then(async res => {
             
             console.log("The urge to die can be rather uncontrollable at times");
             console.log(res.data);
@@ -33,7 +35,15 @@ export const  UserProfile = () => {
             setEmail(res.data.email);   
             setPhoneNumber(res.data.phoneNumber);
             setAccountStatus(res.data.account_status);
-            console.log("HMMM " + res.data)
+            console.log("HMMM " + res.data);
+
+            const arr = res.data.completedAuctions;
+            let i = 0;
+            for(; i < arr.length; i++);
+            setCompletedAuctions(i);
+
+            setCancelledAuctions(res.data.cancelledAuctions);
+
         }).catch(err => {return <div>{err}</div>});         
         // done = true;
     }, [location.state.userID])
@@ -44,14 +54,36 @@ export const  UserProfile = () => {
     return (
         
         
+        // <div className="user-outer">
+        // <div className = "top-dash-user">
+        // <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID, id: id}})}>&#8249;</button> </div>
+        // UserProfile
+        // </div>
+        // <div className="profile-bg">
+        // </div>
+        // <div className="profile-details">
+        //     {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
+        //     <br></br><br></br>
+        //     Hello {username}:<br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        
+        //     <div className="user-details">
+        //         phoneNumber: {phoneNumber}<br></br>
+        //         email: {email}<br></br><br></br>
+        //         {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID, id: id}})}>Admin Portal</button> : null}    
+        //     </div>
+        // </div>
+        // </div>
+
         <div className="user-outer">
         <div className = "top-dash-user">
-        <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID, id: id}})}>&#8249;</button> </div>
+        <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
         UserProfile
         </div>
+
         <div className="profile-bg">
             
         </div>
+        <div className="to-portal">{(accountStatus==="admin") ? <button className="past-auction" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>
         <div className="profile-details">
             {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
             <br></br><br></br>
@@ -59,13 +91,13 @@ export const  UserProfile = () => {
         
             <div className="user-details">
                 phoneNumber: {phoneNumber}<br></br>
-                email: {email}<br></br><br></br>
-                {(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID, id: id}})}>Admin Portal</button> : null}    
+                email: {email}<br></br>
+                Completed Auctions: {completedAuctions}<br></br>
+                Cancelled Auctions: {cancelledAuctions}<br></br><br></br>
             </div>
-            
+            {/* <div className="hojana">{(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>     */}
         </div>
         </div>
-        
     )
 
 }

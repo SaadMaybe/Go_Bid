@@ -40,7 +40,7 @@ export const SignIn = () => {
     }
     else
     {
-      alert("stupid")
+      alert("Wrong username/password, please enter your credentials again!")
       // setPhoneNumber("");
       // setPassword("");
     }

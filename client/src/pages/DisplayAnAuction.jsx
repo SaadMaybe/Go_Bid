@@ -15,7 +15,10 @@ export const DisplayAnAuction = () => {
     const [maximumBid, setMaximumBid] = useState(0);
     const [picture, setPicture] = useState("");
     const [tags, setTags] = useState("");
-
+    const [description, setDescription] = useState("");
+    const [aucComp, setAucComp] = useState(0);
+    const [aucCanc, setAucCanc] = useState(0);
+    const [aucUsername, setAucUsername] = useState("");
 
     let display = {};
 
@@ -72,12 +75,22 @@ export const DisplayAnAuction = () => {
 
         setMaximumBid(location.state.highestBidValue)
         setTitle(returnItem.itemTitle);
-        setAuctioneer(returnAuction.auctioneer);
+        setAucUsername(returnAuction.auctioner.username);
+        // console.log("i hope you die " + returnAuction.auctioner.username);
+        setAucCanc(returnAuction.auctioner.cancelledAuctions);
+
+        const hmmm = returnAuction.auctioner.completedAuctions;
+        let i = 0;
+        for (i = 0; i < hmmm.length; i++);
+        setAucComp(i);
+        
+
         // setMaximumBid(location.state.maximumBid);
         setPicture(returnItem.picture);
         setTags(returnItem.tags);
+        setDescription(returnItem.description);
 
-        console.log("maximum bid IN displayAnAuction: ", maximumBid)
+        // console.log("maximum bid IN displayAnAuction: ", maximumBid)
 
 
 /*         display["itemTitle"] = returnItem.itemTitle;
@@ -93,7 +106,10 @@ export const DisplayAnAuction = () => {
 return (
     <div>
     Title: {title}<br></br>
-    Auctioneer: {auctioneer}<br></br>
+    Description: {description}<br></br>
+    Auctioner: {aucUsername}<br></br>
+    Auctioner's Completed auctions: {aucComp}<br></br>
+    Auctioner's Cancelled auctions: {aucCanc}<br></br>
     Current Highest Bid: {maximumBid}<br></br>
     Picture: {picture}<br></br>
     tags: {tags}<br></br>

@@ -327,6 +327,16 @@ position: relative;
   padding: 20px;
 }
 
+.to-portal{
+  margin-top: 30px;
+  /* padding: 10px; */
+  position:absolute;
+  background-color: black;
+  color:black;
+  right:10%;
+  border-radius: 50px;
+}
+
 
 /* view my auction */
 
@@ -362,30 +372,85 @@ position: relative;
 }
 
 .playcards{
-  background-color: black;
+  background-color: white;
   padding: 25px;
   margin:50px;
-  border-radius: 50px;
+  /* border-radius: 50px; */
+  width:80%
 }
 
 .sell{
   position: absolute;
-  right:250px;
+  /* right:250px; */
+  right:30%;
   border-radius: 5px;
   background-color: black;
   color: white;
   font-weight: 700;
+  width:5%;
 }
 .cancel{
   position: absolute;
-  right: 170px;
-  color:red;
+  /* right: 170px; */
+  right: 22%;
+  color:white;
   border-radius: 5px;
   background-color: black;
   font-weight: 700;
+  width: 5%;
 }
 
 .in-text{
+  /* background-color: blac; */
+  color: black;
+  height: 100px;
+}
+
+
+/* Admin portal */
+
+
+.portal{
+  /* background-color: red; */
+  margin-left: 2%;
+}
+.by-user{
+  /* position:fixed; */
+  /* background-color: black; */
+  padding: 20px;
+  width:80%;
+  height:auto;
+  color: black;
+  border-radius: 50px;
+  /* border-style: ridge; */
+}
+.in-user{
+
+  width: 50%;
+}
+.don2{
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+}
+
+.search-portal{
+  position: absolute;
+  right:39.5%;
+  border-radius: 5px;
   background-color: black;
   color: white;
+  font-weight: 700;
+  width: 250px;
+  height: auto;
+  margin-top: 30px;
+}
+.ban{
+  position: absolute;
+  right: 25%;
+  top:35%;
+  color:white;
+  border-radius: 5px;
+  background-color: black;
+  font-weight: 700;
 }
