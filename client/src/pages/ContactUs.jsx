@@ -194,8 +194,12 @@ export const ContactUs = () => {
 //         )
 // }
   return (
-                
-              <div className="pic-back-contact">
+              <div>
+                <div className = "top-dash-user">
+                <div className="gobid">GoBid</div>
+                CONTACT US
+                </div>
+                <div className="pic-back-contact">
                 <div className="contactContainer">
                 <form onSubmit={onSubmit}>
                   <div className="form-group-contact">
@@ -225,7 +229,9 @@ export const ContactUs = () => {
                   </div>
                 </form>
                 </div>
-              </div>
+                </div>
+              </div>  
+              
         )
 }
 

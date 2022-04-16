@@ -92,6 +92,7 @@ export const AdminDisplayAuctions = () => {
         // </div>
         <div>
         <div className = "top-dash-user">
+        <div className="gobid">GoBid</div>
         <div className="back-btn"><button className="back" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>&#8249;</button></div>
         Admin Portal
         </div>

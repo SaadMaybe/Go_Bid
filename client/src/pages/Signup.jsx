@@ -171,7 +171,12 @@ export const Signup = () => {
   
   }
   return (
-                <div className="left">
+            <div>
+              <div className = "top-dash-user">
+              <div className="gobid">GoBid</div>
+              SIGNUP
+              </div>
+              <div className="left">
                 {/* <h3>Sign Up</h3> */}
                 <form onSubmit={onSubmit}>
                   <div className="form-group">
@@ -215,7 +220,8 @@ export const Signup = () => {
                   {/* </div> */}
                 </form>
                 </div>
-        )
+            </div>
+          )
 }
 
 

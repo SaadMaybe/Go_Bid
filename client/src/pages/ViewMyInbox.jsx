@@ -30,6 +30,7 @@ export const ViewMyInbox = () =>
 
 
         <div classname='inbox-list'>
+            <div className="gobid">GoBid</div>
             <div className='top-dash'>My Inbox</div>
             <div> The messages for {username} are:</div>
             <div class="unread">

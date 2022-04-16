@@ -114,9 +114,30 @@ export const Homepage = () => {
                     
                     </ul>
                 </div>
+                <div className='Search-Bar'>
+                    {/* <form onSubmit={onsubmitSearch}>
+                    <label>Search:</label>
+                    <input  type="text"
+                        required    
+                        className="form-control"
+                        // value={this.state.UserName}
+                        onChange={changeSearchQuery}
+                        />
+                    <button type='submit'>Search</button>
+                    </form> */}
+                    
+
+                    <form class="example" onSubmit={onsubmitSearch}>
+                    <input type="text" placeholder="Search.." name="search" onChange ={changeSearchQuery}/>
+                    <button type="submit">Search</button>
+                    </form>
+
+
+
+                </div>
             </div>
             <br></br>
-            <div className='Search-Bar'>
+            {/* <div className='Search-Bar'>
                 <form onSubmit={onsubmitSearch}>
                 <label>Search:</label>
                 <input  type="text"
@@ -127,7 +148,7 @@ export const Homepage = () => {
                     />
                 <button type='submit'>Search</button>
                 </form>
-            </div>
+            </div> */}
             <br></br>
             <br></br>
 

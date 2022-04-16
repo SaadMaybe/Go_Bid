@@ -51,40 +51,46 @@ export const SignIn = () => {
   }
 
   return (
-      <div className = "left">
-      {/* <h3>Sign in</h3> */}
-      <form onSubmit={onSubmit}>
-        <div className="form-group">
-          <h3>Sign in</h3> 
-          <label>Number: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              // value={phoneNumber}
-              // label = "inpNumber"
-              // id = "inpNumber"
-              onChange={changePhoneNumber}
-              />
-          <br></br>
-          <label>Password: </label>
-          <input  type="password"
-          required
-          className="form-control"
-          // value={Password}
-          // label = "inpPassword"
-          // id = "inpPassword"
-          onChange={changePassword}
-          />
-          <input type="submit" value="Sign In" className="btn btn-primary" />
-          <div><Link to= {"./signup"}> <button className="signup-link">SIGNUP</button></Link></div>
-          
-          <div className="right"></div>
+      <div>
+        <div className = "top-dash-user">
+        <div className="gobid">GoBid</div>
+        LOGIN
         </div>
-        
-      </form>
-      {/* <Link to= {"./Signup"}> */}
-         {/* <button onClick={() => navigate("/Signup")}>Signup</button> */}
-      {/* </Link> */}
+        <div className = "left">
+        {/* <h3>Sign in</h3> */}
+        <form onSubmit={onSubmit}>
+          <div className="form-group">
+            <h3>Sign in</h3> 
+            <label>Number: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                // value={phoneNumber}
+                // label = "inpNumber"
+                // id = "inpNumber"
+                onChange={changePhoneNumber}
+                />
+            <br></br>
+            <label>Password: </label>
+            <input  type="password"
+            required
+            className="form-control"
+            // value={Password}
+            // label = "inpPassword"
+            // id = "inpPassword"
+            onChange={changePassword}
+            />
+            <input type="submit" value="Sign In" className="btn btn-primary" />
+            <div><Link to= {"./signup"}> <button className="signup-link">SIGNUP</button></Link></div>
+            
+            <div className="right"></div>
+          </div>
+          
+        </form>
+        {/* <Link to= {"./Signup"}> */}
+          {/* <button onClick={() => navigate("/Signup")}>Signup</button> */}
+        {/* </Link> */}
+        </div>
       </div>
     )
 }

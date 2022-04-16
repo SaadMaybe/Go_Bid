@@ -87,6 +87,7 @@ export const ViewMyAuctions = () =>
     return (
         <div>
             <div className = "top-dash-user">
+            <div className="gobid">GoBid</div>
             <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID, id: id}})}>&#8249;</button> </div>
             My Auctions
             </div>

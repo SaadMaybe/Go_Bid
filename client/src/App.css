@@ -155,9 +155,8 @@ input[type="submit"]:active {
   overflow: hidden;
   border: 2px solid black;
   background-color: black;
-  position:absolute;
   top: 0;
-  width: 110%;
+  width: auto;
   height: auto;
   display: block;
 }
@@ -183,10 +182,20 @@ li .boss{
   text-decoration: none;
 }
 .big-black{
-  background-color: #3b3b38;
-  width: 100%;
-  height: 200px;
+  background-color: #212121;
+  width: auto
+
 }
+
+.Search-Bar{
+  background-color: #212121;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+}
+
 .down-one{
   margin-top: 0px;
 } 
@@ -218,6 +227,8 @@ height: 60%;
 margin: 1%;
 position: relative;
 }
+
+
 
 /* for myinbox */
 
@@ -401,7 +412,6 @@ position: relative;
 }
 
 .in-text{
-  /* background-color: blac; */
   color: black;
   height: 100px;
 }
@@ -411,18 +421,14 @@ position: relative;
 
 
 .portal{
-  /* background-color: red; */
   margin-left: 2%;
 }
 .by-user{
-  /* position:fixed; */
-  /* background-color: black; */
   padding: 20px;
   width:80%;
   height:auto;
   color: black;
   border-radius: 50px;
-  /* border-style: ridge; */
 }
 .in-user{
 
@@ -453,4 +459,46 @@ position: relative;
   border-radius: 5px;
   background-color: black;
   font-weight: 700;
+}
+
+
+
+/* searchbar */
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 15%;
+
+  padding: 5px;
+  background: black;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+
+
+}
+
+form.example button:hover {
+  background: grey;
+}
+
+.gobid{
+  float: left;
+  margin-left: 5%;
+  color: white;
+  /* width: 100%; */
+  /* text-align: center; */
+  font-weight: 900;
+  font-size:x-large;
 }

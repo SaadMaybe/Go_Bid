@@ -84,7 +84,12 @@ return (
         onChange={changePictures}
         />
     <br></br> */
-        <div className="left">
+        <div>
+            <div className = "top-dash-user">
+                <div className="gobid">GoBid</div>
+                AUCTION
+                </div>
+            <div className="left">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                 <h3>Post An Auction</h3>
@@ -160,6 +165,7 @@ return (
                 <div className="right"></div>
                 </div>
             </form>
+            </div>
         </div>
 )
 
