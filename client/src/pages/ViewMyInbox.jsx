@@ -28,9 +28,15 @@ export const ViewMyInbox = () =>
 
     return (
 
+        <div>
 
+        <div className = "top-dash-user">
+        <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID, id: location.state.id}})}>&#8249;</button> </div>
+        My Inbox
+        
+        </div>
         <div classname='inbox-list'>
-            <div className='top-dash'>My Inbox</div>
+            {/* <div className='top-dash'>My Inbox</div> */}
             <div> The messages for {username} are:</div>
             <div class="unread">
                 {/* <span class="subject">The messages for {username} are:</span> */}
@@ -53,6 +59,7 @@ export const ViewMyInbox = () =>
                 {/* <span class="time">2 days ago</span> */}
                 </header>
             </div>
+        </div>
         </div>
     )
 }
