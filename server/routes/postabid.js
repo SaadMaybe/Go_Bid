@@ -4,9 +4,9 @@ let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
 let BidModel = require('../models/bid.model');
 
-router.route('/').post((req,res) => 
+router.route('/').post(async (req,res) => 
 {
-    BidModel.find().sort({bidID:-1}).then(async bid =>
+    await BidModel.find().sort({bidID:-1}).then(async bid =>
     {
         var bidID;
 
@@ -26,21 +26,28 @@ router.route('/').post((req,res) =>
 
         const newBid = new BidModel({bidID, bidder, amountBidded, bidStatus, associatedAuction});
 
+        // console.log("L29 before save");
         await newBid.save()
-        .then(() => res.json('Bid added!'))
-        .catch(err => res.status(400).json('Error ' + err));
+        .then(() => { console.log('Bid added!') })
+        // .catch(err => res.status(400).json('Error ' + err));
 
-        const list = AuctionModel.findOne({_id : associatedAuction}).listofBids;
+        
+        let list2 = await AuctionModel.findOne({_id : associatedAuction});
 
-        const temp = BidModel.findOne({bidID : bidID});
+        let list = list2.listOfBids
 
-        list = list.push(temp._id);
-    
-        const updateAuction = AuctionModel.updateOne({_id: associatedAuction} , {listofBids : list});
+        const temp = await BidModel.findOne({bidID : bidID});
 
-        await updateAuction.save()
-        .then(() => res.json('Auction updated!'))
-        .catch(err => res.status(400).json('Error ' + err));
+        list.push(temp._id);
+
+        // console.log("fasfasf:", list);
+        console.log("req on postabid.js: ", req.body)
+        const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listOfBids : list, highestBidValue : req.body.amountBidded, highestBid : req.body.bidID}});
+        // console.log("L46: ")
+        // await updateAuction.save()
+        res.json('Auction updated!')
+       // .catch(err => res.status(400).json('Error ' + err));
+
 
     }).catch(err => res.status(400).json('Error: ' + err));
 

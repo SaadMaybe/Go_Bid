@@ -29,20 +29,20 @@ export const SignIn = () => {
     }
 
     let s = await axios.post('http://localhost:9000/signin/', user).then();
+    //console.log(s.data.id);
+    //console.log(s.data.userID);
 
     
     if (s.data.status !== "error")
     {
-      // console.log("INSIDE THE ONSUBMIT BUTTON")
-      navigate("/Homepage", {state: {userID: s.data.userID}});
-
+      console.log("In signin Route id: ", s.data.id)
+      navigate("/Homepage", { state: {userID: s.data.userID, id: s.data.id}});
     }
     else
     {
       alert("stupid")
-      // await setPhoneNumber("");
-      // await setPassword("");
-      // navigate("/Signin");
+      // setPhoneNumber("");
+      // setPassword("");
     }
 
     
@@ -76,7 +76,7 @@ export const SignIn = () => {
           onChange={changePassword}
           />
           <input type="submit" value="Sign In" className="btn btn-primary" />
-          <div><button  onClick={() => navigate("/Signup")} className="signup-link">SIGNUP</button></div>
+          <div><Link to= {"./signup"}> <button className="signup-link">SIGNUP</button></Link></div>
           
           <div className="right"></div>
         </div>

@@ -5,13 +5,13 @@ const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const usersModel = require('../models/user.model');
 const bidsModel = require('../models/bid.model');
-const messagesModel = require('../models/message.model');
+const messagesModel = require('../models/message.model')
 
 router.route("/").post(async (req, res) => 
 {
     // console.log("Kill me quickly, so that i don't feel any more pain")
     const userID = req.body.userID;
-    const user = await usersModel.findOne({userID: userID, account_status: {$in : ["user", "admin"]}});
+    const user = await usersModel.findOne({userID: userID});
     if(user)
     {
         // console.log("I just love being ")
@@ -23,38 +23,50 @@ router.route("/").post(async (req, res) =>
                 auctioner: user._id
             })
             .populate('itemBeingAuctioned').populate('auctioner')//.populate('listOfBids');
-    
-        var bidList = [];
-        for(var i = 0; i < auctions.length; i++)
+        if(auctions.length > 0)
         {
-            var auction = auctions[i];
-            var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
-            if(bids.length > 0)
+            var bidList = [];
+            for(var i = 0; i < auctions.length; i++)
             {
-                bidList.push(bids[0].amountBidded); 
+                var auction = auctions[i];
+                var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
+                if(bids.length > 0)
+                {
+                    bidList.push(bids[0].amountBidded); 
+                }
+                else
+                {
+
+                    bidList.push(auction.itemBeingAuctioned.minimumBid);
+                }
             }
+            if(auctions)
+            {
+                res.json(
+                    {
+                        auctionList: auctions,
+                        status: 'ok',
+                        username: user.username,
+                        bidList: bidList
+                    }
+                    );
+            }    
             else
             {
-
-                bidList.push(auction.itemBeingAuctioned.minimumBid);
+                res.json({status: "error"});
             }
+
         }
-        if(auctions)
-        {
-            res.json(
-                {
-                    auctionList: auctions,
-                    status: 'ok',
-                    username: user.username,
-                    bidList: bidList
-                }
-                );
-        }    
         else
         {
-            res.json({status: "error"});
+            res.json({
+                auctionList: [],
+                status: 'ok',
+                username: user.username,
+                bidList: []
+            })
         }
-
+        
     }
     else
     {
@@ -70,9 +82,10 @@ router.route('/sell').post(async (req, res) =>
 {
 //     const auctionID = req.body.auctionID;
 //     const auction = await auctionsModel.findOne({auctionID: auctionID});
+//     console.log(auction)
 
-//     const kek = await usersModel.findOne({username: "ahmed taimoor"});
-//     const myBid = new bidsModel({bidID: 2, amountBidded: 500000, bidStatus: "pending", associatedAuction: auction._id, bidder: kek._id});
+//     const kek = await usersModel.findOne({username: "taimur"});
+//     const myBid = new bidsModel({bidID: 3, amountBidded: 500000, bidStatus: "pending", associatedAuction: auction._id, bidder: kek._id});
 
 //     await myBid.save();
 //     var sQue = await auctionsModel.findOne({auctionID: auctionID});
@@ -86,10 +99,10 @@ router.route('/sell').post(async (req, res) =>
 
     const auctionID = req.body.auctionID;
     const auction = await auctionsModel.findOne({auctionID: auctionID}).populate('itemBeingAuctioned').populate('auctioner');
-    console.log(auction);
+    // console.log(auction);
     if(auction)
     {
-        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({bidAmount: -1}).limit(1)
+        const highestBid = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1}).limit(1)
         if(highestBid.length > 0)
         {
             try
@@ -97,7 +110,7 @@ router.route('/sell').post(async (req, res) =>
                 const highestBidder = await highestBid[0].populate('bidder');
                 
                 //Firstly, we close the auction
-                await auctionsModel.updateOne({auctionID: auctionID}, {auctionStatus: "closed"}, {new: true});
+                await auctionsModel.updateOne({auctionID: auctionID}, {$set: {auctionStatus: "closed"}}, {new: true});
                 console.log("I am done with closing the auction");
 
 
@@ -119,18 +132,44 @@ router.route('/sell').post(async (req, res) =>
                 newMessID = maxMessID[0].messageID + 1;
                 
                 await messagesModel.create({messageID: newMessID, to: auction.auctioner._id, contents: "Your auction for " + auction.itemBeingAuctioned.itemTitle + " has been sold!\nHere are the contact details of the highest bidder so that you may contact them: " + "Username: " + highestBidder.bidder.username + "\nEmail:" + highestBidder.bidder.email + "\nPhone Number:" + highestBidder.bidder.phoneNumber});
-
                 console.log("I'm done with sending the messages")
+
                 //Then, we wil cancel all of the bids on the auction
-                var bids = await bidsModel.find({associatedAuction: auction._id});
+                var bids = await bidsModel.find({associatedAuction: auction._id}).populate('bidder');
                 for(var i = 0; i < bids.length; i++)
                 {
-                    await bidsModel.updateOne({bidID: bids[i].bidID}, {bidStatus: "rejected"});
+                    let everyBidID = bids[i].bidID;
+                    await bidsModel.updateOne({bidID: everyBidID}, {$set: {bidStatus: "rejected"}});
                 }
-                await bidsModel.updateOne({bidID: highestBid[0].bidID}, {bidStatus: "accepted"});
+                await bidsModel.updateOne({bidID: highestBid[0].bidID}, {$set: {bidStatus: "accepted"}});
+
+                //We'll also send a message to the bidders           
+                maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
+                newMessID = maxMessID[0].messageID + 1;
+                for(var i = 0; i < bids.length; i++)
+                {
+                    if(bids[i].bidStatus != "accepted")
+                    {
+                        await messagesModel.create({messageID: newMessID, to: bids[i].bidder._id, contents: "Your bid on the auction for " + auction.itemBeingAuctioned.itemTitle + " has been rejected."});   
+                        newMessID += 1;
+                    }
+                        
+                }
 
 
                 console.log("I'm done with handling the bids as well")
+
+                
+
+                
+                //Now, we increment certain counters and arrays (which imo, suck)
+                //First, we will consider the bidder
+                await usersModel.updateOne({userID: highestBidder.bidder.userID}, {$set: {completedBids: highestBidder.bidder.completedBids + 1}}, {new: true});
+
+                //Then, we will consider the auctioner
+                var completedA = auction.auctioner.completedAuctions
+                completedA.push(auction._id);
+                await usersModel.updateOne({userID: auction.auctioner.userID}, {$set:{completedAuctions: completedA}}, {new: true});
 
                 res.json({status: 'ok', message: "Auction has been sold!"});
             }
@@ -156,7 +195,56 @@ router.route('/sell').post(async (req, res) =>
 
 router.route('/cancel').post(async (req, res) =>
 {
-    res.json({status: "ok"});
+    const auctionID = req.body.auctionID;
+    const auction = await auctionsModel.findOne({auctionID: auctionID}).populate('itemBeingAuctioned').populate('auctioner');
+    if(auction)
+    {
+        //We cancel the auction
+        await auctionsModel.updateOne({auctionID: auctionID}, {$set:{auctionStatus: "cancelled"}});
+
+        //We then get the list of all the bidders on the auction
+        var bids = await bidsModel.find({associatedAuction: auction._id}).populate('bidder');
+        for(var i = 0; i < bids.length; i++)
+        {
+            await bidsModel.updateOne({bidID: bids[i].bidID}, {$set:{bidStatus: "rejected"}});
+        }
+
+        //We send a message to the bidders as well
+        var maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
+        var newMessID = 0;
+        if(maxMessID.length > 0)
+        {
+            newMessID = maxMessID[0].messageID + 1;
+        }
+        else
+        {
+            newMessID = 1;
+        }
+        for(var i = 0; i < bids.length; i++)
+        {
+            await messagesModel.create({messageID: newMessID, to: bids[i].bidder._id, contents: "Your bid on the auction for " + auction.itemBeingAuctioned.itemTitle + " has been cancelled."});
+            newMessID += 1;
+        }
+
+
+        
+        //We then send a message to the auctioner
+        maxMessID = await messagesModel.find({}).sort({messageID: -1}).limit(1);
+        newMessID = maxMessID[0].messageID + 1;
+        
+        await messagesModel.create({messageID: newMessID, to: auction.auctioner._id, contents: "Your auction for " + auction.itemBeingAuctioned.itemTitle + " has been cancelled!"});
+
+        //We increase the number of cancelled auctions for the user by 1
+        await usersModel.updateOne({userID: auction.auctioner.userID}, {cancelledAuctions: auction.auctioner.cancelledAuctions + 1}, {new: true});
+        
+        res.json({status: 'ok', message: "Auction has been cancelled!"});
+
+    }
+    else
+    {
+        res.json({status: "error"});
+
+    }
 })
 
 
