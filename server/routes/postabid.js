@@ -23,7 +23,7 @@ router.route('/').post(async (req,res) =>
         const amountBidded = req.body.amountBidded;
         const bidStatus = "pending";
         const associatedAuction = req.body.associatedAuction;
-
+        console.log("associated auction:" + associatedAuction);
         const newBid = new BidModel({bidID, bidder, amountBidded, bidStatus, associatedAuction});
 
         // console.log("L29 before save");
