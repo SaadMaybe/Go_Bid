@@ -183,17 +183,13 @@ return (
                         <br></br>
 
                         <br></br><br></br>
-
-                      
-
-                        <label>Location:</label>
-                        <input  type="text"
+                        <label className="don2">Location:</label>
+                        <input className="in-user"  type="search"
                             required
-                            className="form-control"
+
                             // value={this.state.UserName}
                             onChange={changePictures}
-                            />
-                        
+                        />
                         <br></br>
                         <label className="don2">Upload a picture:</label>
                         <input type="file" 

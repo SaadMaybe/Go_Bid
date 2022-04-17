@@ -51,38 +51,7 @@ export const ContactUs = () => {
     }
   
   }
-//   return (
-//                 <div className="left">
-//                 <form onSubmit={onSubmit}>
-//                   <div className="form-group">
-//                     <h3>Contact Us</h3> 
-//                     <label>Email: </label>
-//                     <input  type="text"
-//                         required
-//                         className="form-control"
-//                         onChange={changeEmail}
-//                         />
-//                     <br></br>
-//                     <label>Subject: </label>
-//                     <input  type="password"
-//                     required
-//                     className="form-control"
-//                     onChange={changeSubject}
-//                     />
-//                     <br></br>
-//                     <label>How can we help you?: </label>
-//                     <input  type="password"
-//                     required
-//                     className="form-control"
-//                     onChange={changeMsg}
-//                     />
-//                     <input type="submit" value="Submit" className="btn btn-primary" />
-//                     <div className="right"></div>
-//                   </div>
-//                 </form>
-//                 </div>
-//         )
-// }
+
   return (
     // <div>
     // 	<div className = "top-dash-user">
@@ -99,7 +68,6 @@ export const ContactUs = () => {
       
 		// 	Feel free to contact us at GoBid@gmail.com		
     //   </div>
-
     <div className="user-outer">
     <div className = "top-dash-user">
     <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
@@ -123,11 +91,9 @@ export const ContactUs = () => {
         {/* <div className="hojana">{(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>     */}
     </div>
     </div>
-)
-
 		
         
-
+  )
 }
 
 
