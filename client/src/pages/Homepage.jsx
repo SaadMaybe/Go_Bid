@@ -55,10 +55,11 @@ export const Homepage = () => {
         }
         
 
-        let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/search', searchData).then();
+        let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/homepage/search', searchData).then();
 
         if (s.data.status == "ok")
         {
+            console.log("search ok")
             navigate("/SearchResults", {state: {userID: location.state.userID, id: id, searchString: searchQuery}});
         }
         else

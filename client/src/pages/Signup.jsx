@@ -208,9 +208,11 @@ export const Signup = () => {
                     onChange={changePassword}
                     />
                     <input type="submit" value="Create User" className="btn btn-primary" />
+                    <button onClick={() => navigate("/")} className="btn btn-primary">Sign In</button>
+
                     <div className="right"></div>
+
                   </div>
-                  <button onClick={() => navigate("/")}>Sign In</button>
                 </form>
                 </div>
         )
