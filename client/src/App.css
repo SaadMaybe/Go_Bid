@@ -207,28 +207,34 @@ li .boss{
 
 
 .row {
-  display:inline-flex;
+  display:table-cell;
   width: 25%; 
   height: 2%;
 }
 .item {
 float: left;
 padding: 0 10px;
+height:10%
 }
 
 .item:hover {
 box-shadow: 12px 12px 8px 0px #b7b7b7;
 cursor: pointer;
-margin: 1% .5% 0 .5%;
+/* margin: 1% .5% 0 .5%; */
 }
 .item img {
 width: 98%;
 height: 60%;
 margin: 1%;
-position: relative;
+position:relative;
 }
 
-
+.homepage-auction{
+  margin-left: 40%;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
 
 /* for myinbox */
 
