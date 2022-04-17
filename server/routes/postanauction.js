@@ -4,7 +4,6 @@ const multer = require('multer');
 let AuctionModel = require('../models/auction.model');
 let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
-let ImageModel = require('../models/image.model');
 
 let upload = multer()
 
@@ -51,19 +50,11 @@ router.route('/').post(async (req,res) =>
 
         let imFileBuffer = req.file.buffer;
         console.log(imFileBuffer);
-        const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid});
-        console.log(auctionID);
-        const newImage = new ImageModel({imageID: auctionID, Image: imFileBuffer});
+        const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid, Image: imFileBuffer});
 
         await newItem.save()
         .then(() => {console.log("Item Added")})
-        
-        await newImage.save()
-        .then(() => {console.log("Image Added")})
-        .catch(err => {console.log('Errorin uploading image: ' + err)});
-        
-        
-
+    
         const itemBeingAuctioned = await ItemModel.findOne({itemTitle: itemTitle});
         //console.log(ItemModel.findOne({itemTitle: itemTitle}));
         

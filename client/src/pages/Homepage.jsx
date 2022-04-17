@@ -15,6 +15,7 @@ export const Homepage = () => {
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
+    const [imageList , setImageList] = useState([]);
     
 
     function myNav()
@@ -37,7 +38,7 @@ export const Homepage = () => {
                 await axios.post('http://localhost:9000/homepage/', {userID: hmmm, searchString: location.state.searchString}).then(res => 
                 {
                     setUsername(res.data.username);
-                    
+                    setImageList(res.data.imageList);
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
                     setBidList(res.data.bidList);
@@ -157,7 +158,7 @@ export const Homepage = () => {
             auctions.map((auction, index) => 
             <div className='row'>
                 <div className='item'>
-                <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
+                <img src={imageList[index]}></img>
                         <div className='text-desc'>
                             {/* <h12> */}
                                 <b>Title</b>:{auction.itemBeingAuctioned.itemTitle}
@@ -176,7 +177,6 @@ export const Homepage = () => {
                             {/* </h12> */}
                             <button onClick={() => navigate('/DisplayAnAuction', {state: {userID: userID, auctionid: auction._id, maximumBid: bidList[index], id: id, highestBid: auction.highestBid, highestBidValue: auction.highestBidValue}})}>View Auction</button>
                         </div>
-
                 </div>
             </div>
             )

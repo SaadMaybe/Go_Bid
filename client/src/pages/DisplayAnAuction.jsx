@@ -19,6 +19,7 @@ export const DisplayAnAuction = () => {
     const [aucComp, setAucComp] = useState(0);
     const [aucCanc, setAucCanc] = useState(0);
     const [aucUsername, setAucUsername] = useState("");
+    const [image , setImage] = useState([]);
 
     let display = {};
 
@@ -76,8 +77,12 @@ export const DisplayAnAuction = () => {
         setMaximumBid(location.state.highestBidValue)
         setTitle(returnItem.itemTitle);
         setAucUsername(returnAuction.auctioner.username);
-        // console.log("i hope you die " + returnAuction.auctioner.username);
         setAucCanc(returnAuction.auctioner.cancelledAuctions);
+        
+        var image_buffer = returnItem.Image;
+        image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
+        
+        setImage(image_buffer);
 
         const hmmm = returnAuction.auctioner.completedAuctions;
         let i = 0;
@@ -117,6 +122,7 @@ return (
     <form onSubmit={onSubmit}>
 
         <div className="form-group">
+        <img src={image} height="360" width="640"></img>
         <label>Enter your bid:</label>
         <input  type="number"
         required

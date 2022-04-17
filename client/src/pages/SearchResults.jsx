@@ -14,7 +14,7 @@ export const SearchResults = () => {
     const [auctions, setAuctions] = useState([]);
     const [itemCategories, setItemCategories] = useState([]);
     const [bidList , setBidList] = useState([]);
-    
+    const [imageList , setImageList] = useState([]);
 
     function myNav()
     {
@@ -35,6 +35,7 @@ export const SearchResults = () => {
                     await setAuctions(res.data.auctionList);
                     await setItemCategories(res.data.itemCategories);
                     await setBidList(res.data.bidList);
+                    await setImageList(res.data.imageList);
                     console.log("User name is " + username);
                     console.log("Auction list is " + auctions[0]);
 
@@ -98,7 +99,7 @@ export const SearchResults = () => {
             auctions.map((auction, index) => 
             <div className='row'>
                 <div className='item'>
-                <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
+                <img src={imageList[index]}></img>
                         <div className='text-desc'>
                             {/* <h12> */}
                                 <b>Title</b>:{auction.itemBeingAuctioned.itemTitle}
