@@ -14,11 +14,11 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
-/* .form-group{ */
+.form-group{
   /* color: aqua;
   text-align: center;
    */
-  /* padding-left: 90px;
+  padding-left: 90px;
   padding-top: 50px;
   position:relative;
   margin: 5% auto;
@@ -27,13 +27,13 @@ body {
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-} */
+}
 h3 {
   margin: 0 0 20px 0;
   font-weight: 300;
   font-size: 28px;
 }
-/* .left {
+.left {
   position: absolute;
   top: 0;
   left: 0;
@@ -52,7 +52,7 @@ h3 {
   width: 300px;
   height: 30px;
   background-image: url('https://thumbs.dreamstime.com/b/writing-note-showing-bid-business-photo-showcasing-to-offer-particular-amount-money-something-sale-concept-174820008.jpg');
-} */
+}
 .btn.btn-primary{
   color: white;
   background-color: black;
@@ -142,7 +142,15 @@ input[type="submit"]:active {
 
   
 }
+.signin-btn{
+  position: relative;
+  left: 5%;
+  background-color: black;
+  color: white;
+  height: 32px;
+  width: 120px;
 
+}
 
 /* homepage */
 .navbar-nav{
