@@ -25,7 +25,7 @@ export const ViewMyPastBids = () =>
         const hmmm = location.state.userID;
         await setId(location.state.id);
         // // console.log("hmmm is " + hmmm);
-        axios.post('http://localhost:9000/viewMyBids/past', {userID: hmmm}).then(async response => 
+        axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyBids/past', {userID: hmmm}).then(async response => 
         {
             // console.log("Please just kill me");
             // console.log("the response is " + response.data.status);

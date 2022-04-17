@@ -57,7 +57,7 @@ export const ViewMyBids = () =>
     {
         const hmmm = e
         // console.log("Cancel Bid");
-        axios.post("http://localhost:9000/viewMyBids/cancel", {bidID: e}).then(async res =>
+        axios.post("https://my-app-6zap7.ondigitalocean.app/viewMyBids/cancel", {bidID: e}).then(async res =>
         {
             // console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -77,7 +77,7 @@ export const ViewMyBids = () =>
         const hmmm = location.state.userID;
         await setId(location.state.id);
         // // console.log("hmmm is " + hmmm);
-        await axios.post('http://localhost:9000/viewMyBids', {userID: hmmm}).then(async response => 
+        await axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyBids', {userID: hmmm}).then(async response => 
         {
             // console.log("Please just kill me");
             // console.log("the response is " + response.data.status);
