@@ -33,7 +33,7 @@ export const ContactUs = () => {
       msg: msg
     }
   
-    let s = await axios.post('http://localhost:9000/contactUs/', concern);
+    let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/contactUs/', concern);
 
 
 

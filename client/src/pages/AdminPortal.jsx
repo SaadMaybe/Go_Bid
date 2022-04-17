@@ -51,7 +51,7 @@ export const AdminPortal = () =>
         if(inpUsername !== "" && phoneNumber !== "")
         {
             
-            axios.post('http://localhost:9000/adminPortal/searchPhoneNumber', {username: inpUsername, phoneNumber: phoneNumber}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchPhoneNumber', {username: inpUsername, phoneNumber: phoneNumber}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
@@ -66,7 +66,7 @@ export const AdminPortal = () =>
         }
         else if(inpUsername !== '')
         {
-            axios.post('http://localhost:9000/adminPortal/searchUsername', {username: inpUsername}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchUsername', {username: inpUsername}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
@@ -81,7 +81,7 @@ export const AdminPortal = () =>
         else if(phoneNumber !== '')
         {
             console.log("I mean- death isn't that bad when you think about it");
-            axios.post('http://localhost:9000/adminPortal/searchPhoneNumber', {phoneNumber: phoneNumber}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchPhoneNumber', {phoneNumber: phoneNumber}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/User', {state:{username: username, userID: userID, info: res.data.userArr, id: id}});
@@ -108,7 +108,7 @@ export const AdminPortal = () =>
         e.preventDefault();
         if(itemName !== '' && auctioner !== '')
         {
-            axios.post('http://localhost:9000/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions, id: id}});
@@ -123,7 +123,7 @@ export const AdminPortal = () =>
         else if(itemName !== '')
         {
             
-            axios.post('http://localhost:9000/adminPortal/searchItemName', {itemName: itemName}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchItemName', {itemName: itemName}).then(res =>
             {
                 
                 if(res.data.status === 'ok')
@@ -138,7 +138,7 @@ export const AdminPortal = () =>
         }
         else if(auctioner !== '')
         {
-            axios.post('http://localhost:9000/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
+            axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/searchAuctioner', {auctioner: auctioner}).then(res =>
             {
                 if(res.data.status === 'ok')
                     navigate('/AdminPortal/Auction', {state:{username: username, userID: userID, info: res.data.auctions, id: id}});
@@ -164,7 +164,7 @@ export const AdminPortal = () =>
         setUserID(hmmm);
         setId(location.state.id);
 
-        axios.post('http://localhost:9000/adminPortal/', {userID: hmmm}).then(res => 
+        axios.post('https://my-app-6zap7.ondigitalocean.app/adminPortal/', {userID: hmmm}).then(res => 
         {
             if(res.data.status === 'ok')
                 setUsername(res.data.username);   

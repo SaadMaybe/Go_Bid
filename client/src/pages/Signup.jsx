@@ -151,7 +151,7 @@ export const Signup = () => {
       password: password
     }
   
-    let s = await axios.post('http://localhost:9000/signup/', user);
+    let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/signup/', user);
 
 
 

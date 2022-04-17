@@ -20,7 +20,7 @@ export const ViewMyAuctions = () =>
     {
         const hmmm = e
         console.log("Sell Auction, the auction ID is " + hmmm);
-        axios.post("http://localhost:9000/viewMyAuctions/sell", {auctionID: hmmm}).then(async res =>
+        axios.post("https://my-app-6zap7.ondigitalocean.app/viewMyAuctions/sell", {auctionID: hmmm}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -43,7 +43,7 @@ export const ViewMyAuctions = () =>
     {
         const hmmm = e
         console.log("Cancel Auction");
-        axios.post("http://localhost:9000/viewMyAuctions/cancel", {auctionID: e}).then(async res =>
+        axios.post("https://my-app-6zap7.ondigitalocean.app/viewMyAuctions/cancel", {auctionID: e}).then(async res =>
         {
             console.log("res is " + res.data);
             if(res.data.status === 'ok')
@@ -103,7 +103,7 @@ export const ViewMyAuctions = () =>
         const hmmm = location.state.userID;
         await setId(location.state.id);
         console.log("hmmm is " + hmmm);
-        axios.post('http://localhost:9000/viewMyAuctions', {userID: hmmm}).then(response => 
+        axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyAuctions', {userID: hmmm}).then(response => 
         {
             if(response.status === 200)
             {

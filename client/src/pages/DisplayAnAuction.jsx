@@ -43,7 +43,7 @@ export const DisplayAnAuction = () => {
         
         if (amountBidded > location.state.highestBidValue)
         {  
-            let s = await axios.post('http://localhost:9000/postabid/', bid);
+            let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/postabid/', bid);
             console.log("S: ", s)
             if (s.data.status !== "error")
             {
@@ -65,12 +65,12 @@ export const DisplayAnAuction = () => {
     useEffect(async () =>
     {
         const auction = { auctionid: location.state.auctionid};
-        var auctionQuery = await axios.post('http://localhost:9000/getauction', auction);
+        var auctionQuery = await axios.post('https://my-app-6zap7.ondigitalocean.app/getauction', auction);
         console.log("AuctionQuery: ", auctionQuery.data)
         var returnAuction = auctionQuery.data.value;
         
         const item = { itemid : returnAuction.itemBeingAuctioned}
-        var itemQuery = await axios.post('http://localhost:9000/getitem', item)
+        var itemQuery = await axios.post('https://my-app-6zap7.ondigitalocean.app/getitem', item)
         var returnItem = itemQuery.data.value;
 
         setMaximumBid(location.state.highestBidValue)

@@ -27,7 +27,7 @@ export const  UserProfile = () => {
             userID: location.state.userID,
         }
         console.log("Huh is", huh)
-        axios.post('http://localhost:9000/userProfile/', huh).then(async res => {
+        axios.post('https://my-app-6zap7.ondigitalocean.app/userProfile/', huh).then(async res => {
             
             console.log("The urge to die can be rather uncontrollable at times");
             console.log(res.data);

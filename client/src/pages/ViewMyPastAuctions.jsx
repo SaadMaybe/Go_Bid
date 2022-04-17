@@ -19,7 +19,7 @@ export const ViewMyPastAuctions = () =>
     {
         const hmmm = location.state.userID
         console.log("hmmm is " + hmmm);
-        axios.post('http://localhost:9000/viewMyPastAuctions', {userID: hmmm}).then(async response => 
+        axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyPastAuctions', {userID: hmmm}).then(async response => 
         {
             if(response.data.status === 'ok')
             {

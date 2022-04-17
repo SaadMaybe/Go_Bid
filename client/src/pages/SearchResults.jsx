@@ -29,7 +29,7 @@ export const SearchResults = () => {
         
             setUserID(location.state.userID);
                 console.log("Posting Search Results.jsx L31: ", location.state.userID)
-                await axios.post('http://localhost:9000/homepage/search', {userID: hmmm, searchString: location.state.searchString}).then(async res => 
+                await axios.post('https://my-app-6zap7.ondigitalocean.app/homepage/search', {userID: hmmm, searchString: location.state.searchString}).then(async res => 
                 {
                     await setUsername(res.data.username);
                     await setAuctions(res.data.auctionList);

@@ -18,7 +18,7 @@ export const AdminDisplayUsers = () => {
     function BanUser(e)
     {
         var unlucky = un;
-        axios.post('http://localhost:9000/adminPortal/banUser', {userID: unlucky}).then(res =>
+        axios.post('https://my-app-6zap7.ondigitalocean.app/banUser', {userID: unlucky}).then(res =>
         {
             if(res.status === 200)
             {

@@ -18,7 +18,7 @@ export const ViewMyInbox = () =>
         const hmmm = location.state.userID;
         setUserID(location.state.userID);
     
-        await axios.post('http://localhost:9000/viewMyInbox/', {userID: hmmm}).then(res =>
+        await axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyInbox/', {userID: hmmm}).then(res =>
         {
             setMessages(res.data.messages);
             setUsername(res.data.username);

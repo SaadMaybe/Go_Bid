@@ -34,7 +34,7 @@ export const Homepage = () => {
         
             setUserID(location.state.userID);
             
-                await axios.post('http://localhost:9000/homepage/', {userID: hmmm, searchString: location.state.searchString}).then(res => 
+                await axios.post('https://my-app-6zap7.ondigitalocean.app/homepage/', {userID: hmmm, searchString: location.state.searchString}).then(res => 
                 {
                     setUsername(res.data.username);
                     
@@ -55,7 +55,7 @@ export const Homepage = () => {
         }
         
 
-        let s = await axios.post('http://localhost:9000/homepage/search', searchData).then();
+        let s = await axios.post('https://my-app-6zap7.ondigitalocean.app/search', searchData).then();
 
         if (s.data.status == "ok")
         {
