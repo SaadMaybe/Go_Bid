@@ -584,3 +584,40 @@ li .boss{
   color: #212529!important;
   transition: 0.5s;
 }
+
+
+/* post an auction */
+
+
+
+.t-and-d{
+  margin-left: 10%;
+  /* display: inline-block; */
+  /* width: 200px; */
+  /* text-align: left; */
+}
+
+.in-user-desc{
+  width:50%;
+  height:200px;
+}
+
+.category{
+  margin-left: 10%;
+  width:25%
+}
+
+.bid-time{
+  float: left;
+  margin-left: 10%;
+  /* display: block; */
+}
+
+.post-auction {
+  position:absolute;
+  background-color: black;
+  color: white;
+  /* float: right; */
+  right: 150px;
+  bottom: 25px;
+}
