@@ -187,6 +187,7 @@ return (
                 <input type="file" 
                     encType='multipart/form-data'
                     id="avatar"
+                    name = "avatar"
                     accept="image/png, image/jpeg" 
                     onChange = {changeImg}/>
                 <input type="submit" value="Post an Auction" className="btn btn-primary" />
