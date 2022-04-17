@@ -209,8 +209,9 @@ export const Signup = () => {
                     />
                     <input type="submit" value="Create User" className="btn btn-primary" />
                     <div className="right"></div>
+                    <button className="signin-btn" onClick={() => navigate("/")}>Sign In</button>
                   </div>
-                  <button onClick={() => navigate("/")}>Sign In</button>
+                  {/* <button onClick={() => navigate("/")}>Sign In</button> */}
                 </form>
                 </div>
         )

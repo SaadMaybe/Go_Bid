@@ -38,6 +38,7 @@ export const ViewMyInbox = () =>
         <div classname='inbox-list'>
             {/* <div className='top-dash'>My Inbox</div> */}
             <div> The messages for {username} are:</div>
+            <br></br><br></br>
             <div class="unread">
                 {/* <span class="subject">The messages for {username} are:</span> */}
                 {/* <input class="checkbox" type="checkbox" /> */}
@@ -52,6 +53,7 @@ export const ViewMyInbox = () =>
                             <b>Timestamp</b>: {message.timeStamp}
                             <br></br>
                             <b>Message</b>: {message.contents}
+                            <br></br><br></br>
                         </ul>
                         )}
                     </span>
