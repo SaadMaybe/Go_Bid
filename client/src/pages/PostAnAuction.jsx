@@ -19,7 +19,7 @@ export const PostAnAuction = () => {
     const [img, setImg] = useState();
 
     const changeImg = (title) => {
-        setImg(title.target.files.files[0]);
+        setImg(title.target.files);
     }
 
     const changeItemTitle = (title) => {
@@ -99,7 +99,18 @@ export const PostAnAuction = () => {
 
 
 return (
+<html>
+    <head>
+        <title>W3.CSS Template</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        
+    </head>
 
+    <body>
         <div className="left">
             <form onSubmit={onSubmit}>
                 <div className="form-group">
@@ -174,7 +185,7 @@ return (
                 {/* //-----------CODE FOR UPLOADING IMAGES------------------ */}
                 <label>Upload a picture:</label>
                 <input type="file" 
-                    enctype='multipart/form-data'
+                    encType='multipart/form-data'
                     id="avatar"
                     accept="image/png, image/jpeg" 
                     onChange = {changeImg}/>
@@ -183,7 +194,8 @@ return (
                 </div>
             </form>
         </div>
-
+    </body>
+</html>
 )
 
 }

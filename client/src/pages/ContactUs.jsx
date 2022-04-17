@@ -97,7 +97,7 @@ export const ContactUs = () => {
 			Contact Us
 			</div>
       
-			Feel free to contact us at someone@example.com		
+			Feel free to contact us at GoBid@gmail.com		
       </div>
 
 		

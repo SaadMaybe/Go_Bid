@@ -6,9 +6,10 @@ let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
 let imageModel = require('../models/image.model');
 
+
 router.route('/').post(async (req,res) => 
 {
-
+    console.log("req files:", req.files)
     await AuctionModel.find().sort({auctionID:-1}).then(async auction =>
     {
         var auctionID;
@@ -46,10 +47,15 @@ router.route('/').post(async (req,res) =>
             itemID = item[0].itemID + 1;
         }
 
+        let imFileBuffer = req.file.buffer;
         const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid});
-    
+        const newImage = new ItemModel({itemID, imFileBuffer});
+
         await newItem.save()
         .then(() => {console.log("Item Added")})
+        
+        await newImage.save()
+        .then(() => {console.log("Image Added")})
         //.catch(err => res.status(400).json('Error: ' + err));
         
         
