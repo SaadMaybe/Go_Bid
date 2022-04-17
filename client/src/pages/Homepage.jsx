@@ -82,6 +82,7 @@ export const Homepage = () => {
         <body>
         <div>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div>back</div>
             <div class="container-fluid">
                 <ul class="navbar-nav">
                     <li class="nav-item mrg">
@@ -95,6 +96,9 @@ export const Homepage = () => {
                     </li>
                     <li class="nav-item mrg">
                         <a class="nav-link nav_button" onClick={() => navigate('/PostAnAuction', {state: {userID : userID, id: id}})}> Post an auction</a>
+                    </li>
+                    <li class="nav-item mrg">
+                        <a class="nav-link nav_button" onClick={() => navigate('/ViewMyInbox', {state: {userID : userID, id: id}})}> My Inbox</a>
                     </li>
                     <li class="nav-item mrg">
                         <a class="nav-link nav_button" onClick={() => 
