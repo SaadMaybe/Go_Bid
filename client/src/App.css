@@ -472,7 +472,8 @@ li .boss{
 .in-text{
   /* background-color: blac; */
   color: black;
-  height: 100px;
+  /* height: 100px; */
+
 }
 
 
@@ -621,3 +622,7 @@ li .boss{
   right: 150px;
   bottom: 25px;
 }
+
+
+
+
