@@ -155,7 +155,7 @@ return (
                 <br></br>
                 <br></br>
 
-                <label>Picture:</label>
+                <label>Location:</label>
                 <input  type="text"
                     required
                     className="form-control"

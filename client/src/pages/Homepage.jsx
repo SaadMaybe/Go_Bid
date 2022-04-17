@@ -199,7 +199,7 @@ export const Homepage = () => {
                             {/* </h12>  */}
                             <br></br>
                             {/* <h12> */}
-                                <b>Description</b>:{auction.itemBeingAuctioned.description}
+                                <b>Location: </b>:{auction.itemBeingAuctioned.pictures[0]}
                             {/* </h12> */}
                             <br></br>
                             {/* <h12> */}

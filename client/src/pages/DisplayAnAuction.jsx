@@ -111,7 +111,7 @@ return (
     Auctioner's Completed auctions: {aucComp}<br></br>
     Auctioner's Cancelled auctions: {aucCanc}<br></br>
     Current Highest Bid: {maximumBid}<br></br>
-    Picture: {picture}<br></br>
+    Location: {picture}<br></br>
     tags: {tags}<br></br>
 
     <form onSubmit={onSubmit}>

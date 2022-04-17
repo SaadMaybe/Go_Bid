@@ -172,78 +172,78 @@ router.route("/searchItemName").post(async (req, res) => {
 })
 
 router.route("/banUser").post(async (req, res) => {
-    const userID = req.body.userID;
-    const user = await usersModel.findOneAndUpdate({ userID: userID }, { $set: { account_status: 'banned' } }, { new: true });
-    console.log("User is "+ user)
-    const auctions = auctionsModel.updateMany({ auctioner: user._id }, { $set: { auctionStatus: 'cancelled' } }, { new: true });
-    for (let o = 0; o < auctions.length; o++) {
-        const element = auctions[o];
-        console.log("Auction is " + element);
+    // const userID = req.body.userID;
+    // const user = await usersModel.findOneAndUpdate({ userID: userID }, { $set: { account_status: 'banned' } }, { new: true });
+    // console.log("User is "+ user)
+    // const auctions = auctionsModel.updateMany({ auctioner: user._id }, { $set: { auctionStatus: 'cancelled' } }, { new: true });
+    // for (let o = 0; o < auctions.length; o++) {
+    //     const element = auctions[o];
+    //     console.log("Auction is " + element);
         
-    }
+    
     // res.json("Death is not too bad after all")
 
-    //     if (err) {
-    //         res.json(
-    //             {
-    //                 status: 'error',
-    //                 message: 'Error banning user'
-    //             }
-    //         );
-    //     }
-    //     else {
-    //         //delete all auctions made by the user
-    //         auctionsModel.updateMany({ auctioner: userID }, { $set: { auctionStatus: 'cancelled' } }, { new: true }, (err, auction) => {
-    //             if (err) {
-    //                 res.json(
-    //                     {
-    //                         status: 'error',
-    //                         message: 'Error banning user'
-    //                     }
-    //                 );
-    //             }
-    //             else 
-    //             {
-    //                 //delete all those bids on that auction
-    //                 //will look at this later
-    //                 // bidsModel.updateMany({ associatedAuction: auction._id }, { $set: { bidStatus: 'cancelled' } }, { new: true }, (err, bid) => {
-    //                 //     if (err) {
-    //                 //         res.json(
-    //                 //             {
-    //                 //                 status: 'error',
-    //                 //                 message: 'Error cancelling '
-    //                 //             }
-    //                 //         );
-    //                 //     }
-    //                     // else {
-    //                         //message of deletion here
-    //                         //delete all the bids made by the user
-    //                         bidsModel.updateMany({ bidder: userID }, { $set: { bidStatus: 'cancelled' } }, { new: true }, (err, bid) => {
-    //                             if (err) {
-    //                                 res.json(
-    //                                     {
-    //                                         status: 'error',
-    //                                         message: 'Error deleting bids'
-    //                                     }
-    //                                 );
-    //                             }
-    //                             else {
-    //                                 res.json(
-    //                                     {
-    //                                         status: 'ok',
-    //                                         username: user.username
-    //                                     }
-    //                                 );
-    //                             }
-    //                         })
-    //                     // }
-    //                 // })
+        if (err) {
+            res.json(
+                {
+                    status: 'error',
+                    message: 'Error banning user'
+                }
+            );
+        }
+        else {
+            //delete all auctions made by the user
+            auctionsModel.updateMany({ auctioner: userID }, { $set: { auctionStatus: 'cancelled' } }, { new: true }, (err, auction) => {
+                if (err) {
+                    res.json(
+                        {
+                            status: 'error',
+                            message: 'Error banning user'
+                        }
+                    );
+                }
+                else 
+                {
+                    //delete all those bids on that auction
+                    //will look at this later
+                    // bidsModel.updateMany({ associatedAuction: auction._id }, { $set: { bidStatus: 'cancelled' } }, { new: true }, (err, bid) => {
+                    //     if (err) {
+                    //         res.json(
+                    //             {
+                    //                 status: 'error',
+                    //                 message: 'Error cancelling '
+                    //             }
+                    //         );
+                    //     }
+                        // else {
+                            //message of deletion here
+                            //delete all the bids made by the user
+                            bidsModel.updateMany({ bidder: userID }, { $set: { bidStatus: 'cancelled' } }, { new: true }, (err, bid) => {
+                                if (err) {
+                                    res.json(
+                                        {
+                                            status: 'error',
+                                            message: 'Error deleting bids'
+                                        }
+                                    );
+                                }
+                                else {
+                                    res.json(
+                                        {
+                                            status: 'ok',
+                                            username: user.username
+                                        }
+                                    );
+                                }
+                            })
+                        // }
+                    // })
                     
                     
-    //             }
-    //         })
+                }
+            })
 
-    //     }
+        }
     // })
 });
 
