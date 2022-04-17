@@ -104,102 +104,30 @@ export const DisplayAnAuction = () => {
     // getData();
 
 return (
-    // <div>
-    // Title: {title}<br></br>
-    // Description: {description}<br></br>
-    // Auctioner: {aucUsername}<br></br>
-    // Auctioner's Completed auctions: {aucComp}<br></br>
-    // Auctioner's Cancelled auctions: {aucCanc}<br></br>
-    // Current Highest Bid: {maximumBid}<br></br>
-    // Picture: {picture}<br></br>
-    // tags: {tags}<br></br>
+    <div>
+    Title: {title}<br></br>
+    Description: {description}<br></br>
+    Auctioner: {aucUsername}<br></br>
+    Auctioner's Completed auctions: {aucComp}<br></br>
+    Auctioner's Cancelled auctions: {aucCanc}<br></br>
+    Current Highest Bid: {maximumBid}<br></br>
+    Picture: {picture}<br></br>
+    tags: {tags}<br></br>
 
-    // <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit}>
 
-    //     <div className="form-group">
-    //     <label>Enter your bid:</label>
-    //     <input  type="number"
-    //     required
-    //     className="form-control"
-    //     // value={this.state.UserName}
-    //     onChange={changeAmountBidded}
-    //     />
-    //     <input type="submit" value="Post a bid" className="btn btn-primary" />
-    //     <div className="right"></div>
-    //     </div>
-    // </form>
-    // </div>
-
-<html>
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
+        <div className="form-group">
+        <label>Enter your bid:</label>
+        <input  type="number"
+        required
+        className="form-control"
+        // value={this.state.UserName}
+        onChange={changeAmountBidded}
         />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-      </head>
-
-      <body>
-      <div className = "top-dash-user">
-    <div className="back-btn"><button className="back" onClick={() => navigate("/Homepage", {state:{userID: location.state.userID}})}>&#8249;</button> </div>
-    Display Auction
-    </div>
-        <div className="main_auction">
-          <div className="left_half col-md-4 ml-5">
-            <div className="an_auction">
-              <div className="item2">
-                <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
-                <div className="text-desc">
-                    {description}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="right_half col-md-3">
-            <p className="display-para">
-              Title: {title}
-
-              <br></br>
-              Auctioner: {aucUsername}
-              <br></br>
-              Auctioner's Completed auctions: {aucComp}
-              <br></br>
-              Auctioner's Cancelled auctions: {aucCanc}
-              <br></br>
-              Current Highest Bid: {maximumBid}
-              <br></br>
-              Picture: {picture}
-              <br></br>
-              tags: {tags}
-              <br></br>
-            </p>
-
-            <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <label>Enter your bid:</label>
-                <input
-                  type="number"
-                  required
-                  className="form-control w-50"
-                  // value={this.state.UserName}
-                  onChange={changeAmountBidded}
-                />
-                <input
-                  type="submit"
-                  value="Post a bid"
-                  className="btn btn-primary"
-                />
-              </div>
-            </form>
-          </div>
+        <input type="submit" value="Post a bid" className="btn btn-primary" />
+        <div className="right"></div>
         </div>
-      </body>
-    </html>
-
-
-
+    </form>
+    </div>
 )
 }
