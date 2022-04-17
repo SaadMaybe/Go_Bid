@@ -42,7 +42,6 @@ export const Homepage = () => {
                     setAuctions(res.data.auctionList);
                     setItemCategories(res.data.itemCategories);
                     setBidList(res.data.bidList);
-
                 }).catch(err => {return <div>{err}</div>});
     }, [location.state.userID])
 

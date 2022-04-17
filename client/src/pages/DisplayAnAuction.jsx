@@ -19,7 +19,7 @@ export const DisplayAnAuction = () => {
     const [aucComp, setAucComp] = useState(0);
     const [aucCanc, setAucCanc] = useState(0);
     const [aucUsername, setAucUsername] = useState("");
-    const [image , setImage] = useState([]);
+    const [image , setImage] = useState();
 
     let display = {};
 
@@ -67,11 +67,12 @@ export const DisplayAnAuction = () => {
     {
         const auction = { auctionid: location.state.auctionid};
         var auctionQuery = await axios.post('https://my-app-6zap7.ondigitalocean.app/getauction', auction);
-        console.log("AuctionQuery: ", auctionQuery.data)
+        //console.log("AuctionQuery: ", auctionQuery.data)
         var returnAuction = auctionQuery.data.value;
+        //console.log(returnAuction.itemBeingAuctioned.Image);
         
         const item = { itemid : returnAuction.itemBeingAuctioned}
-        var itemQuery = await axios.post('https://my-app-6zap7.ondigitalocean.app/getitem', item)
+        var itemQuery = await axios.post('https://my-app-6zap7.ondigitalocean.app/getitem', item);
         var returnItem = itemQuery.data.value;
 
         setMaximumBid(location.state.highestBidValue)
@@ -79,9 +80,10 @@ export const DisplayAnAuction = () => {
         setAucUsername(returnAuction.auctioner.username);
         setAucCanc(returnAuction.auctioner.cancelledAuctions);
         
-        var image_buffer = returnItem.Image;
-        image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
         
+        //console.log("return:", image_buffer);
+        var image_buffer = "data:image/jpg;base64," + btoa(returnItem.Image.data);
+        //console.log("buffer:", image_buffer);
         setImage(image_buffer);
 
         const hmmm = returnAuction.auctioner.completedAuctions;
@@ -155,7 +157,6 @@ return (
           <div className="left_half col-md-4 ml-5">
             <div className="an_auction">
               <div className="item2">
-              <img src={image} height="360" width="640"></img>
                 <div className="text-desc">
                     {description}
                 </div>
@@ -176,7 +177,7 @@ return (
               <br></br>
               Current Highest Bid: {maximumBid}
               <br></br>
-              Picture: {picture}
+              Location: {picture}
               <br></br>
               tags: {tags}
               <br></br>
