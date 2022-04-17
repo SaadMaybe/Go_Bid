@@ -194,10 +194,59 @@ export const ContactUs = () => {
 //         )
 // }
   return (
+<<<<<<< Updated upstream
                 
               <div className="pic-back-contact">
                 <div className="contactContainer">
                 <form onSubmit={onSubmit}>
+=======
+    // <div>
+    // 	<div className = "top-dash-user">
+    // 		<div className="back-btn">
+		// 	<button 
+		// 	className="back" 
+		// 	onClick=
+		// 		{
+		// 			() => {navigate('/Homepage', {state:{userID: location.state.userID, id: location.state.id}})}
+		// 		}>&#8249;</button>
+		// 	</div>
+		// 	Contact Us
+		// 	</div>
+      
+		// 	Feel free to contact us at GoBid@gmail.com		
+    //   </div>
+    <div className="user-outer">
+    <div className = "top-dash-user">
+    <div className="back-btn"><button className="back" onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>&#8249;</button> </div>
+    UserProfile
+    </div>
+
+    <div className="profile-bg">
+        
+    </div>
+
+    <div className="profile-details">
+        {/* <button onClick={() => navigate(-1, {state:{userID: location.state.userID}})}>Go back</button> */}
+        <br></br><br></br>
+
+    
+        <div className="user-details">
+            Email: GoBid@hotmail.com
+            <br></br><br></br>
+            PhoneNumber: 090078601
+        </div>
+        {/* <div className="hojana">{(accountStatus==="admin") ? <button className="btn btn-primary" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>Admin Portal</button> : null}</div>     */}
+    </div>
+    </div>
+		
+        )
+
+}
+
+
+
+{/* <form onSubmit={onSubmit}>
+>>>>>>> Stashed changes
                   <div className="form-group-contact">
                     <h3>Contact Us</h3> 
                     <label>Email: </label>

@@ -457,4 +457,108 @@ position: relative;
   border-radius: 5px;
   background-color: black;
   font-weight: 700;
+<<<<<<< Updated upstream
+=======
+}
+
+
+
+
+
+
+/* Display An Auction page css */
+
+.main_auction{
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.left_half{
+  float: left;
+  padding: 2%;
+}
+.right_half{
+  float: left;
+  border-left: 1px solid gray;
+}
+
+.an_auction{
+  display: list-item;
+  float: left;
+  list-style-type: none; 
+}
+
+.item2 img {
+  width: 98%;
+  height: 50%;
+  position: relative;
+}
+
+
+
+.post_auction{
+  width: 60%;
+  margin: auto;
+}
+.form_input{
+  width: 50%!important;
+}
+.form_input1{
+  width: 50%!important;
+
+}
+
+.serch_grid{
+  float: left;
+  width: 20%;
+}
+.btn-myauction{
+  background: #212529!important;
+  color: white!important;
+  transition: 0.5s;
+}
+.btn-myauction:hover{
+  background: white!important;
+  color: #212529!important;
+  transition: 0.5s;
+}
+
+
+
+/* post an auction */
+.t-and-d{
+  margin-left: 10%;
+  /* display: inline-block; */
+  /* width: 200px; */
+  /* text-align: left; */
+}
+
+.in-user-desc{
+  width:50%;
+  height:200px;
+}
+.category{
+  margin-left: 10%;
+  width:25%
+}
+.bid-time{
+  float: left;
+  margin-left: 10%;
+  /* display: block; */
+}
+
+.post-auction {
+  position:absolute;
+  background-color: black;
+  color: white;
+  /* float: right; */
+  right: 150px;
+  bottom: 25px;
+}
+
+
+/* display an auction */
+
+.display-para{
+  margin-left: 30%;
+>>>>>>> Stashed changes
 }
