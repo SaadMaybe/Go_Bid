@@ -26,24 +26,27 @@ router.route('/').post(async (req,res) =>
 
         const newBid = new BidModel({bidID, bidder, amountBidded, bidStatus, associatedAuction});
 
+        // console.log("L29 before save");
         await newBid.save()
-        .then(() => res.json('Bid added!'))
-        .catch(err => res.status(400).json('Error ' + err));
+        .then(() => { console.log('Bid added!') })
+        // .catch(err => res.status(400).json('Error ' + err));
 
-        let list = await AuctionModel.findOne({_id : associatedAuction}).listofBids;
+        
+        let list2 = await AuctionModel.findOne({_id : associatedAuction});
+
+        let list = list2.listOfBids
 
         const temp = await BidModel.findOne({bidID : bidID});
 
-        list = list.push(temp._id);
+        list.push(temp._id);
 
-        console.log(list);
-        
-        
-        const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listofBids : list}});
+        // console.log("fasfasf:", list);
+        const updateAuction = await AuctionModel.updateOne({_id: associatedAuction} , {$set : {listOfBids : list, highestBidValue : req.body.amountBidded, highestBid : req.body.bidID}});
+        // console.log("L46: ")
+        // await updateAuction.save()
+        res.json('Auction updated!')
+       // .catch(err => res.status(400).json('Error ' + err));
 
-        await updateAuction.save()
-        .then(() => res.json('Auction updated!'))
-        .catch(err => res.status(400).json('Error ' + err));
 
     }).catch(err => res.status(400).json('Error: ' + err));
 

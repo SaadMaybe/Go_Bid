@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
 import { SignIn } from './pages/Signin';
 import { Homepage } from './pages/Homepage';
 import { Signup } from './pages/Signup';
-import { contactUs } from './pages/ContactUs';
 import { useNavigate } from "react-router-dom";
 import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
@@ -15,6 +14,8 @@ import { ViewMyInbox } from './pages/ViewMyInbox'
 import { AdminPortal } from './pages/AdminPortal'
 import { AdminDisplayUsers } from './pages/AdminDisplayUsers'
 import { AdminDisplayAuctions } from './pages/AdminDisplayAuctions'
+import { SearchResults } from './pages/SearchResults'
+import { ViewMyPastAuctions } from './pages/ViewMyPastAuctions';
 function App() {
   return (
     <div className="App">
@@ -33,10 +34,8 @@ function App() {
           <Route path='/AdminPortal' element={<AdminPortal/>} />
           <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>}/>
           <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>}/>
-          
-          <Route path='/ContactUs' element={<contactUs/>} />
-
-          {/* <Route path='/contactUs' element={<contactUs/>} /> */}
+          <Route path='/SearchResults' element={<SearchResults/>}/>
+          <Route path='/ViewMyPastAuctions' element={<ViewMyPastAuctions/>}/>
         </Routes>
       </Router>
     </div>

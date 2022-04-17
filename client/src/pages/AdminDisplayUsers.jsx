@@ -50,6 +50,39 @@ export const AdminDisplayUsers = () => {
     
 
     return (
+        // <div>
+        //     <div className = "top-dash-user">
+        //     <div className="back-btn"><button className="back" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>&#8249;</button></div>
+        //     Admin Portal
+        //     </div>
+            
+        //     <div className="portal">
+        //         <br></br>
+        //         Admin Name: {username}
+        //         <br></br>
+        //         <br></br>
+        //         List of users:
+        //         <ul>
+        //             { 
+        //             userInfo.map(user =>
+        //                 <div className="playcards">
+        //                     <li key={user.userID}>
+        //                         <div className="in-text">
+        //                             User: {user.username}<br></br>
+        //                             Phone Number: {user.phoneNumber}<br></br>
+        //                             Email: {user.email}
+        //                             <p>   </p>
+                                    
+        //                             <button className="cancel" onClick={() => {setUn(user.userID);BanUser()}}>Ban User</button>
+        //                             <br></br>
+        //                             <br></br>
+        //                         </div>
+        //                     </li>
+        //                 </div>
+        //             )}
+        //         </ul>
+        //     </div>
+        // </div>
         <div>
             <div className = "top-dash-user">
             <div className="back-btn"><button className="back" onClick={() => navigate('/AdminPortal', {state:{userID: location.state.userID}})}>&#8249;</button></div>
@@ -68,12 +101,12 @@ export const AdminDisplayUsers = () => {
                         <div className="playcards">
                             <li key={user.userID}>
                                 <div className="in-text">
-                                    User: {user.username}<br></br>
-                                    Phone Number: {user.phoneNumber}<br></br>
+                                    User: {user.username}<br></br><br></br>
+                                    Phone Number: {user.phoneNumber}<br></br><br></br>
                                     Email: {user.email}
                                     <p>   </p>
                                     
-                                    <button className="cancel" onClick={() => {setUn(user.userID);BanUser()}}>Ban User</button>
+                                    <button className="ban" onClick={() => BanUser(user._id)}>Ban User</button>
                                     <br></br>
                                     <br></br>
                                 </div>

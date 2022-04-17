@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
-const jwt = require('jsonwebtoken')
-const sha256 = require('sha256')
+const jwt = require('jsonwebtoken');
+const sha256 = require('sha256');
+const multer = require('multer');
 
+const upload = multer();
 const UsersModel = require('./models/user.model')
 
 require('dotenv').config();
@@ -12,6 +14,7 @@ const app = express();
 const port  = process.env.PORT || 3001;
 
 //Defining routers.
+
 const signupRouter = require("./routes/signup.js")
 const usersRouter = require("./routes/users.js");
 const signinRouter = require("./routes/signin.js");
@@ -26,7 +29,7 @@ const postABidRouter = require("./routes/postabid.js");
 const ViewMyAuctionsRouter = require("./routes/ViewMyAuctions.js");
 const adminPortalRouter = require("./routes/adminPortal.js");
 const inboxRouter = require("./routes/inbox.js");
-
+const viewMyPastAuctionsRouter = require("./routes/viewMyPastAuctions.js");
 
 
 app.use(cors());
@@ -37,16 +40,15 @@ app.use('/users', usersRouter);
 app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
-app.use('/postanauction', PostAnAuctionRouter);
+app.use('/postanauction',upload.single("verifyDoc"), PostAnAuctionRouter);
 app.use('/createanitem', createAnItemRouter);
 app.use('/getauction', getAuctionRouter);
 app.use('/getitem', getItemRouter);
 app.use('/postabid', postABidRouter);
 app.use('/ViewMyAuctions', ViewMyAuctionsRouter);
-app.use('/adminPortal', adminPortalRouter)
-app.use('/viewMyInbox', inboxRouter)
-
-app.use('/ContactUs', contactUsRouter);
+app.use('/adminPortal', adminPortalRouter);
+app.use('/viewMyInbox', inboxRouter);
+app.use('/viewMyPastAuctions', viewMyPastAuctionsRouter)
 
 const uri = process.env.GOBID_URI;
 mongoose.connect(uri, {
