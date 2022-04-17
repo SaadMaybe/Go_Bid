@@ -19,7 +19,7 @@ export const PostAnAuction = () => {
     const [img, setImg] = useState();
 
     const changeImg = (title) => {
-        setImg(title.target.files);
+        setImg(title.target.files[0]);
     }
 
     const changeItemTitle = (title) => {
@@ -82,8 +82,9 @@ export const PostAnAuction = () => {
         auction.append("image", img)
         // console.log("id: ", location.state.id);
 
-        console.log("Before sending form data", auction.values())
-        let s = await axios.post('http://localhost:9000/postanauction/', auction,{ headers :{ 'Content-Type' : 'multipart/form-data' }} ).then();
+        console.log("Before sending form data", auction.get('image'));
+        //console.log(img);
+        let s = await axios.post('http://localhost:9000/postanauction/', auction, { headers : { 'Content-Type' : 'multipart/form-data' }} ).then();
         console.log("After sending form data")
         // console.log("Status s: ",s.data.message)
         if (s.data.status == "ok")
