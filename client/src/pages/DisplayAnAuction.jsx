@@ -19,6 +19,7 @@ export const DisplayAnAuction = () => {
     const [aucComp, setAucComp] = useState(0);
     const [aucCanc, setAucCanc] = useState(0);
     const [aucUsername, setAucUsername] = useState("");
+    const [image , setImage] = useState([]);
 
     let display = {};
 
@@ -76,8 +77,12 @@ export const DisplayAnAuction = () => {
         setMaximumBid(location.state.highestBidValue)
         setTitle(returnItem.itemTitle);
         setAucUsername(returnAuction.auctioner.username);
-        // console.log("i hope you die " + returnAuction.auctioner.username);
         setAucCanc(returnAuction.auctioner.cancelledAuctions);
+        
+        var image_buffer = returnItem.Image;
+        image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
+        
+        setImage(image_buffer);
 
         const hmmm = returnAuction.auctioner.completedAuctions;
         let i = 0;
@@ -150,7 +155,7 @@ return (
           <div className="left_half col-md-4 ml-5">
             <div className="an_auction">
               <div className="item2">
-                <img src="https://cdn.shopify.com/s/files/1/0161/0482/products/ayegear_tshirt_5_pockets_multipocket_travel_scottevest_navy.jpg?v=1538484272"></img>
+              <img src={image} height="360" width="640"></img>
                 <div className="text-desc">
                     {description}
                 </div>
@@ -199,7 +204,7 @@ return (
       </body>
     </html>
 
-
+/////
 
 )
 }

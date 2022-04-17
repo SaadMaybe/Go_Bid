@@ -211,8 +211,9 @@ export const Signup = () => {
                     <button onClick={() => navigate("/")} className="signin-btn">Sign In</button>
 
                     <div className="right"></div>
-
+                    <button className="signin-btn" onClick={() => navigate("/")}>Sign In</button>
                   </div>
+                  {/* <button onClick={() => navigate("/")}>Sign In</button> */}
                 </form>
                 </div>
         )

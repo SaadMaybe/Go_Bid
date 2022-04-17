@@ -4,13 +4,12 @@ const multer = require('multer');
 let AuctionModel = require('../models/auction.model');
 let UsersModel = require('../models/user.model');
 let ItemModel = require('../models/item.model');
-let imageModel = require('../models/image.model');
 
 let upload = multer()
 
 router.route('/').post(async (req,res) => 
 {
-    // console.log("req files:", req.files)
+    console.log("req files:", req.file);
     await AuctionModel.find().sort({auctionID:-1}).then(async auction =>
     {
         var auctionID;
@@ -25,6 +24,7 @@ router.route('/').post(async (req,res) =>
         }   
 
         var auctioner = req.body.auctioner;
+        console.log("auctioneer: ", req.body.auctioner);
         const userID = req.body.userID
         const itemTitle = req.body.itemTitle;
 
@@ -38,7 +38,7 @@ router.route('/').post(async (req,res) =>
         const tags = [req.body.tags];
 
         var item = await ItemModel.find().sort({itemID:-1})
-        var itemID = 0
+        var itemID;
         if(item.length == 0)
         {
             itemID = 0;
@@ -48,19 +48,13 @@ router.route('/').post(async (req,res) =>
             itemID = item[0].itemID + 1;
         }
 
-        // let imFileBuffer = req.file.buffer;
-        const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid});
-        // const newImage = new ItemModel({itemID, imFileBuffer});
+        let imFileBuffer = req.file.buffer;
+        console.log(imFileBuffer);
+        const newItem = new ItemModel({itemID, itemTitle, description, category, pictures, tags, minimumBid, Image: imFileBuffer});
 
         await newItem.save()
         .then(() => {console.log("Item Added")})
-        
-        // await newImage.save()
-        // .then(() => {console.log("Image Added")})
-        //.catch(err => res.status(400).json('Error: ' + err));
-        
-        
-
+    
         const itemBeingAuctioned = await ItemModel.findOne({itemTitle: itemTitle});
         //console.log(ItemModel.findOne({itemTitle: itemTitle}));
         
@@ -71,7 +65,7 @@ router.route('/').post(async (req,res) =>
         const auctionStatus = "active";
         const listOfBids = [];
 
-        const newAuction = await new AuctionModel({auctionID : auctionID,auctioner:  auctioner, itemBeingAuctioned: itemBeingAuctioned._id, startingTime: startingTime, endingTime: endingTime, auctionStatus: auctionStatus, listOfBids: [], highestBidValue: 0, highestBid: null});
+        const newAuction = await new AuctionModel({auctionID : auctionID, auctioner:  auctioner, itemBeingAuctioned: itemBeingAuctioned._id, startingTime: startingTime, endingTime: endingTime, auctionStatus: auctionStatus, listOfBids: [], highestBidValue: 0, highestBid: null});
 
         await newAuction.save()
         .then(() => res.json({status: 'ok', message: 'Auction added!', userID: userID}))

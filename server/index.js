@@ -40,7 +40,7 @@ app.use('/users', usersRouter);
 app.use('/homepage', homePageRouter);
 app.use('/contactUs', contactUsRouter);
 app.use('/userProfile', userProfileRouter);
-app.use('/postanauction',upload.single("verifyDoc"), PostAnAuctionRouter);
+app.use('/postanauction', upload.single("image"), PostAnAuctionRouter);
 app.use('/createanitem', createAnItemRouter);
 app.use('/getauction', getAuctionRouter);
 app.use('/getitem', getItemRouter);

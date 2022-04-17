@@ -38,6 +38,12 @@ const itemschema = new mongoose.Schema({
       type: Number,
       default: 0
     },
+    Image:{
+      type: Buffer,
+      contentType: String,
+      unique: false,
+      default: 0
+    }
       
   });
   
