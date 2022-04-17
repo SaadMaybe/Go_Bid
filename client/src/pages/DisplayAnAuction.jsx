@@ -86,7 +86,7 @@ export const DisplayAnAuction = () => {
         
 
         // setMaximumBid(location.state.maximumBid);
-        setPicture(returnItem.picture);
+        setPicture(returnItem.pictures[0]);
         setTags(returnItem.tags);
         setDescription(returnItem.description);
 
@@ -111,7 +111,7 @@ return (
     Auctioner's Completed auctions: {aucComp}<br></br>
     Auctioner's Cancelled auctions: {aucCanc}<br></br>
     Current Highest Bid: {maximumBid}<br></br>
-    Location: {picture}<br></br>
+    Picture: {picture}<br></br>
     tags: {tags}<br></br>
 
     <form onSubmit={onSubmit}>
