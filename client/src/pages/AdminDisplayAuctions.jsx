@@ -22,7 +22,7 @@ export const AdminDisplayAuctions = () => {
         // var unlucky = v.target.value;
         // console.log("unlucky is " + unlucky);
         var unlucky = thanos;
-        axios.post('http://localhost:9000/adminPortal/deleteAuction', {auctionID: unlucky}).then(res =>
+        axios.post('https://my-app-6zap7.ondigitalocean.app/deleteAuction', {auctionID: unlucky}).then(res =>
         {
             if(res.data.status !== 'ok')
             {

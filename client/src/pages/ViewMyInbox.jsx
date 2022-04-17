@@ -18,7 +18,7 @@ export const ViewMyInbox = () =>
         const hmmm = location.state.userID;
         setUserID(location.state.userID);
     
-        await axios.post('http://localhost:9000/viewMyInbox/', {userID: hmmm}).then(res =>
+        await axios.post('https://my-app-6zap7.ondigitalocean.app/viewMyInbox/', {userID: hmmm}).then(res =>
         {
             setMessages(res.data.messages);
             setUsername(res.data.username);
@@ -28,10 +28,17 @@ export const ViewMyInbox = () =>
 
     return (
 
+        <div>
 
+        <div className = "top-dash-user">
+        <div className="back-btn"><button className="back" onClick={() => navigate('/Homepage', {state:{userID: location.state.userID, id: location.state.id}})}>&#8249;</button> </div>
+        My Inbox
+        
+        </div>
         <div classname='inbox-list'>
-            <div className='top-dash'>My Inbox</div>
+            {/* <div className='top-dash'>My Inbox</div> */}
             <div> The messages for {username} are:</div>
+            <br></br><br></br>
             <div class="unread">
                 {/* <span class="subject">The messages for {username} are:</span> */}
                 <input class="checkbox" type="checkbox" />
@@ -46,6 +53,7 @@ export const ViewMyInbox = () =>
                             <b>Timestamp</b>: {message.timeStamp}
                             <br></br>
                             <b>Message</b>: {message.contents}
+                            <br></br><br></br>
                         </ul>
                         )}
                     </span>
@@ -53,6 +61,7 @@ export const ViewMyInbox = () =>
                 {/* <span class="time">2 days ago</span> */}
                 </header>
             </div>
+        </div>
         </div>
     )
 }

@@ -1,16 +1,3 @@
-<<<<<<< Updated upstream
-import React, {useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import {useNavigate, useLocation} from 'react-router-dom';
-import {useState} from 'react';
-import axios from 'axios';
-
-export const PostAnAuction = () => 
-{
-    return (
-        <div>
-            kek
-=======
 import React, { useState, Component, useEffect } from "react";
 import axios from "axios";
 import "../App.css";
@@ -124,45 +111,31 @@ return (
     </head>
 
     <body>
-        <div>
-        <div className = "top-dash-user">
-            <div className="back-btn">
-			<button 
-			className="back" 
-			onClick=
-				{
-					() => {navigate('/Homepage', {state:{userID: location.state.userID, id: location.state.id}})}
-				}>&#8249;</button>
-			</div>    
-			Post an Auction
-			</div>
-        <br></br><br></br>
-        {/* <h3>Post An Auction</h3> */}
-            
+        <div className="left">
             <form onSubmit={onSubmit}>
-                <div >
-
-                <div className="t-and-d">
-                    <label className="don2">Title:</label>
-                    <input className="in-user"  type="search"
-                        required
-                        // value={this.state.UserName}
-                        onChange={changeItemTitle}
-                        />
-                    <br></br><br></br>
-
-                    <label className="don2">Description:</label>
-                    <input className="in-user-desc"  type="search"
-                        required
-
-                        // value={this.state.UserName}
-                        onChange={changeDescription}
-                        />
-                </div>
+                <div className="form-group">
+                <h3>Post An Auction</h3>
+                
+                <label>Title:</label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changeItemTitle}
+                    />
                 <br></br>
 
-                <label className="t-and-d" htmlFor="categories">Category:</label>
-                <select className="category" onChange={changeCategory}>
+                <label>Description:</label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changeDescription}
+                    />
+                <br></br>
+
+                <label htmlFor="categories">Category:</label>
+                <select id="category" name = "category" onChange={changeCategory}>
                     <option value="Electronics">Electronics</option>
                     <option value="Clothing">Clothing</option>
                     <option value="Books">Books</option>
@@ -171,73 +144,59 @@ return (
                 </select>
                 <br></br>
                 <br></br>
+
+                <label>minimumBid:</label>
+                <input  type="number"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changeminimumBid}
+                    />
                 <br></br>
                 <br></br>
 
-                <div className="two-col">
-                    <div className="bid-time">
-                        <label className="don2" >minimumBid:</label>
-                        <input className="in-user"  type="number"
-                            required
+                <label>Location:</label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changePictures}
+                    />
+                <br></br>
 
-                            // value={this.state.UserName}
-                            onChange={changeminimumBid}
-                            />
-                        <br></br>
-                        <br></br>
-
-                        <label className="don2">Duration:</label>
-                        <input className="in-user"  type="number"
-                            required
-
-                            // value={this.state.UserName}
-                            onChange={changeEndingTime}
-                            />
-                        <br></br>
-
-                        <br></br><br></br>
-                        <label className="don2">Location:</label>
-                        <input className="in-user"  type="search"
-                            required
-
-                            // value={this.state.UserName}
-                            onChange={changePictures}
-                        />
-                        <br></br>
-                        <label className="don2">Upload a picture:</label>
-                        <input type="file" 
-                            encType='multipart/form-data'
-                            id="avatar"
-                            name = "avatar"
-                            accept="image/png, image/jpeg" 
-                            onChange = {changeImg}/>
-
-                    </div>
-
-                    
-
-                    <label>Tags:</label>
-                    <input  type="search"
-                        required
-
-                        // value={this.state.UserName}
-                        onChange={changeTags}
-                        />
-                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-                    <br></br><br></br><br></br><br></br>
+                <label>Tags:</label>
+                <input  type="text"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changeTags}
+                    />
+                <br></br>
 
 
-                    
-                    {/* //-----------CODE FOR UPLOADING IMAGES------------------ */}
-                    
-                    
-                </div>
-                {/* <input className="post-auction" type="submit" value="Post an Auction" /> */}
-                <button className="post-auction" type="submit" >Post an auction</button>
-                {/* <div className="right"></div> */}
+                <label>Duration:</label>
+                <input  type="number"
+                    required
+                    className="form-control"
+                    // value={this.state.UserName}
+                    onChange={changeEndingTime}
+                    />
+                <br></br>
+                {/* //-----------CODE FOR UPLOADING IMAGES------------------ */}
+                <label>Upload a picture:</label>
+                <input type="file" 
+                    encType='multipart/form-data'
+                    id="avatar"
+                    name = "avatar"
+                    accept="image/png, image/jpeg" 
+                    onChange = {changeImg}/>
+                <input type="submit" value="Post an Auction" className="btn btn-primary" />
+                <div className="right"></div>
                 </div>
             </form>
->>>>>>> Stashed changes
         </div>
-    )
+    </body>
+</html>
+)
+
 }

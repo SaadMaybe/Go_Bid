@@ -142,11 +142,68 @@ input[type="submit"]:active {
 
   
 }
+.signin-btn{
+  position: relative;
+  left: 5%;
+  background-color: black;
+  color: white;
+  height: 32px;
+  width: 120px;
 
+}
 
 /* homepage */
+.navbar-nav{
+  margin: auto;
+  /* margin-left: 30%; */
+}
+.nav_button{
+  color: #9b9d9e!important;
+  /* color:black; */
+  font-size: 17px;
+
+}
+.nav_button:hover{
+  cursor: pointer;
+  color: white!important;
+}
+.search_css{
+  color: white;
+  background: #222020;
+  /* background: black; */
+  margin-top: -25px;
+  padding: 5%;
+}
+.mrg{
+  margin-left: 50px;
+  /* margin-right: 50px; */
+}
 
 
+.s_bid{
+  float: left;
+  font-size: 42px;
+  font-weight: bold;
+  margin-right: 1%;
+  margin-left: 2%;
+}
+.s_input{
+  margin-top: 6px;
+  border-radius: 10px !important;
+  float: left;
+  padding: 9px!important;
+  margin-left: 12%;
+  height: 40px!important;
+}
+.s_button{
+  background: white;
+  border: none;
+  margin-top: 7px;
+  margin-left: -31px;
+  border-radius: 7px;
+  padding: 4px;
+  font-size: 16px;
+}
 
 .inner ul {
   list-style-type: none;
@@ -155,9 +212,8 @@ input[type="submit"]:active {
   overflow: hidden;
   border: 2px solid black;
   background-color: black;
-  position:absolute;
   top: 0;
-  width: 110%;
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -188,35 +244,45 @@ li .boss{
   height: 200px;
 }
 .down-one{
-  margin-top: 0px;
+  padding: 3%;
+  padding-top: 1%;
 } 
 .popular{
   text-align: center;
   font-weight: 900;
-  font-size:x-large;
+  font-size: x-large;
+  padding: 3%;
 }
 
 
-.row {
-  display:inline-flex;
-  width: 25%; 
-  height: 2%;
+.row1 {
+  display: list-item;
+  width: 20%;
+  float: left;
+  list-style-type: none;
 }
 .item {
-float: left;
-padding: 0 10px;
+  float: left;
+  transition: 0.5s;
+  margin-left: 10%;
+  margin-bottom: 50px;
+  border: 1px solid #46464647;
 }
 
 .item:hover {
-box-shadow: 12px 12px 8px 0px #b7b7b7;
-cursor: pointer;
-margin: 1% .5% 0 .5%;
+  box-shadow: 1px 4px 15px 4px #b7b7b7;
+
 }
 .item img {
-width: 98%;
-height: 60%;
-margin: 1%;
-position: relative;
+  width: 98%;
+  height: 50%;
+  margin: 1%;
+  position: relative;
+}
+.text-desc{
+  padding: 5%;
+    background: #464646;
+    color: white;
 }
 
 /* for myinbox */
@@ -295,9 +361,10 @@ position: relative;
   /* margin-left:0px;
   padding-left: 0px; */
   width: 100%;
+  height:50px;
   text-align: center;
   font-weight: 900;
-  font-size:x-large;
+  font-size:xx-large;
 }
 .back-btn{
   margin: 0;
@@ -375,12 +442,10 @@ position: relative;
   background-color: white;
   padding: 25px;
   margin:50px;
-<<<<<<< Updated upstream
   /* border-radius: 50px; */
-  width:80%
-=======
-  border-radius: 50px;
->>>>>>> Stashed changes
+  width:80%;
+  border: 1px solid;
+  list-style-type: none;
 }
 
 .sell{
@@ -440,7 +505,7 @@ position: relative;
 
 .search-portal{
   position: absolute;
-  right:39.5%;
+  right:43%;
   border-radius: 5px;
   background-color: black;
   color: white;
@@ -457,8 +522,6 @@ position: relative;
   border-radius: 5px;
   background-color: black;
   font-weight: 700;
-<<<<<<< Updated upstream
-=======
 }
 
 
@@ -469,8 +532,8 @@ position: relative;
 /* Display An Auction page css */
 
 .main_auction{
-  margin-top: 5%;
-  margin-left: 5%;
+  margin-top: 10%;
+  margin-left: 17%;
 }
 .left_half{
   float: left;
@@ -520,45 +583,4 @@ position: relative;
   background: white!important;
   color: #212529!important;
   transition: 0.5s;
-}
-
-
-
-/* post an auction */
-.t-and-d{
-  margin-left: 10%;
-  /* display: inline-block; */
-  /* width: 200px; */
-  /* text-align: left; */
-}
-
-.in-user-desc{
-  width:50%;
-  height:200px;
-}
-.category{
-  margin-left: 10%;
-  width:25%
-}
-.bid-time{
-  float: left;
-  margin-left: 10%;
-  /* display: block; */
-}
-
-.post-auction {
-  position:absolute;
-  background-color: black;
-  color: white;
-  /* float: right; */
-  right: 150px;
-  bottom: 25px;
-}
-
-
-/* display an auction */
-
-.display-para{
-  margin-left: 30%;
->>>>>>> Stashed changes
 }

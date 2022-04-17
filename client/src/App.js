@@ -9,14 +9,15 @@ import { ContactUs } from './pages/ContactUs';
 import { UserProfile } from './pages/UserProfile';
 import { PostAnAuction } from './pages/PostAnAuction';
 import { ViewMyAuctions } from './pages/ViewMyAuctions';
-import { ViewMyBids } from './pages/ViewMyBids';
-import { ViewMyInbox} from './pages/ViewMyInbox';
 import { DisplayAnAuction } from './pages/DisplayAnAuction';
+import { ViewMyInbox } from './pages/ViewMyInbox'
+import { AdminPortal } from './pages/AdminPortal'
+import { AdminDisplayUsers } from './pages/AdminDisplayUsers'
+import { AdminDisplayAuctions } from './pages/AdminDisplayAuctions'
+import { SearchResults } from './pages/SearchResults'
 import { ViewMyPastAuctions } from './pages/ViewMyPastAuctions';
-import { AdminPortal } from './pages/AdminPortal';
-import { AdminDisplayUsers } from './pages/AdminDisplayUsers';
-import { AdminDisplayAuctions } from './pages/AdminDisplayAuctions';
-
+import { ViewMyBids } from './pages/ViewMyBids';
+import { ViewMyPastBids} from './pages/ViewMyPastBids';
 
 function App() {
   return (
@@ -31,15 +32,15 @@ function App() {
           <Route path='/UserProfile' element={<UserProfile/>} />
           <Route path='/PostAnAuction' element={<PostAnAuction/>} />
           <Route path='/ViewMyAuctions' element={<ViewMyAuctions/>} />
-          <Route path='/ViewMyBids' element={<ViewMyBids/>} />
-          <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
           <Route path='/DisplayAnAuction' element={<DisplayAnAuction/>} />
-          <Route path='/ViewMyPastAuctions' element={<ViewMyPastAuctions/>} />
+          <Route path='/ViewMyInbox' element={<ViewMyInbox/>} />
           <Route path='/AdminPortal' element={<AdminPortal/>} />
-          <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>} />
-          <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>} />
-          
-          
+          <Route path='/AdminPortal/User' element={<AdminDisplayUsers/>}/>
+          <Route path='/AdminPortal/Auction' element={<AdminDisplayAuctions/>}/>
+          <Route path='/SearchResults' element={<SearchResults/>}/>
+          <Route path='/ViewMyPastAuctions' element={<ViewMyPastAuctions/>}/>
+          <Route path='/ViewMyBids' element={<ViewMyBids/>}/>
+          <Route path='/ViewMyPastBids' element={<ViewMyPastBids/>}/>
         </Routes>
       </Router>
     </div>
