@@ -15,8 +15,6 @@ export const ViewMyAuctions = () =>
     const [bidList, setBidList] = useState([]);
     const [auctionID, setAuctionID] = useState(0);
     const [id, setId] = useState('');
-    const [imageList , setImageList] = useState([]);
-    
 
     function sellAuction(e)
     {
@@ -113,7 +111,6 @@ export const ViewMyAuctions = () =>
                 setAuctionList(response.data.auctionList);
                 setUsername(response.data.username);
                 setBidList(response.data.bidList);
-                setImageList(response.data.imageList);
             }
             else
             {
@@ -142,7 +139,6 @@ export const ViewMyAuctions = () =>
                         <div className='playcards'>
                             <li key={auction.auctionID}>
                                 <div className='in-text'>
-                                    <img src={imageList[index]} height="144" width="256"></img>
                                     Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                                     <p>   </p>
                                     {bidList[index] == auction.itemBeingAuctioned.minimumBid ? "No bids yet. Starting value for the bid is " + auction.itemBeingAuctioned.minimumBid + " " : "Highest bid: " + bidList[index] + " "}

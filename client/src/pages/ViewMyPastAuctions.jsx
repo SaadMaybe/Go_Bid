@@ -13,7 +13,7 @@ export const ViewMyPastAuctions = () =>
     const [auctionList, setAuctionList] = useState([]);
     const [username, setUsername] = useState("");
     const [bidList, setBidList] = useState([]);
-    const [imageList , setImageList] = useState([]);
+
 
     useEffect(async () => 
     {
@@ -27,7 +27,6 @@ export const ViewMyPastAuctions = () =>
                 await setAuctionList(response.data.auctionList);
                 await setUsername(response.data.username);
                 await setBidList(response.data.bidList);
-                await setImageList(response.data.imageList);
                 console.log("auctionList is " + auctionList);
                 console.log("username is " + username);
                 console.log("bidList is " + bidList);
@@ -59,7 +58,6 @@ export const ViewMyPastAuctions = () =>
                         <div className='playcards'>
                             <li key={auction.auctionID}>
                                 <div className='in-text'>
-                                    <img src={imageList[index]} height="144" width="256"></img>
                                     Title of the auction: {auction.itemBeingAuctioned.itemTitle}
                                     <p>   </p>
                                     Sold at: {bidList[index]}

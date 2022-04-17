@@ -26,16 +26,10 @@ router.route("/").post(async (req, res) =>
         if(auctions.length > 0)
         {
             var bidList = [];
-            var imageList = [];
             for(var i = 0; i < auctions.length; i++)
             {
                 var auction = auctions[i];
                 var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
-
-                var image_buffer = auction.itemBeingAuctioned.Image;
-                image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
-                imageList.push(image_buffer);
-
                 if(bids.length > 0)
                 {
                     bidList.push(bids[0].amountBidded); 
@@ -53,8 +47,7 @@ router.route("/").post(async (req, res) =>
                         auctionList: auctions,
                         status: 'ok',
                         username: user.username,
-                        bidList: bidList,
-                        imageList: imageList
+                        bidList: bidList
                     }
                     );
             }    

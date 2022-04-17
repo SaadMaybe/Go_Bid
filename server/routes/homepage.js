@@ -5,7 +5,6 @@ const usersModel = require('../models/user.model');
 const auctionsModel = require('../models/auction.model');
 const itemsModel = require('../models/item.model');
 const bidsModel = require('../models/bid.model');
-const ImageModel = require('../models/image.model');
 
 
 router.route("/").post(async (req,res) => 
@@ -34,18 +33,13 @@ router.route("/").post(async (req,res) =>
     .populate('itemBeingAuctioned').populate('auctioner').limit(50);   
     
     var bidList = [];
-    var imageList = [];
     // console.log("Length of auctions is " + auctions.length)
     for(var i = 0; i < auctions.length; i++)
     {
         
         var auction = auctions[i];
+        // console.log("Auction is " + auction)
         var bids = await bidsModel.find({associatedAuction: auction._id}).sort({amountBidded: -1});
-
-        var image_buffer = auction.itemBeingAuctioned.Image;
-        image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
-        imageList.push(image_buffer);
-
 
         if(bids.length > 0)
         {
@@ -60,7 +54,7 @@ router.route("/").post(async (req,res) =>
     }
 
 
-    //console.log(auctions)
+    // console.log(auctions)
     if(auctions && user)
     {
         res.json(
@@ -70,8 +64,7 @@ router.route("/").post(async (req,res) =>
                 status: 'ok',
                 username: user.username,
                 bidList: bidList,
-                userObjID: user._id,
-                imageList : imageList
+                userObjID: user._id
             }
             );
     }
@@ -120,28 +113,22 @@ router.route("/search").post(async (req,res) =>
 
         })//.populate('listOfBids')
     .populate('itemBeingAuctioned').populate('auctioner')   
-    var auctionList = [];
+    var auctionList = []
     var bidList = [];
-    var imageList = [];
     // console.log("Length of auctions is " + auctions.length)
     for(var i = 0; i < auctions.length; i++)
     {
         
         var auction = auctions[i];
-
-
+        // console.log("Auction is " + auction)
         var includeTest = false;
         for (let i = 0; i < stringArr.length && !includeTest; i++) {
             if(auction.itemBeingAuctioned.itemTitle.includes(stringArr[i]))
             {
-
                 // console.log("Item title is " + auction.itemBeingAuctioned.itemTitle);
                 // console.log("the value of the string that was matched is " + stringArr[i])
                 includeTest = true;
                 auctionList.push(auction);
-                var image_buffer = auction.itemBeingAuctioned.Image;
-                image_buffer = "data:image/jpg;base64," + image_buffer.toString('base64');
-                imageList.push(image_buffer);
             }
             
         }
@@ -161,6 +148,7 @@ router.route("/search").post(async (req,res) =>
         }
     }
 
+
     // console.log(auctions)
     if(auctions && user)
     {
@@ -172,8 +160,7 @@ router.route("/search").post(async (req,res) =>
                 status: 'ok',
                 username: user.username,
                 bidList: bidList,
-                userObjID: user._id,
-                imageList: imageList
+                userObjID: user._id
             }
             );
     }

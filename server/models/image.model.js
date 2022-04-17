@@ -11,8 +11,7 @@ const imageschema = new mongoose.Schema({
     },
     Image:{
         data: Buffer,
-        contentType: String,
-        unique: false
+        contentType: String
     }
         
   });
